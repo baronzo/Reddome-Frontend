@@ -1,0 +1,12 @@
+#layout {
+  $navHeight: 50px;
+  background-color: #F5F5F5;
+  max-height: 100vh;
+  overflow-y: overlay;
+  #navBox {
+    height: $navHeight;
+  }
+  #bodyBox {
+    min-height: calc(100vh - (#{$navHeight}))
+  }
+}
