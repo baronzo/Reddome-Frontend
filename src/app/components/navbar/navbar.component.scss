@@ -1,5 +1,60 @@
+$fontColor: white;
 #navbar {
   background-color: #99D4D3;
   $navHeight: 50px;
   height: $navHeight;
+  #content {
+    display: flex;
+    height: 100%;
+    padding: 0 30px 0 30px;
+    justify-content: space-between;
+    #leftNav {
+      display: flex;
+      align-items: center;
+      #logoTxt {
+        color: $fontColor;
+      }
+    }
+    #rightNav {
+      display: flex;
+      align-items: center;
+      #homeBtn {
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        height: 70%;
+        border-right: solid 2px white;
+        color: $fontColor;
+        margin-right: 20px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      #upBtn {
+        padding: 0 30px;
+        height: 70%;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        background: #6BB885;
+        color: $fontColor;
+        margin-right: 20px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      #inBtn {
+        padding: 0 30px;
+        height: 70%;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        border: solid 2px white;
+        color: $fontColor;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
