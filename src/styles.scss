@@ -1,5 +1,21 @@
 * {
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100&family=Open+Sans:wght@300&family=Ubuntu:wght@300&display=swap');
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Kanit', sans-serif;
+  // font-family: 'Ubuntu', sans-serif;
+  //font-family: 'Open Sans', sans-serif;
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #99D4D3;
+    border-radius: 10px;
+  }
 }
