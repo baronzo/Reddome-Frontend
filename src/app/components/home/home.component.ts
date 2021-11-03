@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  isSignIn: boolean = false
+  isSignUp: boolean = false
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClickSignIn = () => {
+    this.isSignIn = !this.isSignIn
+  }
+
+  onClickSignUp = () => {
+    this.isSignUp = true
   }
 
 }

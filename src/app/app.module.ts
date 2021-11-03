@@ -7,6 +7,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { NavBarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { FeedComponent } from './components/feed/feed.component';
+import { SigninComponent } from './components/signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FeedComponent } from './components/feed/feed.component';
     LayoutComponent,
     NavBarComponent,
     HomeComponent,
-    FeedComponent
+    FeedComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
