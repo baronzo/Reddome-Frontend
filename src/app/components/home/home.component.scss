@@ -1,7 +1,6 @@
 #home {
   $navHeight: 50px;
   width: 100%;
-  height: calc(100vh - (#{$navHeight}));
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -15,7 +14,7 @@
     }
   }
   #title {
-    width: 50%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,7 +22,6 @@
     #titleBox {
       display: flex;
       flex-direction: column;
-      // border: 1px solid #fff;
       width: 80%;
       #titleText {
         font-size: 72px;
@@ -76,6 +74,177 @@
             &:hover {
               background-color: #c2dad9;
               transform: scale(1.05);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  #home {
+    #title {
+      width: 80%;
+      #titleBox {
+        #titleText {
+          font-size: 60px;
+        }
+        #content {
+          font-size: 22px;
+        }
+      }
+      #account {
+        #buttonBox {
+          #signUp {
+            .signup-box {
+              width: 180px;
+              height: 50px;
+              font-size: 18px;
+            }
+          }
+          #signIn {
+            .signin-box {
+              width: 180px;
+              height: 50px;
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #home {
+    #title {
+      width: 70%;
+      #titleBox {
+        #titleText {
+          font-size: 48px;
+        }
+        #content {
+          font-size: 20px;
+        }
+      }
+      #account {
+        #buttonBox {
+          #signUp {
+            .signup-box {
+              width: 150px;
+              height: 50px;
+              font-size: 18px;
+            }
+          }
+          #signIn {
+            .signin-box {
+              width: 150px;
+              height: 50px;
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #home {
+    #homeImage {
+      display: none;
+    }
+    #title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      #titleBox {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        #titleText {
+          font-size: 48px;
+          // width: 70%;
+        }
+        #content {
+          display: flex;
+          justify-content: center;
+          font-size: 24px;
+          align-items: center;
+          width: 70%;
+          .text-content {
+            display: flex ;
+          }
+        }
+      }
+      #account {
+        #buttonBox {
+          #signUp {
+            .signup-box {
+              width: 150px;
+              height: 50px;
+              font-size: 14px;
+            }
+          }
+          #signIn {
+            .signin-box {
+              width: 150px;
+              height: 50px;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 530px) {
+  #home {
+    #homeImage {
+      display: none;
+    }
+    #title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      #titleBox {
+        display: flex;
+        align-items: center;
+        #titleText {
+          font-size: 36px;
+        }
+        #content {
+          font-size: 20px;
+          .text-content {
+            display: flex ;
+          }
+        }
+      }
+      #account {
+        #buttonBox {
+          flex-direction: column;
+          #signUp {
+            width: 100%;
+            .signup-box {
+              width: 80%;
+              height: 40px;
+              font-size: 14px;
+              margin: 0 30px 0 30px;
+            }
+          }
+          #signIn {
+            width: 100%;
+            .signin-box {
+              width: 80%;
+              height: 40px;
+              font-size: 14px;
+              margin: 20px 30px 0 30px;
             }
           }
         }
