@@ -1,58 +1,180 @@
 $fontColor: white;
-#navbar {
-  background-color: #99D4D3;
-  $navHeight: 50px;
-  height: $navHeight;
-  #content {
-    display: flex;
-    height: 100%;
-    padding: 0 30px 0 30px;
-    justify-content: space-between;
-    #leftNav {
+@media (min-width: 600px) { 
+  #navbar {
+    background-color: #99D4D3;
+    $navHeight: 50px;
+    height: $navHeight;
+    #content {
       display: flex;
-      align-items: center;
-      #logoTxt {
-        color: $fontColor;
+      height: 100%;
+      padding: 0 30px 0 30px;
+      justify-content: space-between;
+      #leftNav {
+        display: flex;
+        align-items: center;
+        #logoUdome{
+          width: 50px;
+        }
+        #logoTxt {
+          color: $fontColor;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+      .rightNav {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        .createBtn {
+          display: flex;
+          align-items: center;
+          color:white;
+          font-size: 35px;
+          margin-right: 20px;
+          border-radius: 20px;
+          transition: 0.3s;
+          padding: 0px 10px;
+          &:hover {
+            cursor: pointer;
+            background-color: #c2dad9;
+          }
+        }
+        .userDetail {
+          display: flex;
+          align-items: center;
+          transition: 0.3s;
+          padding: 0px 10px;
+          height: 40px;
+          border-radius: 20px;
+          .profilePic {
+            background-color: white;
+            border-radius: 20px;
+            padding: 15px;
+          }
+          .userName {
+            padding: 0px 5px;
+            color: white;
+          }
+          &:hover {
+            cursor: pointer;
+            background-color: #c2dad9;
+          }
+        }
+        .homeBtn {
+          padding: 0 20px;
+          display: flex;
+          align-items: center;
+          height: 70%;
+          border-right: solid 2px white;
+          color: $fontColor;
+          margin-right: 20px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        .upBtn {
+          padding: 0 30px;
+          height: 70%;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          background: #6BB885;
+          color: $fontColor;
+          margin-right: 20px;
+          transition: 0.3s;
+          &:hover {
+            cursor: pointer;
+            background: #7acc96;
+            transform: scale(1.03);
+          }
+        }
+        .inBtn {
+          padding: 0 30px;
+          height: 70%;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          border: solid 2px white;
+          color: $fontColor;
+          transition: 0.3s;
+          &:hover {
+            cursor: pointer;
+            background-color: #c2dad9;
+            transform: scale(1.03);
+          }
+        }
       }
     }
-    #rightNav {
+  }
+}
+
+@media (max-width: 600px) { 
+  #navbar {
+    background-color: #99D4D3;
+    $navHeight: 50px;
+    height: $navHeight;
+    #content {
       display: flex;
-      align-items: center;
-      #homeBtn {
-        padding: 0 20px;
+      height: 100%;
+      padding: 0 30px 0 30px;
+      justify-content: space-between;
+      #leftNav {
         display: flex;
         align-items: center;
-        height: 70%;
-        border-right: solid 2px white;
-        color: $fontColor;
-        margin-right: 20px;
-        &:hover {
-          cursor: pointer;
+        #logoTxt {
+          color: $fontColor;
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
-      #upBtn {
-        padding: 0 30px;
-        height: 70%;
-        border-radius: 10px;
+      .rightNav {
         display: flex;
         align-items: center;
-        background: #6BB885;
-        color: $fontColor;
-        margin-right: 20px;
-        &:hover {
-          cursor: pointer;
+        height: 100%;
+        .createBtn {
+          display: flex;
+          align-items: center;
+          color:white;
+          font-size: 35px;
+          margin-right: 20px;
+          border-radius: 20px;
+          transition: 0.3s;
+          padding: 0px 10px;
+          &:hover {
+            cursor: pointer;
+            background-color: #c2dad9;
+          }
         }
-      }
-      #inBtn {
-        padding: 0 30px;
-        height: 70%;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        border: solid 2px white;
-        color: $fontColor;
-        &:hover {
-          cursor: pointer;
+        .userDetail {
+          display: flex;
+          align-items: center;
+          transition: 0.3s;
+          padding: 0px 10px;
+          height: 40px;
+          border-radius: 20px;
+          .profilePic {
+            background-color: white;
+            border-radius: 20px;
+            padding: 15px;
+          }
+          .userName {
+            display: none;
+          }
+          &:hover {
+            cursor: pointer;
+            background-color: #c2dad9;
+          }
+        }
+        .homeBtn {
+          display: none;
+        }
+        .upBtn {
+          display: none;
+        }
+        .inBtn {
+          display: none;
         }
       }
     }

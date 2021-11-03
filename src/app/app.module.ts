@@ -5,16 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { NavBarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
+import { FeedComponent } from './components/feed/feed.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
-    NavBarComponent
+    NavBarComponent,
+    HomeComponent,
+    FeedComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

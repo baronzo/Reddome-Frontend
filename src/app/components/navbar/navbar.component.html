@@ -1,14 +1,24 @@
 <div id="navbar">
   <div id="content">
     <div id="leftNav">
+      <img id="logoUdome" src="../../../assets/img/logo_s.png" alt="">
       <div id="logoTxt">
         レードーメ
       </div> 
     </div>
-    <div id="rightNav">
-      <div id="homeBtn">Home</div>
-      <div id="upBtn">Sign up</div>
-      <div id="inBtn">Sign in</div>
+    <div class="rightNav" *ngIf="isLoggedIn; else loggedOut">
+      <div class="homeBtn">Home</div>
+      <div class="upBtn">Sign up</div>
+      <div class="inBtn">Sign in</div>
     </div>
+    <ng-template #loggedOut>
+    <div class="rightNav" >
+      <div class="createBtn">+</div>
+      <div class="userDetail">
+        <div class="profilePic"></div>
+        <div class="userName">Udomsak</div>
+      </div>
+    </div>
+    </ng-template>
   </div>
 </div>
