@@ -7,6 +7,6 @@
     height: $navHeight;
   }
   #bodyBox {
-    min-height: calc(100vh - (#{$navHeight}))
+    max-height: calc(100vh - (#{$navHeight}));
   }
 }

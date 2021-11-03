@@ -12,6 +12,9 @@ $fontColor: white;
       #leftNav {
         display: flex;
         align-items: center;
+        #logoUdome{
+          width: 50px;
+        }
         #logoTxt {
           color: $fontColor;
           &:hover {
