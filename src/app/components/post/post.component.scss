@@ -1,0 +1,45 @@
+#Bgmain {
+    #TopicBar {
+        display: flex;
+        justify-content: flex-end;
+        height: 50px;
+        background-color: black;
+        #TopicText {
+            color: white;
+            margin-top: 15px;
+            margin-right: 80px;
+            cursor: pointer;
+        }
+    }
+    .BgPost {
+        background-color: rgb(153, 153, 145);
+        height: calc(100vh - Bgmain);
+        padding: 50px 100px 50px 100px;
+        align-items: center;
+        .Post {
+            background-color: white;
+            border-radius: 5px;
+            height: calc(100vh - Bgmain);
+            #TopicPost {
+                font-size: 24px;
+                padding: 50px 100px 50px 100px;
+                text-align: center;
+            }
+            .image {
+                height: 50%;
+                width: 30%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .btn-icon {
+                margin-top: 20px;
+                margin-left: 0px;
+                text-align: center;
+            }
+            #CommentLayout {
+                margin-left: 40px;
+            }
+        }
+    }
+}
