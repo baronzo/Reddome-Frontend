@@ -1,13 +1,15 @@
 #home {
+  $navHeight: 50px;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - (#{$navHeight}));
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: #99D4D3;
   #homeImage {
+    height: calc(100vh - (#{$navHeight}));
     display: flex;
-    margin-top: 10px;
+    align-items: flex-end;
     .image {
       width: 80%;
     }
@@ -52,8 +54,10 @@
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
+            transition: 0.3s;
             &:hover {
-              background-color: #f7e13a;
+              background-color: #ffe100;
+              transform: scale(1.05);
             }
           }
         }
@@ -68,8 +72,10 @@
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
+            transition: 0.3s;
             &:hover {
               background-color: #c2dad9;
+              transform: scale(1.05);
             }
           }
         }
