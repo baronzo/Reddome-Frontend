@@ -20,7 +20,8 @@ export class HomeComponent implements OnInit {
   }
 
   closeModalandChangeIsOpenSignIn($event:boolean) {
-    this.isOpenSignIn = $event   
+    this.isOpenSignIn = $event
+    this.isOpenSignUp = $event  
   }
 
   onClickSignUp = () => {
