@@ -1,2 +1,21 @@
-<h1 mat-dialog-title>Sign in</h1>
-<div mat-dialog-content>test</div>
+<div id="modalSignin" *ngIf="!isClose">
+  <div id="modalBox">
+    <div id="closeModal" (click)="onCloseTab()">
+      <label class="x-text" for="">X</label>
+    </div>
+    <div id="signInHeader">
+      <label class="text-signin" for="">Sign In</label>
+    </div>
+    <div class="input-box">
+      <i class="fas fa-user input-icon" aria-hidden="true"></i>
+      <input class="input-text-box" type="text" placeholder="Username / Email">
+    </div>
+    <div class="input-box">
+      <i class="fas fa-lock input-icon" aria-hidden="true"></i>
+      <input class="input-text-box" type="password" placeholder="Password">
+    </div>
+    <div id="buttonSignIn">
+      <div class="button-click">Sign In</div>
+    </div>
+  </div>
+</div>
