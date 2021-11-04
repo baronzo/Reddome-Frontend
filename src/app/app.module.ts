@@ -13,6 +13,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MatMenuModule } from '@angular/material/menu'
 import { MatIconModule } from '@angular/material/icon';
 import { PostfeedComponent } from './components/postfeed/postfeed.component' 
+import { RankingComponent } from './components/ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PostfeedComponent } from './components/postfeed/postfeed.component'
     HomeComponent,
     FeedComponent,
     SigninComponent,
-    PostfeedComponent
+    PostfeedComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,
