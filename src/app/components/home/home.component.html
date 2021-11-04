@@ -21,6 +21,8 @@
         </div>
       </div>
     </div>
-    <app-signin *ngIf="isSignIn"></app-signin>
   </div>
+</div>
+<div *ngIf="isOpenSignIn">
+  <app-signin (changeIsOpen)="closeModalandChangeIsOpenSignIn($event)"></app-signin>
 </div>

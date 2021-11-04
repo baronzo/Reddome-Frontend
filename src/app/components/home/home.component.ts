@@ -7,20 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  isSignIn: boolean = false
-  isSignUp: boolean = false
+  isOpenSignIn: boolean = false
+  isOpenSignUp: boolean = false
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onClickSignIn = () => {
-    this.isSignIn = !this.isSignIn
+  onClickSignIn = ():void => {
+    this.isOpenSignIn = !this.isOpenSignIn
+  }
+
+  closeModalandChangeIsOpenSignIn($event:boolean) {
+    this.isOpenSignIn = $event   
   }
 
   onClickSignUp = () => {
-    this.isSignUp = true
+    this.isOpenSignUp = !this.isOpenSignUp
   }
 
 }
