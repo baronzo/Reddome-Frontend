@@ -9,6 +9,10 @@ import { HomeComponent } from './components/home/home.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonToggleModule } from '@angular/material/button-toggle'
+import { MatMenuModule } from '@angular/material/menu'
+import { MatIconModule } from '@angular/material/icon';
+import { PostfeedComponent } from './components/postfeed/postfeed.component' 
 
 @NgModule({
   declarations: [
@@ -17,12 +21,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavBarComponent,
     HomeComponent,
     FeedComponent,
-    SigninComponent
+    SigninComponent,
+    PostfeedComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonToggleModule,
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
