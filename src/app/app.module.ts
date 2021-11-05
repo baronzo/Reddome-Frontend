@@ -40,7 +40,7 @@ import { SignupComponent } from './components/signup/signup.component';
     MatButtonToggleModule,
     MatMenuModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
     CalendarModule,
     FormsModule,
     HttpClientModule
