@@ -1,45 +1,46 @@
-#Bgmain {
-    #TopicBar {
+#bgMain {
+    background-color: rgba(0, 0, 0, 0.63);
+    height: calc(100vh - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    height: 100%;
+    #bgBox {
+        background-color: rgb(175, 174, 174);
+        max-width: 1200px;
+        width: 100%;
         display: flex;
-        justify-content: flex-end;
-        height: 50px;
-        background-color: black;
-        #TopicText {
-            color: white;
-            margin-top: 15px;
-            margin-right: 80px;
-            cursor: pointer;
-        }
-    }
-    .BgPost {
-        background-color: rgb(153, 153, 145);
-        height: calc(100vh - Bgmain);
-        padding: 50px 100px 50px 100px;
+        flex-direction: column;
         align-items: center;
-        .Post {
-            background-color: white;
-            border-radius: 5px;
-            height: calc(100vh - Bgmain);
-            #TopicPost {
-                font-size: 24px;
-                padding: 50px 100px 50px 100px;
-                text-align: center;
+        // height: calc(100% - 50px);
+        // height: calc(100% - bgMain);
+        height: 100%;
+        #topBar {
+            max-width: 1200px;
+            background-color: black;
+            height: 40px;
+            width: 100%;
+            align-items: center;
+            position: fixed;
+            #button {
+                color: #fff;
+                margin-top: 10px;
+                margin-right: 90px;
+                display: flex;
+                justify-content: flex-end;
+                cursor: pointer;
+                max-width: 1000px;
             }
-            .image {
-                height: 50%;
-                width: 30%;
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .btn-icon {
-                margin-top: 20px;
-                margin-left: 0px;
-                text-align: center;
-            }
-            #CommentLayout {
-                margin-left: 40px;
-            }
+        }
+        #bgPost {
+            background-color: #fff;
+            max-width: 800px;
+            width: 100%;
+            margin: 90px 0 50px 0;
+            height: calc(100% - bgMain);
+            // margin: 50px 50px;
+            // height: calc(100% - 130px);
         }
     }
 }
