@@ -6,6 +6,8 @@
   overflow-y: overlay;
   #navBox {
     height: $navHeight;
+    position: sticky;
+    top :0;
   }
   #bodyBox {
     max-height: calc(100vh - (#{$navHeight}));
