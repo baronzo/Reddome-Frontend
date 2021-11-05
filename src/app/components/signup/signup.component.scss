@@ -65,6 +65,10 @@
         }
       }
     }
+    .invalid {
+      color: red;
+      margin-left: 20px;
+    }
     .calendar-box {
       display: flex;
       .input-calendar {

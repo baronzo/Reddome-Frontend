@@ -1,7 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Calendar } from 'src/app/model/calendar';
-import { SignupService } from 'src/app/services/signup.service';
+import { UsersService } from 'src/app/services/users.service';
 import SignupRequestModel from 'src/app/model/users/SignupRequestModel';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -14,16 +15,20 @@ export class SignupComponent implements OnInit {
   public signup: SignupRequestModel = new SignupRequestModel
   isClose:boolean = false
   changeParentToFalse: boolean = false
+  signupform!: FormGroup
   @Output() changeIsOpen = new EventEmitter<boolean>()
 
   constructor(
-    private signupService: SignupService
-  ) { 
-    
-  }
+    private usersService: UsersService
+  ) { }
 
   ngOnInit(): void {
-  
+    this.signupform = new FormGroup({
+      "username": new FormControl('', Validators.required),
+      "password": new FormControl(null, [Validators.required, Validators.minLength(8)]),
+      "email": new FormControl(null, [Validators.required, Validators.email]),
+      "birth_date": new FormControl(null, Validators.required)
+    })
   }
 
   onCloseTab(): void {
@@ -31,22 +36,21 @@ export class SignupComponent implements OnInit {
     this.changeIsOpen.emit(this.changeParentToFalse)
   }
 
-  createAccount() {
+  async createAccount(): Promise<void> {
     const body: SignupRequestModel = {
       username: this.signup.username,
       password: this.signup.password,
       email: this.signup.email,
       birth_date: this.value,
-      profile_picture: ""
+      profile_picture: this.signup.profile_picture
     }
     console.log(body);
     try {
-      this.signupService.createAccount(body).subscribe(data => {
-        console.log(data);
-      })  
+        await this.usersService.createAccount(body).subscribe(data => {
+          console.log(data);
+        })
     } catch (error) {
       console.error(error); 
     }
   }
-
 }
