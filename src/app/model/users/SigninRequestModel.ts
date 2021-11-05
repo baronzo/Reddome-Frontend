@@ -1,6 +1,6 @@
 class SigninRequestModel {
     public username: string = String()
-    public password: number = Number()
+    public password: string = String()
   }
   
 export default SigninRequestModel

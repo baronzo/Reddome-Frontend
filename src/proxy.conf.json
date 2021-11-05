@@ -1,7 +1,0 @@
-{
-    "/api/*": {
-        "target": "http://jrapbit.pythonanywhere.com",
-        "secure": false,
-        "logLevel": "debug"
-    }
-}
