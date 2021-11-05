@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CalendarModule } from 'primeng/calendar';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { PostfeedComponent } from './components/postfeed/postfeed.component' 
 import { RankingComponent } from './components/ranking/ranking.component';
 import {MatButtonModule} from '@angular/material/button';
+import { SignupComponent } from './components/signup/signup.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +29,9 @@ import {MatButtonModule} from '@angular/material/button';
     FeedComponent,
     SigninComponent,
     PostfeedComponent,
-    RankingComponent
+    RankingComponent,
+    RankingComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +41,9 @@ import {MatButtonModule} from '@angular/material/button';
     MatMenuModule,
     MatIconModule,
     MatButtonModule
+    CalendarModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

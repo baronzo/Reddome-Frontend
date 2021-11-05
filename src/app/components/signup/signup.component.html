@@ -1,0 +1,30 @@
+<div id="modalSignUp" *ngIf="!isClose">
+  <div id="modalBox">
+    <div id="closeModal" (click)="onCloseTab()">
+      <label class="x-text" for="">X</label>
+    </div>
+    <div id="signUpHeader">
+      <label class="text-signin" for="">Sign Up</label>
+    </div>
+    <div class="input-box">
+      <i class="far fa-envelope input-icon" aria-hidden="true"></i>
+      <input class="input-text-box" type="text" placeholder="Email" [(ngModel)]="signup.email">
+    </div>
+    <div class="input-box">
+      <i class="fas fa-user input-icon" aria-hidden="true"></i>
+      <input class="input-text-box" type="text" placeholder="Username" [(ngModel)]="signup.username">
+    </div>
+    <div class="input-box">
+      <i class="fas fa-lock input-icon" aria-hidden="true"></i>
+      <input class="input-text-box" type="password" placeholder="Password" [(ngModel)]="signup.password">
+    </div>
+    <div class="calendar-box">
+      <div class="input-calendar">
+        <p-calendar inputId="basic" [(ngModel)]="value" [showIcon]="true"></p-calendar>
+      </div>
+    </div>
+    <div id="buttonSignUp" (click)="createAccount()">
+      <div class="button-click">Create your account</div>
+    </div>
+  </div>
+</div>
