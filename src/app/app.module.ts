@@ -14,7 +14,7 @@ import { MatMenuModule } from '@angular/material/menu'
 import { MatIconModule } from '@angular/material/icon';
 import { PostfeedComponent } from './components/postfeed/postfeed.component' 
 import { RankingComponent } from './components/ranking/ranking.component';
-
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +32,8 @@ import { RankingComponent } from './components/ranking/ranking.component';
     BrowserAnimationsModule,
     MatButtonToggleModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
