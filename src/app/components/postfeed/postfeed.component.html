@@ -5,19 +5,19 @@
             <i class="fas fa-arrow-up"></i>
         </div>
         <div id="countVote">
-            2.4k
+            {{post.likeCount}}
         </div>
     </div>
     <div id="postfeedContent">
         <div id="header">
             <div id="headerLeft">
                 <div id="profileGroup">
-                    <img id="imgGroup" src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg" alt="">
+                    <img id="imgGroup" src={{post.group_id.group_profile}} alt="">
                 </div>
-                <div id="nameGroup">DoggyLover</div>
+                <div id="nameGroup">{{post.group_id.name}}</div>
                 <div id="postby">
                     <div id="postbyTxt">• post by </div>
-                    <div id="postbyUser">GoldenRe</div>
+                    <div id="postbyUser">{{post.owner_id.username}}</div>
                 </div>
             </div>
             <div id="headerRight">
@@ -40,7 +40,7 @@
         </div>
         <div id="body">
             <div id="message">
-                วันนี้โป้อยากกินไก่ย่างห้าดาว
+                {{post.content}}
             </div>
         </div>
         <div id="footer">

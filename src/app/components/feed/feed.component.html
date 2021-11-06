@@ -26,8 +26,8 @@
       </div>
     </div>
   </div>
-  <div id="post">
-    <app-postfeed></app-postfeed>
+  <div id="post" *ngFor="let postdata of allpost">
+    <app-postfeed [post]="postdata" ></app-postfeed>
   </div>
   </div>
 </div>

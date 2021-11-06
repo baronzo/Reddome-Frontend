@@ -29,7 +29,6 @@ export class FeedComponent implements OnInit {
     try {
         const response = await this.postService.getAllPosts().subscribe(data => {
           this.allpost = data as ResponsePostByIdModel[]
-          console.log(this.allpost);
           
         })
         
