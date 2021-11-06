@@ -1,11 +1,8 @@
 #bgMain {
     background-color: #99d4d36b;
-    // height: calc(100vh - 50px);
     display: flex;
     justify-content: center;
-    align-items: center;
     overflow-y: auto;
-    // height: 100%;
     min-height: 100%;
     #bgBox {
         background-color: #99d4d36b;
@@ -15,11 +12,9 @@
         flex-direction: column;
         align-items: center;
         height: 100%;
-        // height: calc(100% - 50px);
-        // height: calc(100% - bgMain);
         #topBar {
             max-width: 1200px;
-            background-color: black;
+            background-color: #6db784;
             height: 40px;
             width: 100%;
             align-items: center;
@@ -38,10 +33,48 @@
             background-color: #fff;
             max-width: 800px;
             width: 100%;
+            border-radius: 5px;
             margin: 90px 0 50px 0;
-            // height: calc(100% - bgMain);
-            // margin: 50px 50px;
-            // height: calc(100% - 130px);
+            #comment {
+                background-color: #fff;
+                margin: 20px 20px;
+                display: flex;
+                flex-direction: column;
+                .input-comment {}
+                .comment-user {
+                    &:hover {
+                        background-color: rgba(201, 201, 201, 0.192);
+                        border-radius: 5px;
+                    }
+                    #imgGroup {
+                        width: 35px;
+                        height: 35px;
+                        border-radius: 50%;
+                        margin-left: 10px;
+                        margin-top: 5px;
+                    }
+                    .content-comment {
+                        display: flex;
+                        align-items: center;
+                        #userName {
+                            margin-left: 10px;
+                            font-weight: bold;
+                        }
+                        #postTime {
+                            margin-left: 10px;
+                            color: gray;
+                            font-size: 12px;
+                        }
+                    }
+                    .content-text {
+                        margin-left: 60px;
+                        #text {
+                            font-size: 14px;
+                         }
+                    }
+                }
+
+            }
         }
     }
 }
