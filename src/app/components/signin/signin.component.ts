@@ -3,6 +3,7 @@ import { UsersService } from 'src/app/services/users.service';
 import SigninRequestModel from 'src/app/model/users/SigninRequestModel';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-signin',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 export class SigninComponent implements OnInit {
 
   isClose: boolean = false
+  isLogin: boolean = this.getIsLogin()
   changeParentToFalse: boolean = false
   public signin: SigninRequestModel = new SigninRequestModel
   signinform!: FormGroup
@@ -19,7 +21,8 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private router: Router
+    private router: Router,
+    private cookie: CookieService
     ) { }
 
   ngOnInit(): void {
@@ -34,6 +37,15 @@ export class SigninComponent implements OnInit {
     this.changeIsOpen.emit(this.changeParentToFalse)
   }
 
+  setLogin(userDetails: SigninRequestModel): void {
+    this.cookie.set('isLogin', 'true')
+    window.localStorage.setItem('user', JSON.stringify(userDetails))
+  }
+
+  getIsLogin(): boolean {
+    return this.cookie.get('isLogin') === 'true'
+  }
+  
   async login(): Promise<void> {
     const body: SigninRequestModel = {
       username: this.signin.username,
@@ -43,7 +55,8 @@ export class SigninComponent implements OnInit {
     try {
       if(this.signinform.valid) {
         await this.usersService.login(body).subscribe(data => {
-        console.log(data);       
+        console.log(data);
+        this.setLogin(body)
         this.signinform.reset()
         this.isClose = true
         this.router.navigateByUrl('/feed')
@@ -52,5 +65,5 @@ export class SigninComponent implements OnInit {
     } catch (error) {
       console.error(error);    
     }
-  }
+  } 
 }
