@@ -24,7 +24,7 @@
       <small *ngIf="signupform.get('password').invalid && signupform.get('password').touched" class="invalid">Password is Required (minimum length 8)</small>
       <div class="calendar-box">
         <div class="input-calendar">
-          <p-calendar formControlName="birth_date" inputId="basic" [(ngModel)]="value" [showIcon]="true"></p-calendar>
+          <p-calendar formControlName="birth_date" inputId="basic" [(ngModel)]="value" [showIcon]="true" placeholder="Births day"></p-calendar>
         </div>
       </div>
     </form>
