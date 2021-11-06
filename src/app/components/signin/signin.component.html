@@ -6,15 +6,19 @@
     <div id="signInHeader">
       <label class="text-signin" for="">Sign In</label>
     </div>
-    <div class="input-box">
-      <i class="fas fa-user input-icon" aria-hidden="true"></i>
-      <input class="input-text-box" type="text" placeholder="Username / Email">
-    </div>
-    <div class="input-box">
-      <i class="fas fa-lock input-icon" aria-hidden="true"></i>
-      <input class="input-text-box" type="password" placeholder="Password">
-    </div>
-    <div id="buttonSignIn">
+    <form [formGroup]="signinform">
+      <div class="input-box">
+        <i class="fas fa-user input-icon" aria-hidden="true"></i>
+        <input formControlName="username" class="input-text-box" type="text" placeholder="Username" [(ngModel)]="signin.username">
+      </div>
+      <small *ngIf="signinform.get('username').invalid && signinform.get('username').touched" class="invalid">Username is Required</small>
+      <div class="input-box">
+        <i class="fas fa-lock input-icon" aria-hidden="true"></i>
+        <input formControlName="password" class="input-text-box" type="password" placeholder="Password" [(ngModel)]="signin.password">
+      </div>
+      <small *ngIf="signinform.get('password').invalid && signinform.get('password').touched" class="invalid">Password is Required (minimum length 8)</small>
+    </form>
+    <div id="buttonSignIn" (click)="login()">
       <div class="button-click">Sign In</div>
     </div>
   </div>

@@ -6,23 +6,28 @@
     <div id="signUpHeader">
       <label class="text-signin" for="">Sign Up</label>
     </div>
-    <div class="input-box">
-      <i class="far fa-envelope input-icon" aria-hidden="true"></i>
-      <input class="input-text-box" type="text" placeholder="Email" [(ngModel)]="signup.email">
-    </div>
-    <div class="input-box">
-      <i class="fas fa-user input-icon" aria-hidden="true"></i>
-      <input class="input-text-box" type="text" placeholder="Username" [(ngModel)]="signup.username">
-    </div>
-    <div class="input-box">
-      <i class="fas fa-lock input-icon" aria-hidden="true"></i>
-      <input class="input-text-box" type="password" placeholder="Password" [(ngModel)]="signup.password">
-    </div>
-    <div class="calendar-box">
-      <div class="input-calendar">
-        <p-calendar inputId="basic" [(ngModel)]="value" [showIcon]="true"></p-calendar>
+    <form [formGroup]="signupform">
+      <div class="input-box">
+        <i class="far fa-envelope input-icon" aria-hidden="true"></i>
+        <input formControlName="email" class="input-text-box" type="text" placeholder="Email" [(ngModel)]="signup.email">
       </div>
-    </div>
+      <small *ngIf="signupform.get('email').invalid && signupform.get('email').touched" class="invalid">Email is incorrect</small>
+      <div class="input-box">
+        <i class="fas fa-user input-icon" aria-hidden="true"></i>
+        <input formControlName="username" class="input-text-box" type="text" placeholder="Username" [(ngModel)]="signup.username">
+      </div>
+      <small *ngIf="signupform.get('username').invalid && signupform.get('username').touched" class="invalid">Username is Required</small>
+      <div class="input-box">
+        <i class="fas fa-lock input-icon" aria-hidden="true"></i>
+        <input formControlName="password" class="input-text-box" type="password" placeholder="Password" [(ngModel)]="signup.password">
+      </div>
+      <small *ngIf="signupform.get('password').invalid && signupform.get('password').touched" class="invalid">Password is Required (minimum length 8)</small>
+    </form>
+      <div class="calendar-box">
+        <div class="input-calendar">
+          <p-calendar inputId="basic" [(ngModel)]="value" [showIcon]="true"></p-calendar>
+        </div>
+      </div>
     <div id="buttonSignUp" (click)="createAccount()">
       <div class="button-click">Create your account</div>
     </div>

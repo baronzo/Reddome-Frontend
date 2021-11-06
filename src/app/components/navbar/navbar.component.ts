@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import SigninRequestModel from 'src/app/model/users/SigninRequestModel';
 
 @Component({
   selector: 'app-navbar',
@@ -7,12 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  isLoggedIn: boolean = true
+  isLoggedIn: boolean = false
 
   constructor() { }
 
   ngOnInit(): void {
-    
+    console.log(this.getUserDetails());   
+  }
+
+  getUserDetails(): SigninRequestModel {
+    return JSON.parse(window.localStorage.getItem('user'))
   }
 
 }

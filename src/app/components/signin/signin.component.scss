@@ -64,6 +64,11 @@
         }
       }
     }
+    .invalid {
+      color: red;
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
     #buttonSignIn {
       display: flex;
       justify-content: center;
@@ -84,4 +89,7 @@
       }
     }
   }
+}
+.form-control.ng-touched.ng-invalid {
+  border: 1px solid red
 }
