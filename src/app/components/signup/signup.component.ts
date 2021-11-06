@@ -3,6 +3,7 @@ import { Calendar } from 'src/app/model/calendar';
 import { UsersService } from 'src/app/services/users.service';
 import SignupRequestModel from 'src/app/model/users/SignupRequestModel';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-signup',
@@ -16,6 +17,7 @@ export class SignupComponent implements OnInit {
   isClose:boolean = false
   changeParentToFalse: boolean = false
   signupform!: FormGroup
+  default_picture: string = 'https://pic.onlinewebfonts.com/svg/img_264570.png'
   @Output() changeIsOpen = new EventEmitter<boolean>()
 
   constructor(
@@ -27,7 +29,8 @@ export class SignupComponent implements OnInit {
       "username": new FormControl('', Validators.required),
       "password": new FormControl(null, [Validators.required, Validators.minLength(8)]),
       "email": new FormControl(null, [Validators.required, Validators.email]),
-      "birth_date": new FormControl(null, Validators.required)
+      "birth_date": new FormControl(null, Validators.required),
+      "profile_picture": new FormControl(null)
     })
   }
 
@@ -42,15 +45,28 @@ export class SignupComponent implements OnInit {
       password: this.signup.password,
       email: this.signup.email,
       birth_date: this.value,
-      profile_picture: this.signup.profile_picture
+      profile_picture: this.default_picture
     }
     console.log(body);
     try {
-        await this.usersService.createAccount(body).subscribe(data => {
+      if(this.signupform.valid) {
+        await this.usersService.createAccount(body).subscribe(async data => {
           console.log(data);
+          this.signupform.reset()
+          this.isClose = true
+          await this.alertSuccess()
         })
+      }
     } catch (error) {
       console.error(error); 
     }
+  }
+
+  alertSuccess(): void {
+    Swal.fire(
+      'Register Success',
+      'Please login',
+      'success'
+    )
   }
 }

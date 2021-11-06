@@ -9,7 +9,7 @@ import SigninRequestModel from 'src/app/model/users/SigninRequestModel';
 export class NavBarComponent implements OnInit {
 
   isLoggedIn: boolean = false
-
+  
   constructor() { }
 
   ngOnInit(): void {
