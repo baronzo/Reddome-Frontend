@@ -22,12 +22,12 @@
         <input formControlName="password" class="input-text-box" type="password" placeholder="Password" [(ngModel)]="signup.password">
       </div>
       <small *ngIf="signupform.get('password').invalid && signupform.get('password').touched" class="invalid">Password is Required (minimum length 8)</small>
-    </form>
       <div class="calendar-box">
         <div class="input-calendar">
-          <p-calendar inputId="basic" [(ngModel)]="value" [showIcon]="true"></p-calendar>
+          <p-calendar formControlName="birth_date" inputId="basic" [(ngModel)]="value" [showIcon]="true"></p-calendar>
         </div>
       </div>
+    </form>
     <div id="buttonSignUp" (click)="createAccount()">
       <div class="button-click">Create your account</div>
     </div>
