@@ -45,7 +45,7 @@ export class SigninComponent implements OnInit {
   getIsLogin(): boolean {
     return this.cookie.get('isLogin') === 'true'
   }
-  
+
   async login(): Promise<void> {
     const body: SigninRequestModel = {
       username: this.signin.username,
