@@ -21,6 +21,7 @@ import { PostfeedComponent } from './components/postfeed/postfeed.component'
 import { RankingComponent } from './components/ranking/ranking.component';
 import {MatButtonModule} from '@angular/material/button';
 import { SignupComponent } from './components/signup/signup.component';
+import { GroupComponent } from './components/group/group.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SignupComponent } from './components/signup/signup.component';
     PostfeedComponent,
     RankingComponent,
     RankingComponent,
-    SignupComponent
+    SignupComponent,
+    GroupComponent
   ],
   imports: [
     BrowserModule,
