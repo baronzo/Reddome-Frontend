@@ -22,11 +22,11 @@ export class HomeComponent implements OnInit {
     this.notBackToHome()
   }
 
-  onClickSignIn = ():void => {
+  onClickSignIn = (): void => {
     this.isOpenSignIn = !this.isOpenSignIn
   }
 
-  notBackToHome() {
+  notBackToHome(): void {
     if(this.isLogin) {
       this.router.navigateByUrl('/feed')
     } else {
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  closeModalandChangeIsOpenSignIn($event:boolean) {
+  closeModalandChangeIsOpenSignIn($event:boolean): void {
     this.isOpenSignIn = $event
     this.isOpenSignUp = $event  
   }
@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     return this.cookie.get('isLogin') === 'true'
   }
 
-  onClickSignUp = () => {
+  onClickSignUp = (): void => {
     this.isOpenSignUp = !this.isOpenSignUp
   }
 
