@@ -1,5 +1,4 @@
 #layout {
-  position: relative;
   $navHeight: 50px;
   background-color: #F5F5F5;
   height: 100vh;
@@ -7,9 +6,9 @@
   #navBox {
     height: $navHeight;
     top :0;
+    z-index: 10;
   }
   #bodyBox {
-    position: relative;
     height: calc(100vh - (#{$navHeight}));
     overflow-y: auto;
   }
