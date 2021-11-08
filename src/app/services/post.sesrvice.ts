@@ -36,6 +36,6 @@ export class PostService {
       "postId": postId,
       "userId": userId
     }
-    return this.http.post(`${this.api_path}/like`, body)
+    return this.http.post(`${this.api_path}/unlike`, body)
   }
 }

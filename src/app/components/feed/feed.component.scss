@@ -1,6 +1,7 @@
 $colorTxt: rgb(51, 51, 51);
 @media (min-width: 900px) {
     #feedContent {
+        margin-top: 50px;
         display: grid;
         padding: 20px;
         grid-template-columns: 1fr 2fr 1fr 1fr;

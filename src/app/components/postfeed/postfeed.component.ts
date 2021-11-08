@@ -13,6 +13,8 @@ export class PostfeedComponent implements OnInit {
   @Input() post: ResponsePostByIdModel
   @Output() postChange = new EventEmitter<number>();
 
+  public userId: {id:number} = JSON.parse(window.localStorage.getItem('userId'))
+
   constructor(private postService: PostService) { }
 
 
@@ -35,6 +37,7 @@ export class PostfeedComponent implements OnInit {
     this.post.isLiked = true
     this.post.likeCount += 1
     console.log(this.post.isLiked);
+    this.likePostApi()
     
   }
 
@@ -42,6 +45,22 @@ export class PostfeedComponent implements OnInit {
     this.post.isLiked = false
     this.post.likeCount -= 1
     console.log(this.post.isLiked);
+    this.unlikePostApi()
   }
 
+  async likePostApi() {
+    try {
+      await this.postService.likePost(this.userId.id, this.post.id).subscribe(data => {})
+    } catch (error) {
+      console.error(error); 
+    }
+  }
+
+  async unlikePostApi() {
+    try {
+      await this.postService.unlikePost(this.userId.id, this.post.id).subscribe(data => {})
+    } catch (error) {
+      console.error(error); 
+    }
+  }
 }

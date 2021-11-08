@@ -60,8 +60,6 @@ export class FeedComponent implements OnInit {
     } catch (error) {
       console.error(error); 
     }
-    finally {
-    }
     this.backHomeIfNoLogin()
     setTimeout(() => {
       this.isLoading = false
