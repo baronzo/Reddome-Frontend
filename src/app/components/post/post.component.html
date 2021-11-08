@@ -3,11 +3,46 @@
         <div id="topBar">
             <div id="button">X Close</div>
         </div>
-        <div id="bgPost">asdasjfladfj
-            <div>asdsadasd</div>
-            <div>asdsadasd</div>
-            <div>asdsadasd</div>
-            <div>asdsadasd</div>
+        <div id="bgPost">
+            <app-postfeed></app-postfeed>
+            <div id="comment">
+                <div id="inputComment">
+                    <mat-form-field class="example-full-width" style="width: 100%;" appearance="fill">
+                        <mat-label>Comment</mat-label>
+                        <textarea matInput placeholder="What are you comment ?"></textarea>
+                      </mat-form-field>
+                </div>
+                <div id="comment-user">
+                    <div id="content-comment">
+                        <div id="image">
+                            <img id="imgGroup" src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg" alt="">
+                        </div>
+                        <div id="postBy">
+                            <div id="headerLeft">
+                                <div id="colum">
+                                    <div id="userName">FlukeNtk</div>
+                                    <div id="postTime">3h</div>
+                                </div>
+                                <div class="content-text">
+                                    <div id="text">ผมชื่อบังสุดหล่อพ่อรวยมีเงินหมื่นล้าน</div>
+                                </div>
+                            </div>
+                            <div class="change-comment">
+                                <button mat-icon-button [matMenuTriggerFor]="menu" class="edit-comment">
+                                    <i class="fa fa-ellipsis-h" style="font-size:12px;"></i>
+                                </button>
+                                <mat-menu #menu="matMenu" xPosition="after">
+                                <button mat-menu-item>
+                                    <span>Edit Comment</span>
+                                </button>
+                                <button mat-menu-item>
+                                    <span>Delete Comment</span>
+                                </button>
+                                </mat-menu>
+                            </div>
+                        </div>
+                    </div>
+            </div>
         </div>
     </div>
 </div>

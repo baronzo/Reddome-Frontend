@@ -21,7 +21,9 @@ import { PostfeedComponent } from './components/postfeed/postfeed.component'
 import { RankingComponent } from './components/ranking/ranking.component';
 import {MatButtonModule} from '@angular/material/button';
 import { SignupComponent } from './components/signup/signup.component';
-
+import { PostComponent } from './components/post/post.compnent';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,8 @@ import { SignupComponent } from './components/signup/signup.component';
     PostfeedComponent,
     RankingComponent,
     RankingComponent,
-    SignupComponent
+    SignupComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,8 @@ import { SignupComponent } from './components/signup/signup.component';
     CalendarModule,
     FormsModule,
     HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
     ReactiveFormsModule,
     ProgressSpinnerModule
   ],
