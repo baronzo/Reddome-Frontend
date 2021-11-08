@@ -1,34 +1,39 @@
-<div id="feedContent">
-  <div id="content">
-  <div id="filterContent">
-    <div id="txtFilter">
-      Filter posts
-    </div>   
-    <div id="filterTab">
-      <div id="filterLeft">
-        <div id="popularButton"> <i class="fas fa-fire-alt logoFire"></i>Popular</div>
-        <div id="lastestButton"><i class="far fa-sun logoNew"></i>Newest</div>
+<div class="loading" *ngIf='isLoading; else afterLoading'>
+  <p-progressSpinner></p-progressSpinner>
+</div>
+<ng-template #afterLoading>
+  <div id="feedContent">
+    <div id="content">
+      <div id="filterContent">
+        <div id="txtFilter">
+          Filter posts
+        </div>   
+        <div id="filterTab">
+          <div id="filterLeft">
+            <div id="popularButton"> <i class="fas fa-fire-alt logoFire"></i>Popular</div>
+            <div id="lastestButton"><i class="far fa-sun logoNew"></i>Newest</div>
+          </div>
+          <div id="filterRight">
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="menuPlus">
+              <i class="fas fa-ellipsis-h"></i>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>
+                <mat-icon>create</mat-icon>
+                <span>Create post</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>add_circle_outline</mat-icon>
+                <span>Create Group</span>
+              </button>
+            </mat-menu>
+          </div>
+        </div>
       </div>
-      <div id="filterRight">
-        <button mat-icon-button [matMenuTriggerFor]="menu" class="menuPlus">
-          <i class="fas fa-ellipsis-h"></i>
-        </button>
-        <mat-menu #menu="matMenu" xPosition="before">
-          <button mat-menu-item>
-            <mat-icon>create</mat-icon>
-            <span>Create post</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>add_circle_outline</mat-icon>
-            <span>Create Group</span>
-          </button>
-        </mat-menu>
+      <div id="post">
+        <app-postfeed></app-postfeed>
+        <app-postfeed></app-postfeed>
       </div>
     </div>
   </div>
-  <div id="post">
-    <app-postfeed></app-postfeed>
-    <app-postfeed></app-postfeed>
-  </div>
-  </div>
-</div>
+</ng-template>
