@@ -17,6 +17,7 @@ export class FeedComponent implements OnInit {
   public allpost: ResponsePostByIdModel[] = []
   isLogin: boolean = this.getIsLogin()
   public userId: {id:number} = JSON.parse(window.localStorage.getItem('userId'))
+  isLoading: boolean = true
 
   constructor(
     private cookie: CookieService,
@@ -62,6 +63,9 @@ export class FeedComponent implements OnInit {
     finally {
     }
     this.backHomeIfNoLogin()
+    setTimeout(() => {
+      this.isLoading = false
+    }, 1000)
   }
 
   backHomeIfNoLogin(): void {
