@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class FeedComponent implements OnInit {
 
   isLogin: boolean = this.getIsLogin()
+  isLoading: boolean = true
 
   constructor(
     private cookie: CookieService,
@@ -20,6 +21,9 @@ export class FeedComponent implements OnInit {
 
   ngOnInit(): void {
     this.backHomeIfNoLogin()
+    setTimeout(() => {
+      this.isLoading = false
+    }, 1000)
   }
 
   backHomeIfNoLogin(): void {
