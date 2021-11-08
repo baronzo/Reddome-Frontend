@@ -1,47 +1,100 @@
 #bgMain {
+  background-color: #99d4d36b;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+  min-height: 100%;
+  #bgBox {
     background-color: #99d4d36b;
-    // height: calc(100vh - 50px);
+    max-width: 1200px;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    overflow-y: auto;
-    // height: 100%;
-    min-height: 100%;
-    #bgBox {
-        background-color: #99d4d36b;
-        max-width: 1200px;
-        width: 100%;
+    height: 100%;
+    #topBar {
+      max-width: 1200px;
+      background-color: #6db784;
+      height: 40px;
+      width: 100%;
+      align-items: center;
+      position: fixed;
+      #button {
+        color: #fff;
+        margin-top: 10px;
+        margin-right: 90px;
+        display: flex;
+        justify-content: flex-end;
+        cursor: pointer;
+        max-width: 1000px;
+      }
+    }
+    #bgPost {
+      background-color: #fff;
+      max-width: 800px;
+      width: 100%;
+      border-radius: 5px;
+      margin: 90px 0 50px 0;
+      #comment {
+        background-color: #fff;
+        margin: 20px 20px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        height: 100%;
-        // height: calc(100% - 50px);
-        // height: calc(100% - bgMain);
-        #topBar {
-            max-width: 1200px;
-            background-color: black;
-            height: 40px;
+        .input-comment {
+        }
+        #comment-user {
+          display: flex;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          &:hover {
+            background-color: rgba(201, 201, 201, 0.192);
+            border-radius: 5px;
+          }
+          #content-comment {
+            display: flex;
             width: 100%;
-            align-items: center;
-            position: fixed;
-            #button {
-                color: #fff;
-                margin-top: 10px;
-                margin-right: 90px;
-                display: flex;
-                justify-content: flex-end;
-                cursor: pointer;
-                max-width: 1000px;
+            #image {
+              #imgGroup {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+              }
             }
+            #postBy {
+              display: flex;
+              justify-content: space-between;
+              width: 100%;
+              #headerLeft {
+                display: flex;
+                flex-direction: column;
+                #colum {
+                  display: flex;
+                  #userName {
+                    margin-left: 10px;
+                    font-weight: bold;
+                  }
+                  #postTime {
+                    margin-left: 15px;
+                    color: gray;
+                    font-size: 13px;
+                  }
+                }
+              }
+              .change-commnet {
+                .edit-comment {
+                }
+              }
+            }
+          }
+          .content-text {
+            margin-left: 10px;
+            margin-top: 5px;
+            #text {
+              font-size: 14px;
+            }
+          }
         }
-        #bgPost {
-            background-color: #fff;
-            max-width: 800px;
-            width: 100%;
-            margin: 90px 0 50px 0;
-            // height: calc(100% - bgMain);
-            // margin: 50px 50px;
-            // height: calc(100% - 130px);
-        }
+      }
     }
+  }
 }
