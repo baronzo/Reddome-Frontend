@@ -42,6 +42,9 @@ export class SigninComponent implements OnInit {
     window.localStorage.setItem('user', JSON.stringify(userDetails))
   }
 
+  setUserId(userId: any): void {
+    window.localStorage.setItem('userId', JSON.stringify(userId))
+  }
   getIsLogin(): boolean {
     return this.cookie.get('isLogin') === 'true'
   }
@@ -60,6 +63,7 @@ export class SigninComponent implements OnInit {
         this.signinform.reset()
         this.isClose = true
         this.router.navigateByUrl('/feed')
+        this.setUserId(data)
       })
       }
     } catch (error) {

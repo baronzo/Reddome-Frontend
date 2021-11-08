@@ -1,8 +1,6 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import SignupRequestModel from "../model/users/SignupRequestModel";
-import SigninRequestModel from "../model/users/SigninRequestModel";
 
 @Injectable({
     providedIn: 'root'
@@ -16,5 +14,28 @@ export class PostService {
   getAllPosts() {
     return this.http.get(`${this.api_path}/getallpost`)
   }
-  
+
+  getPostsByUserId(userId:number) {
+    return this.http.get(`${this.api_path}/getpostbyuserid?userId=${userId}`)
+  }
+
+  deletePosts(id:number) {
+    return this.http.delete(`${this.api_path}/deletepostbyid?id=${id}`)
+  }
+
+  likePost(userId:number, postId:number) {
+    const body = {
+      "postId": postId,
+      "userId": userId
+    }
+    return this.http.post(`${this.api_path}/like`, body)
+  }
+
+  unlikePost(userId:number, postId:number) {
+    const body = {
+      "postId": postId,
+      "userId": userId
+    }
+    return this.http.post(`${this.api_path}/like`, body)
+  }
 }

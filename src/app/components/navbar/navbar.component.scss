@@ -26,18 +26,19 @@ $fontColor: white;
         display: flex;
         align-items: center;
         height: 100%;
-        .createBtn {
+        .LogoutButton {
           display: flex;
           align-items: center;
-          color:white;
-          font-size: 35px;
+          color:rgb(255, 255, 255);
+          font-size: 15px;
           margin-right: 20px;
-          border-radius: 20px;
+          border-radius: 5px;
           transition: 0.3s;
-          padding: 0px 10px;
+          padding: 3px 13px;
+          background-color: rgb(255, 101, 101);
           &:hover {
             cursor: pointer;
-            background-color: #c2dad9;
+            background-color: rgb(231, 103, 103);
           }
         }
         .userDetail {
