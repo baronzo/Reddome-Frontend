@@ -1,6 +1,8 @@
 #mainGroup
   width: 100%
   min-height: 100vh
+  display: flex
+  flex-direction: column
   #groupInfo
     display: flex
     flex-flow: column
@@ -19,7 +21,6 @@
       background-color: green
       #groupProfilePic
         width: 100px
-        margin-right: 20px
         #pic
           transform: translateY(-30px)
           border-radius: 50px
@@ -27,6 +28,7 @@
           height: 100px
           position: absolute
       #groupName
+        margin-left: 20px
         margin-right: 20px
         margin-top: 15px
         font-weight: bold
@@ -38,7 +40,7 @@
           background-color: #2775D2
   #groupFeed
     display: flex
-    flex-direction: column
+    flex-flow: column
     align-items: center
-
-
+    .post
+      min-width: 500px
