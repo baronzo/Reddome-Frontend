@@ -1,16 +1,28 @@
-.ranking{
+.ranking {
     width: 390px;
     height: 410px;
     background-color:azure;
     border-radius: 5px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    .pic{
+    .pic {
         width: 100%;
         height: 107px;
+        position: relative;
+        .name-ranking {
+         position: absolute;
+         z-index: 555;
+         //transform: translate(10px, 100px);
+         bottom: 0;
+         margin: 0 0 5px 10px;
+         color: #FFF;
+         font-size: 18px;
+         
+        }
         #photo {
             width: 100%;
             height: 107px;
             border-radius: 5px;
+            filter: brightness(50%);
         }
     }
     .userflex1 {
