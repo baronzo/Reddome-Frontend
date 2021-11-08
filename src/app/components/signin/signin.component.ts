@@ -67,6 +67,7 @@ export class SigninComponent implements OnInit {
           this.signinform.reset()
           this.isClose = true
           this.router.navigateByUrl('/feed')
+          this.setUserId(data)
         }
       })
       }
