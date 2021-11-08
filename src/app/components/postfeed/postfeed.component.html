@@ -1,23 +1,35 @@
 <div id="postfeed">
 <div id="allContent">
-    <div id="postLike">
-        <div id="logoVote">
-            <i class="fas fa-arrow-up"></i>
-        </div>
-        <div id="countVote">
-            2.4k
+    <div *ngIf="post.isLiked; else elseBlock">
+        <div id="postLike">
+            <div id="logoVoteEna" (click)="unlikePost()">
+                <i class="fas fa-arrow-up"></i>
+            </div>
+            <div id="countVoteEna">
+                {{post.likeCount}}
+            </div>
         </div>
     </div>
+    <ng-template #elseBlock>
+        <div id="postLike">
+            <div id="logoVoteDis" (click)="likePost()">
+                <i class="fas fa-arrow-up"></i>
+            </div>
+            <div id="countVoteDis">
+                {{post.likeCount}}
+            </div>
+        </div>
+    </ng-template>
     <div id="postfeedContent">
         <div id="header">
             <div id="headerLeft">
                 <div id="profileGroup">
-                    <img id="imgGroup" src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg" alt="">
+                    <img id="imgGroup" src={{post.group_id.group_profile}} alt="">
                 </div>
-                <div id="nameGroup">DoggyLover</div>
+                <div id="nameGroup">{{post.group_id.name}}</div>
                 <div id="postby">
                     <div id="postbyTxt">• post by </div>
-                    <div id="postbyUser">GoldenRe</div>
+                    <div id="postbyUser">{{post.owner_id.username}}</div>
                 </div>
             </div>
             <div id="headerRight">
@@ -26,11 +38,11 @@
                         <i class="fas fa-ellipsis-h"></i>
                     </button>
                     <mat-menu #menu="matMenu" xPosition="after">
-                    <button mat-menu-item>
+                    <button mat-menu-item >
                         <mat-icon>create</mat-icon>
                         <span>Edit post</span>
                     </button>
-                    <button mat-menu-item>
+                    <button mat-menu-item (click)="Deletepost()">
                         <mat-icon>delete_outline</mat-icon>
                         <span>Delete post</span>
                     </button>
@@ -40,7 +52,7 @@
         </div>
         <div id="body">
             <div id="message">
-                วันนี้โป้อยากกินไก่ย่างห้าดาว
+                {{post.content}}
             </div>
         </div>
         <div id="footer">
@@ -57,5 +69,5 @@
         </div>
     </div>
 </div>
-<div id="dummyOpen"></div>
+    <div id="dummyOpen"></div>
 </div>

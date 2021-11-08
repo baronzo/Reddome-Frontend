@@ -17,10 +17,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MatMenuModule } from '@angular/material/menu'
 import { MatIconModule } from '@angular/material/icon';
-import { PostfeedComponent } from './components/postfeed/postfeed.component' 
+import { PostfeedComponent } from './components/postfeed/postfeed.component'
 import { RankingComponent } from './components/ranking/ranking.component';
 import {MatButtonModule} from '@angular/material/button';
 import { SignupComponent } from './components/signup/signup.component';
+import { PostComponent } from './components/post/post.compnent';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule } from '@angular/material/input';
 import { GroupComponent } from './components/group/group.component';
 
 @NgModule({
@@ -35,6 +38,7 @@ import { GroupComponent } from './components/group/group.component';
     RankingComponent,
     RankingComponent,
     SignupComponent,
+    PostComponent,
     GroupComponent
   ],
   imports: [
@@ -48,6 +52,8 @@ import { GroupComponent } from './components/group/group.component';
     CalendarModule,
     FormsModule,
     HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
     ReactiveFormsModule,
     ProgressSpinnerModule
   ],

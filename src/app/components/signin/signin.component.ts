@@ -1,9 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import SigninRequestModel from 'src/app/model/users/SigninRequestModel';
+import SigninResponseModel from 'src/app/model/users/SigninResponseModel';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-signin',
@@ -42,6 +44,9 @@ export class SigninComponent implements OnInit {
     window.localStorage.setItem('user', JSON.stringify(userDetails))
   }
 
+  setUserId(userId: any): void {
+    window.localStorage.setItem('userId', JSON.stringify(userId))
+  }
   getIsLogin(): boolean {
     return this.cookie.get('isLogin') === 'true'
   }
@@ -54,16 +59,28 @@ export class SigninComponent implements OnInit {
     console.log(body); 
     try {
       if(this.signinform.valid) {
-        await this.usersService.login(body).subscribe(data => {
-        console.log(data);
-        this.setLogin(body)
-        this.signinform.reset()
-        this.isClose = true
-        this.router.navigateByUrl('/feed')
+        await this.usersService.login(body).subscribe((data: any) => { 
+        if(data.status === 'fail') {
+          this.alertError()
+        } else {
+          this.setLogin(body)
+          this.signinform.reset()
+          this.isClose = true
+          this.router.navigateByUrl('/feed')
+          this.setUserId(data)
+        }
       })
       }
     } catch (error) {
       console.error(error);    
     }
+  }
+
+  alertError(): void {
+    Swal.fire(
+      'Login Error',
+      'Username or password incorrect',
+      'error'
+    )
   } 
 }
