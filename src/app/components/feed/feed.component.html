@@ -30,16 +30,10 @@
           </div>
         </div>
       </div>
-      <div id="post">
-        <app-postfeed></app-postfeed>
-        <app-postfeed></app-postfeed>
-      </div>
+    <div id="post" *ngFor="let postdata of allpost">
+      <app-postfeed [post]="postdata" (postChange)="deletePost($event)"></app-postfeed>
+      <!-- <app-postfeed [(post)]="postdata" ></app-postfeed> -->
     </div>
-  </div>
-  <div id="post" *ngFor="let postdata of allpost">
-    <app-postfeed [post]="postdata" (postChange)="deletePost($event)"></app-postfeed>
-    <!-- <app-postfeed [(post)]="postdata" ></app-postfeed> -->
-  </div>
   </div>
 </div>
 </ng-template>
