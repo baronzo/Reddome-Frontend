@@ -51,7 +51,7 @@ import {MatInputModule } from '@angular/material/input';
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
-    // ReactiveFormsModule,
+    ReactiveFormsModule,
     ProgressSpinnerModule
   ],
   providers: [],

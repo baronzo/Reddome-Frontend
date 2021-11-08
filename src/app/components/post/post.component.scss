@@ -1,80 +1,100 @@
 #bgMain {
+  background-color: #99d4d36b;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+  min-height: 100%;
+  #bgBox {
     background-color: #99d4d36b;
+    max-width: 1200px;
+    width: 100%;
     display: flex;
-    justify-content: center;
-    overflow-y: auto;
-    min-height: 100%;
-    #bgBox {
-        background-color: #99d4d36b;
-        max-width: 1200px;
-        width: 100%;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    #topBar {
+      max-width: 1200px;
+      background-color: #6db784;
+      height: 40px;
+      width: 100%;
+      align-items: center;
+      position: fixed;
+      #button {
+        color: #fff;
+        margin-top: 10px;
+        margin-right: 90px;
+        display: flex;
+        justify-content: flex-end;
+        cursor: pointer;
+        max-width: 1000px;
+      }
+    }
+    #bgPost {
+      background-color: #fff;
+      max-width: 800px;
+      width: 100%;
+      border-radius: 5px;
+      margin: 90px 0 50px 0;
+      #comment {
+        background-color: #fff;
+        margin: 20px 20px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        height: 100%;
-        #topBar {
-            max-width: 1200px;
-            background-color: #6db784;
-            height: 40px;
-            width: 100%;
-            align-items: center;
-            position: fixed;
-            #button {
-                color: #fff;
-                margin-top: 10px;
-                margin-right: 90px;
-                display: flex;
-                justify-content: flex-end;
-                cursor: pointer;
-                max-width: 1000px;
-            }
+        .input-comment {
         }
-        #bgPost {
-            background-color: #fff;
-            max-width: 800px;
-            width: 100%;
+        #comment-user {
+          display: flex;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          &:hover {
+            background-color: rgba(201, 201, 201, 0.192);
             border-radius: 5px;
-            margin: 90px 0 50px 0;
-            #comment {
-                background-color: #fff;
-                margin: 20px 20px;
+          }
+          #content-comment {
+            display: flex;
+            width: 100%;
+            #image {
+              #imgGroup {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+              }
+            }
+            #postBy {
+              display: flex;
+              justify-content: space-between;
+              width: 100%;
+              #headerLeft {
                 display: flex;
                 flex-direction: column;
-                .input-comment {}
-                .comment-user {
-                    &:hover {
-                        background-color: rgba(201, 201, 201, 0.192);
-                        border-radius: 5px;
-                    }
-                    #imgGroup {
-                        width: 35px;
-                        height: 35px;
-                        border-radius: 50%;
-                        margin-left: 10px;
-                        margin-top: 5px;
-                    }
-                    .content-comment {
-                        display: flex;
-                        align-items: center;
-                        #userName {
-                            margin-left: 10px;
-                            font-weight: bold;
-                        }
-                        #postTime {
-                            margin-left: 10px;
-                            color: gray;
-                            font-size: 12px;
-                        }
-                    }
-                    .content-text {
-                        margin-left: 60px;
-                        #text {
-                            font-size: 14px;
-                         }
-                    }
+                #colum {
+                  display: flex;
+                  #userName {
+                    margin-left: 10px;
+                    font-weight: bold;
+                  }
+                  #postTime {
+                    margin-left: 15px;
+                    color: gray;
+                    font-size: 13px;
+                  }
                 }
-
+              }
+              .change-commnet {
+                .edit-comment {
+                }
+              }
             }
+          }
+          .content-text {
+            margin-left: 10px;
+            margin-top: 5px;
+            #text {
+              font-size: 14px;
+            }
+          }
         }
+      }
     }
+  }
 }
