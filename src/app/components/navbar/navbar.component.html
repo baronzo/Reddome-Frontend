@@ -6,19 +6,25 @@
         レードーメ
       </div> 
     </div>
-    <div class="rightNav" *ngIf="isLoggedIn; else loggedOut">
-      <div class="homeBtn">Home</div>
-      <div class="upBtn">Sign up</div>
-      <div class="inBtn">Sign in</div>
-    </div>
-    <ng-template #loggedOut>
-    <div class="rightNav" >
-      <div class="createBtn">+</div>
+    <div class="rightNav" *ngIf="isLogin; else loggedOut">
+      <div class="LogoutButton"  (click)="onClickLogout()">Logout</div>
       <div class="userDetail">
         <div class="profilePic"></div>
         <div class="userName">{{this.getUserDetails().username}}</div>
       </div>
     </div>
+    <ng-template #loggedOut>
+    <div class="rightNav" >
+      <div class="homeBtn">Home</div>
+      <div class="upBtn" (click)="onClickSignUp()">Sign up</div>
+      <div class="inBtn" (click)="onClickSignIn()">Sign in</div>
+    </div>
     </ng-template>
   </div>
+</div>
+<div *ngIf="isOpenSignIn">
+  <app-signin (changeIsOpen)="closeModalandChangeIsOpenSignIn($event)"></app-signin>
+</div>
+<div *ngIf="isOpenSignUp">
+  <app-signup (changeIsOpen)="closeModalandChangeIsOpenSignIn($event)"></app-signup>
 </div>

@@ -10,7 +10,7 @@
         </div>   
         <div id="filterTab">
           <div id="filterLeft">
-            <div id="popularButton"> <i class="fas fa-fire-alt logoFire"></i>Popular</div>
+            <div id="popularButton"> <i class="fas fa-fire-alt logoFire"></i>All Group</div>
             <div id="lastestButton"><i class="far fa-sun logoNew"></i>Newest</div>
           </div>
           <div id="filterRight">
@@ -30,10 +30,12 @@
           </div>
         </div>
       </div>
-      <div id="post">
-        <app-postfeed></app-postfeed>
-        <app-postfeed></app-postfeed>
-      </div>
+    <div id="post" *ngFor="let postdata of allpost">
+      <app-postfeed [post]="postdata" (postChange)="deletePost($event)"></app-postfeed>
     </div>
   </div>
+  <div id="ranking">
+    <app-ranking></app-ranking>
+  </div>
+</div>
 </ng-template>
