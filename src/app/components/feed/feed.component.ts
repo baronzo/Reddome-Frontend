@@ -18,6 +18,8 @@ export class FeedComponent implements OnInit {
   isLogin: boolean = this.getIsLogin()
   public userId: {id:number} = JSON.parse(window.localStorage.getItem('userId'))
   isLoading: boolean = true
+  public feedToggle: boolean = true
+
 
   constructor(
     private cookie: CookieService,
@@ -26,6 +28,11 @@ export class FeedComponent implements OnInit {
     private postService: PostService
     ) {
     }
+
+  buttonToggle() {
+    this.allpost.length
+    this.feedToggle = !this.feedToggle
+  }
 
   temp: ResponsePostByIdModel[];
   ngOnInit(): void {
@@ -55,8 +62,7 @@ export class FeedComponent implements OnInit {
     try {
         const response = await this.postService.getPostsByUserId(this.userId.id).subscribe(data => {
           this.allpost = data as ResponsePostByIdModel[]
-        })
-        
+        }) 
     } catch (error) {
       console.error(error); 
     }

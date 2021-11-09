@@ -6,13 +6,21 @@
     <div id="content">
       <div id="filterContent">
         <div id="txtFilter">
-          Filter posts
+          Menus
         </div>   
         <div id="filterTab">
+          <div *ngIf='feedToggle; else showGroupButton'>
           <div id="filterLeft">
-            <div id="popularButton"> <i class="fas fa-fire-alt logoFire"></i>All Group</div>
-            <div id="lastestButton"><i class="far fa-sun logoNew"></i>Newest</div>
+              <div id="popularButtonDis" (click)='buttonToggle()' > <i class="fas fa-fire-alt logoFire"></i>All Group</div>
+              <div id="lastestButtonEna" ><i class="far fa-sun logoNew"></i>Newest</div>
+            </div>
           </div>
+          <ng-template #showGroupButton>
+            <div id="filterLeft">
+              <div id="popularButtonEna" > <i class="fas fa-fire-alt logoFire"></i>All Group</div>
+              <div id="lastestButtonDis" (click)='buttonToggle()'><i class="far fa-sun logoNew"></i>Newest</div>
+            </div>
+          </ng-template>
           <div id="filterRight">
             <button mat-icon-button [matMenuTriggerFor]="menu" class="menuPlus">
               <i class="fas fa-ellipsis-h"></i>
@@ -30,9 +38,20 @@
           </div>
         </div>
       </div>
-    <div id="post" *ngFor="let postdata of allpost">
-      <app-postfeed [post]="postdata" (postChange)="deletePost($event)"></app-postfeed>
-    </div>
+      <div>
+        <div *ngIf='this.allpost.length === 0; else emptyPost'>
+          <div id="post" *ngFor="let postdata of allpost">
+            <app-postfeed [post]="postdata" (postChange)="deletePost($event)"></app-postfeed>
+          </div>
+        </div>
+        <ng-template #emptyPost>
+          <div id="postEmpty">
+            <img src="../../../assets/img/empthy.png" alt="" id="imgEmpty">
+            <div id="emptyTxt">Reddit gets better when you join communities, so find some that you’ll love!
+              Browse Popular Posts</div>
+          </div>
+        </ng-template>
+      </div>
   </div>
   <div id="ranking">
     <app-ranking></app-ranking>
