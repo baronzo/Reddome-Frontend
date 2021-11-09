@@ -1,21 +1,22 @@
 <div id="cratePost">
-  <div id="title">
-    <label for="">Create a post</label>
-  </div>
-  <div class="line"></div>
-  <div id="selectCommunity">
-    <p-dropdown [editable]="true" placeholder="Choose a community"></p-dropdown>
-  </div>
   <div id="postBox">
-    <div id="postinBox">
-      <div id="postTitle">
-        <input type="text" class="input-box" placeholder="Title"/>
+    <div id="title">
+      <div class="title-box">
+        <label for="">Create a post</label>
       </div>
-      <div id="areaText">
-        <textarea class="text-area" cols="80" rows="5" placeholder="Text"></textarea>
-      </div>
-      <div id="buttonBox" (click)="onChange()">
-        <button [ngClass]="isTest == true ? 'false-button' : 'true-button' ">ffff</button>
+    </div>
+    <div class="line"></div>
+    <div id="selectCommunity">
+      <p-dropdown [editable]="true" placeholder="Choose a community"></p-dropdown>
+    </div>
+    <div id="postBox">
+      <div id="postinBox">
+        <div id="areaText">
+          <textarea class="text-area" placeholder="คุณกำลังคิดอะไรอยู่ อุจิว"></textarea>
+        </div>
+        <div id="buttonBox">
+          <button class="post-button">Post</button>
+        </div>
       </div>
     </div>
   </div>
