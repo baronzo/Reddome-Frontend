@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./createpost.component.scss']
 })
 export class CreatepostComponent implements OnInit {
-
+  isTest: boolean = true
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onChange(): void {
+    this.isTest = !this.isTest
   }
 
 }

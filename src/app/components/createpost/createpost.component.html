@@ -12,7 +12,10 @@
         <input type="text" class="input-box" placeholder="Title"/>
       </div>
       <div id="areaText">
-        <textarea class="text-area"></textarea>
+        <textarea class="text-area" cols="80" rows="5" placeholder="Text"></textarea>
+      </div>
+      <div id="buttonBox" (click)="onChange()">
+        <button [ngClass]="isTest == true ? 'false-button' : 'true-button' ">ffff</button>
       </div>
     </div>
   </div>

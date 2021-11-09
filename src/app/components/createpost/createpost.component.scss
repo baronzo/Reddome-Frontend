@@ -4,6 +4,10 @@
   // justify-content: center;
   align-items: center;
   padding: 20px 0 0 0;
+  #title {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
   .line {
     border-bottom: 1px solid black;
     width: 35%;
@@ -37,9 +41,21 @@
         }
       }
       #areaText {
-        
+        margin: 20px 0 0 30px;
+        width: 100%;
         .text-area {
-
+          border: 1px solid #c4c4c4;
+          &::placeholder {
+            margin: 5px 0 0 10px;
+          }
+        }
+      }
+      #buttonBox {
+        .false-button {
+          background-color: #ec1313;
+        }
+        .true-button {
+          background-color: aqua;
         }
       }
     }
