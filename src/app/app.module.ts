@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { DropdownModule } from 'primeng/dropdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { PostComponent } from './components/post/post.compnent';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule } from '@angular/material/input';
+import { CreatepostComponent } from './components/createpost/createpost.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,8 @@ import {MatInputModule } from '@angular/material/input';
     RankingComponent,
     RankingComponent,
     SignupComponent,
-    PostComponent
+    PostComponent,
+    CreatepostComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import {MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]
