@@ -1,13 +1,19 @@
 <div id="mainGroup">
   <div id="groupInfo">
-    <img id="groupBanner" alt="" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.fbcoverlover.com%2Fmaker%2Fcovers-images%2Fdownload%2FAuntumn-in-Paris-Facebook-Covers-FBcoverlover_facebook_cover.jpg&f=1&nofb=1">
+    <img id="groupBanner" alt="" src={{group.group_banner}}>
     <div id="groupDescription">
       <div id="groupProfilePic">
-        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs.yimg.com%2Fny%2Fapi%2Fres%2F1.2%2FmeltodKpRfAGJPiLZ9m.7g--%2FYXBwaWQ9aGlnaGxhbmRlcjt3PTIwMDA7aD0xNTEx%2Fhttps%3A%2F%2Fs.yimg.com%2Fuu%2Fapi%2Fres%2F1.2%2F.k2FyPaWgueCnGDy_bp67Q--~B%2FaD0zMzUyO3c9NDQzODthcHBpZD15dGFjaHlvbg--%2Fhttp%3A%2F%2Fmedia.zenfs.com%2Fen%2Fhomerun%2Ffeed_manager_auto_publish_494%2F4df94654a42b9b4c6d5bf41ac9e32ba2&f=1&nofb=1" alt="" id="pic">
+        <img src={{group.group_profile}} alt="" id="pic">
       </div>
-      <div id="groupName">Doggy Lover</div>
-      <div id="groupButton">
-        <button mat-button type="button" label="Primary" id="joinButton">Join</button>
+      <div id="groupName">
+        <div id="name">{{group.name}}</div>
+        <div id="memberCount">
+          <div id="count">{{group.memberCount}}</div>
+          <div id="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <div id="groupButton" (click)="joinOrLeaveGroup()">
+        <button [ngClass]="isMember == true ? 'joinButton' : 'leaveButton'">{{isMember}}</button>
       </div>
     </div>
   </div>

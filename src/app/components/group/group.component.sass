@@ -33,13 +33,34 @@
           height: 100px
           position: absolute
       #groupName
+        display: flex
+        flex-direction: column
         margin: 2px 20px 0
-        font-weight: bold
-        font-size: 2rem
-        line-height: normal
+        #name
+          font-weight: bold
+          font-size: 2rem
+          line-height: normal
+        #memberCount
+          display: flex
+          #count
+            font-size: 0.75rem
+          #icon
+            margin-left: 2px
+            font-size: 0.5rem
       #groupButton
         margin-top: 10px
-        #joinButton
+        .joinButton
+          height: 30px
+          width: 50px
+          border-radius: 5px
+          border: none
+          color: white
+          background-color: #2097B2FF
+        .leaveButton
+          height: 30px
+          width: 50px
+          border-radius: 5px
+          border: none
           color: white
           background-color: #44d7a8
   #groupFeed
