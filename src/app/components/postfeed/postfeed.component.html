@@ -1,7 +1,7 @@
 <div id="postfeed">
 <div id="allContent">
     <div *ngIf="post.isLiked; else elseBlock">
-        <div id="postLike">
+        <div class="postLike">
             <div id="logoVoteEna" (click)="unlikePost()">
                 <i class="fas fa-arrow-up"></i>
             </div>
@@ -11,7 +11,7 @@
         </div>
     </div>
     <ng-template #elseBlock>
-        <div id="postLike">
+        <div class="postLike">
             <div id="logoVoteDis" (click)="likePost()">
                 <i class="fas fa-arrow-up"></i>
             </div>
