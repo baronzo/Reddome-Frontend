@@ -1,5 +1,5 @@
 .ranking {
-    width: 305x;
+    width: 305px;
     height: 410px;
     background-color:rgb(252, 252, 252);
     border-radius: 5px;
@@ -34,7 +34,7 @@
         display: flex;
         box-sizing: border-box;
         padding-top: 15px;
-        padding-left: 15px;
+        padding-left: 20px;
         border-bottom: 1px solid rgb(206, 202, 202);
         &:last-child{border-bottom: none; }
     }
@@ -51,6 +51,7 @@
     .userName {
         padding-left: 35px;
         padding-top: 5px;
+        padding-right: 10px;
     }
    
 }
