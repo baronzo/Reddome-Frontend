@@ -13,7 +13,8 @@
         </div>
       </div>
       <div id="groupButton" (click)="joinOrLeaveGroup()">
-        <button [ngClass]="isMember == true ? 'joinButton' : 'leaveButton'">{{isMember}}</button>
+<!--        <button [ngClass]="isMember == true ? 'joinButton' : 'leaveButton'">{{isMember}}</button>-->
+        <button class="{{!isMember ? 'joinButton' : 'leaveButton'}}">{{isMember? 'Joined' : 'Join'}}</button>
       </div>
     </div>
   </div>

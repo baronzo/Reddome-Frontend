@@ -14,4 +14,11 @@ export class GroupService {
     return this.http.get(`${this.api_path}/getgroupbyid?userId=${userId}&groupId=${groupId}`)
   }
 
+  joinGroup(userId: number, groupId: number) {
+    return this.http.post(`${this.api_path}/join`, {'groupId': groupId, 'userId': userId})
+  }
+
+  leaveGroup(userId: number, groupId: number) {
+    return this.http.post(`${this.api_path}/leave`, {'groupId': groupId, 'userId': userId})
+  }
 }
