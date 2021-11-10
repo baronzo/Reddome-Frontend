@@ -47,4 +47,10 @@ export class PostService {
   createCommnetById(body:CreateRequestCommentModel) {
   return this.http.post(`${this.api_path}/createcomment`, body)
   }
+
+  getPostByGroup(userId: number, groupId: number)  {
+    return this.http.get(`${this.api_path}/getpostbygroup?userId=${userId}&groupId=${groupId}`)
+  }
 }
+  
+
