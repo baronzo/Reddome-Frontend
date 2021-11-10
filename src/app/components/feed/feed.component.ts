@@ -82,4 +82,8 @@ export class FeedComponent implements OnInit {
     return this.cookie.get('isLogin') === 'true'
   }
 
+  onCreatePost(): void {
+    this.router.navigateByUrl('/createpost')
+  }
+
 }
