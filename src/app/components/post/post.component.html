@@ -1,16 +1,24 @@
 <div id="bgMain">
+    <div id="loading" *ngIf = "loading">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
     <div id="bgBox">
         <div id="topBar">
             <div id="button">X Close</div>
         </div>
         <div id="bgPost">
-            <!-- <app-postfeed></app-postfeed> -->
+            <app-postfeed [post]="post" (postChange)="deletePost($event)"></app-postfeed>
             <div id="comment">
                 <div id="inputComment">
                     <mat-form-field class="example-full-width" style="width: 100%;" appearance="fill">
                         <mat-label>Comment</mat-label>
-                        <textarea matInput placeholder="What are you comment ?"></textarea>
+                        <textarea matInput placeholder="What are you comment ?" [(ngModel)]="comment"></textarea>
                     </mat-form-field>
+                </div>
+                <div id="buttonComment" (click)="createComment()">
+                    <div class= "{{comment ? 'ena-button-comment' : 'dis-button-comment' }}">
+                        <div id="buttonText">Comment</div>
+                    </div>
                 </div>
                 <div *ngFor="let comment of allComment">
                     <div id="comment-user">
@@ -25,9 +33,9 @@
                                         <div id="userName">{{comment.owner_id.username}}</div>
                                         <div id="postTime">3h</div>
                                     </div>
-                                    <div class="content-text">
-                                        <div id="text">{{comment.content}}</div>
-                                    </div>
+                                        <div class="content-text">
+                                            <div id="text">{{comment.content}}</div>
+                                        </div>
                                 </div>
                                 <div class="change-comment">
                                     <button mat-icon-button [matMenuTriggerFor]="menu" class="edit-comment">
