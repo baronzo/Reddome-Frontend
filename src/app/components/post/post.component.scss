@@ -4,6 +4,16 @@
   justify-content: center;
   overflow-y: auto;
   min-height: 100%;
+  #loading {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    background-color: #ffffffc4;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 50px);
+    z-index: 9999999;
+  }
   #bgBox {
     background-color: #99d4d36b;
     max-width: 1200px;
@@ -41,6 +51,41 @@
         display: flex;
         flex-direction: column;
         .input-comment {
+        }
+        #buttonComment {
+          display: flex;
+          justify-content: flex-end;
+          .dis-button-comment {
+            height: 30px;
+            width: 90px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: not-allowed;
+            background-color: rgba(128, 128, 128, 0.733);
+            #buttonText {
+              color: #fff;
+              font-size: 13px;
+            }
+          }
+          .ena-button-comment {
+            height: 30px;
+            width: 90px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #6db784;
+            &:hover {
+              cursor: pointer;
+              background: #7acc96;
+            }
+            #buttonText {
+              color: #fff;
+              font-size: 13px;
+            }
+          }
         }
         #comment-user {
           display: flex;
