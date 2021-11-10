@@ -15,11 +15,7 @@ export class CommentService {
     return this.http.get(`${this.api_path}/getcommentsbypost?postId=${postid}`)
   }
 
-  createComment(body: CreateRequestCommentModel) {
-    return this.http.post(`${this.api_path}/createcomment`,body)
-  }
-
   deleteComment(id:number) {
-    return this.http.delete(`${this.api_path}/deletecomment?Id=${id}`)
+    return this.http.post(`${this.api_path}/deletecommentbyid?id=${id}`, null)
   }
 }
