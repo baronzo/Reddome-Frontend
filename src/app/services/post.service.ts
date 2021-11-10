@@ -20,7 +20,7 @@ export class PostService {
   }
 
   deletePosts(id:number) {
-    return this.http.delete(`${this.api_path}/deletepostbyid?id=${id}`)
+    return this.http.post(`${this.api_path}/deletepostbyid?id=${id}`, null)
   }
 
   likePost(userId:number, postId:number) {

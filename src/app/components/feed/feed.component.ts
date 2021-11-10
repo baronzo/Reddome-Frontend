@@ -1,31 +1,79 @@
 import { Component, OnInit } from '@angular/core';
 import ResponsePostByIdModel from '../../model/postModel/ResponsePostById';
-import { PostService } from '../../services/post.sesrvice'
+import { PostService } from '../../services/post.service'
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { UsersService } from 'src/app/services/users.service';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { RankingService } from 'src/app/services/ranking.service';
+import GroupResponseModel from 'src/app/model/group/groupResponseModel';
+import { GroupService } from 'src/app/services/group.service';
+import { ResultResponse } from 'src/app/model/ResultResponse';
 
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.scss']
+  styleUrls: ['./feed.component.scss'],
 })
 
 export class FeedComponent implements OnInit {
 
   public allpost: ResponsePostByIdModel[] = []
+  public allGroups: Array<GroupResponseModel> = new Array<GroupResponseModel>()
+  
   isLogin: boolean = this.getIsLogin()
   public userId: {id:number} = JSON.parse(window.localStorage.getItem('userId'))
   isLoading: boolean = true
+  public feedToggle: boolean = true
+
 
   constructor(
     private cookie: CookieService,
     private router: Router,
-    private usersService: UsersService,
-    private postService: PostService
+    private postService: PostService,
+    private rankingService: RankingService,
+    private groupService: GroupService
     ) {
     }
+
+  async leaveGroup(group: GroupResponseModel): Promise<void> {
+      try {
+        this.groupService.leaveGroup(this.userId.id, group.id).subscribe(async (data) => {
+          this.allGroups[this.allGroups.findIndex((a => a.id === group.id))].isMember = false
+        })
+      }
+      catch (error) {
+        console.error(error)
+      }
+  }
+
+  async joinGroup(group: GroupResponseModel): Promise<void> {
+    try {
+      this.groupService.joinGroup(this.userId.id, group.id).subscribe(async (data) => {
+        this.allGroups[this.allGroups.findIndex((a => a.id === group.id))].isMember = true
+      })
+    }
+    catch (error) {
+      console.error(error)
+    }
+}
+
+  buttonToggle() {
+    this.allpost.length
+    this.getGroup()
+    this.getAllpost()
+    this.feedToggle = !this.feedToggle
+  }
+
+  async getGroup(): Promise<void> {
+    try {
+        await this.rankingService.getAllGroup(this.userId.id).subscribe(async data => {
+        this.allGroups = data as  Array<GroupResponseModel>
+        })
+
+    } catch (error) {
+      console.error(error); 
+    }
+  }
 
   temp: ResponsePostByIdModel[];
   ngOnInit(): void {
@@ -55,8 +103,7 @@ export class FeedComponent implements OnInit {
     try {
         const response = await this.postService.getPostsByUserId(this.userId.id).subscribe(data => {
           this.allpost = data as ResponsePostByIdModel[]
-        })
-        
+        }) 
     } catch (error) {
       console.error(error); 
     }

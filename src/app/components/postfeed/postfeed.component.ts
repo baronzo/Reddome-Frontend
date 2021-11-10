@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import  ResponsePostByIdModel from '../../model/postModel/ResponsePostById';
-import { PostService } from '../../services/post.sesrvice'
+import { PostService } from '../../services/post.service'
 import Swal from 'sweetalert2'
 
 @Component({
