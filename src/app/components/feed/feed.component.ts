@@ -144,4 +144,9 @@ export class FeedComponent implements OnInit {
     }
   }
 
+  goToGroup(groupId:number) {
+    window.localStorage.setItem('groupId', JSON.stringify(groupId))
+    this.router.navigateByUrl("/group")
+  }
+
 }

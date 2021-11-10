@@ -24,9 +24,9 @@
         <div id="header">
             <div id="headerLeft">
                 <div id="profileGroup">
-                    <img id="imgGroup" src={{post.group_id.group_profile}} alt="">
+                    <img id="imgGroup" src={{post.group_id.group_profile}} (click)="goToGroup(post.group_id.id)" alt="">
                 </div>
-                <div id="nameGroup">{{post.group_id.name}}</div>
+                <div id="nameGroup" (click)="goToGroup(post.group_id.id)">{{post.group_id.name}}</div>
                 <div id="postby">
                     <div id="postbyTxt">• post by </div>
                     <div id="postbyUser">{{post.owner_id.username}}</div>
@@ -55,7 +55,7 @@
                 {{post.content}}
             </div>
         </div>
-        <div id="footer">
+        <!-- <div id="footer">
             <div id="featurePost">
                 <div id="commentButton">
                     <div id="commentLogo">
@@ -66,7 +66,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
     <div id="dummyOpen"></div>

@@ -64,10 +64,10 @@
             <div class="groupCard">
               <div class="cardLeft">
                 <div class="groupProfile">
-                  <img src={{group.group_profile}} class="imgGroup" alt="">
+                  <img src={{group.group_profile}} (click)="goToGroup(group.id)" class="imgGroup" alt="">
                 </div>
                 <div class="groupContent">
-                  <div class="groupName">{{group.name}}</div>
+                  <div class="groupName" (click)="goToGroup(group.id)">{{group.name}}</div>
                   <div class="groupDescription">{{group.detail}}</div>
                 </div>
               </div>
