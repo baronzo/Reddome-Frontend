@@ -40,15 +40,15 @@
       </div>
       <div>
         <div *ngIf='this.allpost.length === 0; else emptyPost'>
-          <div id="post" *ngFor="let postdata of allpost">
-            <app-postfeed [post]="postdata" (postChange)="deletePost($event)"></app-postfeed>
-          </div>
-        </div>
-        <ng-template #emptyPost>
           <div id="postEmpty">
             <img src="../../../assets/img/empthy.png" alt="" id="imgEmpty">
             <div id="emptyTxt">Reddit gets better when you join communities, so find some that you’ll love!
               Browse Popular Posts</div>
+          </div>
+        </div>
+        <ng-template #emptyPost>
+          <div id="post" *ngFor="let postdata of allpost">
+            <app-postfeed [post]="postdata" (postChange)="deletePost($event)"></app-postfeed>
           </div>
         </ng-template>
       </div>

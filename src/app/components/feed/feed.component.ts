@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import ResponsePostByIdModel from '../../model/postModel/ResponsePostById';
-import { PostService } from '../../services/post.sesrvice'
+import { PostService } from '../../services/post.service'
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
