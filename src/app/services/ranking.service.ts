@@ -14,5 +14,4 @@ export class RankingService {
   getAllGroup(userId:number) {
     return this.http.get(`${this.api_path}/getallgroup?userId=${userId}`)
   }
- 
 }

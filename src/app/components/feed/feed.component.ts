@@ -23,6 +23,7 @@ export class FeedComponent implements OnInit {
   isLogin: boolean = this.getIsLogin()
   public userId: {id:number} = JSON.parse(window.localStorage.getItem('userId'))
   isLoading: boolean = true
+  miniLoading: boolean =false
   public feedToggle: boolean = true
 
 
@@ -37,8 +38,10 @@ export class FeedComponent implements OnInit {
 
   async leaveGroup(group: GroupResponseModel): Promise<void> {
       try {
+        this.miniLoading = true
         this.groupService.leaveGroup(this.userId.id, group.id).subscribe(async (data) => {
           this.allGroups[this.allGroups.findIndex((a => a.id === group.id))].isMember = false
+          this.miniLoading = false
         })
       }
       catch (error) {
@@ -48,8 +51,10 @@ export class FeedComponent implements OnInit {
 
   async joinGroup(group: GroupResponseModel): Promise<void> {
     try {
+      this.miniLoading = true
       this.groupService.joinGroup(this.userId.id, group.id).subscribe(async (data) => {
         this.allGroups[this.allGroups.findIndex((a => a.id === group.id))].isMember = true
+        this.miniLoading = false
       })
     }
     catch (error) {
@@ -66,8 +71,10 @@ export class FeedComponent implements OnInit {
 
   async getGroup(): Promise<void> {
     try {
+        this.miniLoading = true
         await this.rankingService.getAllGroup(this.userId.id).subscribe(async data => {
         this.allGroups = data as  Array<GroupResponseModel>
+        this.miniLoading = false
         })
 
     } catch (error) {

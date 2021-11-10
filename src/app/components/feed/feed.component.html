@@ -2,6 +2,9 @@
   <p-progressSpinner></p-progressSpinner>
 </div>
 <ng-template #afterLoading>
+  <div class="miniLoading" *ngIf='miniLoading;'>
+    <p-progressSpinner></p-progressSpinner>
+  </div>
   <div id="feedContent">
     <div id="content">
       <div id="filterContent">
