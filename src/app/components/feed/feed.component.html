@@ -11,14 +11,14 @@
         <div id="filterTab">
           <div *ngIf='feedToggle; else showGroupButton'>
           <div id="filterLeft">
-              <div id="popularButtonDis" (click)='buttonToggle()' > <i class="fas fa-fire-alt logoFire"></i>All Group</div>
-              <div id="lastestButtonEna" ><i class="far fa-sun logoNew"></i>Newest</div>
+            <div id="lastestButtonEna" ><i class="fas fa-fire-alt logoNew"></i>Newest</div>
+              <div id="popularButtonDis" (click)='buttonToggle()' > <i class="fas fa-campground logoFire"></i>All Group</div>
             </div>
           </div>
           <ng-template #showGroupButton>
             <div id="filterLeft">
-              <div id="popularButtonEna" > <i class="fas fa-fire-alt logoFire"></i>All Group</div>
-              <div id="lastestButtonDis" (click)='buttonToggle()'><i class="far fa-sun logoNew"></i>Newest</div>
+              <div id="lastestButtonDis" (click)='buttonToggle()'><i class="fas fa-fire-alt logoNew"></i>Newest</div>
+              <div id="popularButtonEna" > <i class="fas fa-campground logoFire"></i>All Group</div>
             </div>
           </ng-template>
           <div id="filterRight">
@@ -39,16 +39,45 @@
         </div>
       </div>
       <div>
-        <div *ngIf='this.allpost.length === 0; else emptyPost'>
-          <div id="postEmpty">
-            <img src="../../../assets/img/empthy.png" alt="" id="imgEmpty">
-            <div id="emptyTxt">Reddit gets better when you join communities, so find some that you’ll love!
-              Browse Popular Posts</div>
+        <div *ngIf='this.feedToggle; else groupShow'>
+          <div *ngIf='this.allpost.length === 0; else emptyPost'>
+            <div id="postEmpty">
+              <img src="../../../assets/img/empthy.png" alt="" id="imgEmpty">
+              <div id="emptyTxt">Reddit gets better when you join communities, so find some that you’ll love!
+                Browse Popular Posts</div>
+            </div>
           </div>
+          <ng-template #emptyPost>
+            <div id="post" *ngFor="let postdata of allpost">
+              <app-postfeed [post]="postdata" (postChange)="deletePost($event)"></app-postfeed>
+            </div>
+          </ng-template>
         </div>
-        <ng-template #emptyPost>
-          <div id="post" *ngFor="let postdata of allpost">
-            <app-postfeed [post]="postdata" (postChange)="deletePost($event)"></app-postfeed>
+        <ng-template #groupShow>
+          <div id="allGroupShow" *ngFor="let group of allGroups">
+            <div class="groupCard">
+              <div class="cardLeft">
+                <div class="groupProfile">
+                  <img src={{group.group_profile}} class="imgGroup" alt="">
+                </div>
+                <div class="groupContent">
+                  <div class="groupName">{{group.name}}</div>
+                  <div class="groupDescription">{{group.detail}}</div>
+                </div>
+              </div>
+              <div class="cardRight">
+                <div *ngIf="group.isMember; else canJoin">
+                  <div class="joinButtonDis" (click)="leaveGroup(group)">
+                    Leave
+                  </div>
+                </div>
+                <ng-template #canJoin>
+                  <div class="joinButtonEna" (click)="joinGroup(group)">
+                    Join
+                  </div>
+                </ng-template>
+              </div>
+            </div>
           </div>
         </ng-template>
       </div>

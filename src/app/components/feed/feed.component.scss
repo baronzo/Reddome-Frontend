@@ -132,6 +132,70 @@ $colorTxt: rgb(51, 51, 51);
                         grid-row-start: 2;
                     }
             }
+            #allGroupShow {
+                margin: 10px 0px;
+                .groupCard {
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    background-color: #fff;
+                    border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 10px 15px;
+                    .cardLeft {
+                        display: flex;
+                        align-items: center;
+                        .groupProfile {
+                            display: flex;
+                            align-items: center;
+                            .imgGroup {
+                                width: 50px;
+                                height: 50px;
+                                border-radius: 50%;
+                                background-color: #c4c4c4;
+                            }
+                        }
+                        .groupContent {
+                            margin-left: 10px;
+                            .groupName {
+                                font-weight: bold;
+                            }
+                            .groupDescription {}
+                        }
+                    }
+                    .cardRight {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        .joinButtonEna {
+                            border-radius: 5px;
+                            color: white;
+                            background-color: rgb(0, 162, 255);
+                            padding: 5px 10px;
+                            transition: 0.2s;
+                            &:hover {
+                                cursor: pointer;
+                            }
+                            &:active {
+                            background-color: rgb(0, 111, 175);
+                            }
+                        }
+                        .joinButtonDis {
+                            border-radius: 5px;
+                            color: white;
+                            background-color: rgb(255, 75, 75);
+                            padding: 5px 10px;
+                            transition: 0.2s;
+                            &:hover {
+                                cursor: pointer;
+                            }
+                            &:active {
+                            background-color: rgb(158, 47, 47);
+                            }
+                        }
+                    }
+                }
+            }
         }
         #ranking {
             padding: 35px 0 0 20px;
@@ -235,7 +299,8 @@ $colorTxt: rgb(51, 51, 51);
                         grid-column-start: 2;
                         grid-row-start: 2;
                     }
-            }
+                }
+                
         }
         #ranking {
             display: none;
