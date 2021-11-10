@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import CreateRequestCommentModel from "../model/commentModel/CreateCommentModel";
 
 @Injectable({
     providedIn: 'root'
@@ -37,5 +38,13 @@ export class PostService {
       "userId": userId
     }
     return this.http.post(`${this.api_path}/unlike`, body)
+  }
+
+  getPostById(id: number, userId: number) {
+    return this.http.get(`${this.api_path}/getpostbyid?id=${id}&userId=${userId}`)
+  }
+
+  createCommnetById(body:CreateRequestCommentModel) {
+  return this.http.post(`${this.api_path}/createcomment`, body)
   }
 }
