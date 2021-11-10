@@ -1,6 +1,9 @@
 <div class="loading" *ngIf='isLoading; else afterLoading'>
   <p-progressSpinner></p-progressSpinner>
 </div>
+<div *ngIf='showCreatePost'>
+  <app-createpost (changeCreatePost)="closeModalandChangeIsOpenSignIn($event)" (postSuccess)="getPostFormModal($event)"></app-createpost>
+</div>
 <ng-template #afterLoading>
   <div class="miniLoading" *ngIf='miniLoading;'>
     <p-progressSpinner></p-progressSpinner>

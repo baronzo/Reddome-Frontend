@@ -25,7 +25,7 @@ export class FeedComponent implements OnInit {
   isLoading: boolean = true
   miniLoading: boolean =false
   public feedToggle: boolean = true
-
+  public showCreatePost: boolean = false
 
   constructor(
     private cookie: CookieService,
@@ -131,7 +131,17 @@ export class FeedComponent implements OnInit {
   }
 
   onCreatePost(): void {
-    this.router.navigateByUrl('/createpost')
+    this.showCreatePost = !this.showCreatePost 
+  }
+
+  closeModalandChangeIsOpenSignIn($event:boolean): void {
+    this.showCreatePost = $event
+  }
+
+  async getPostFormModal($event:boolean) {
+    if($event) {
+      await this.getAllpost()
+    }
   }
 
 }
