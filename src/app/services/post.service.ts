@@ -1,6 +1,5 @@
-import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpHeaders} from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -37,5 +36,9 @@ export class PostService {
       "userId": userId
     }
     return this.http.post(`${this.api_path}/unlike`, body)
+  }
+
+  getPostByGroup(userId: number, groupId: number)  {
+    return this.http.get(`${this.api_path}/getpostbygroup?userId=${userId}&groupId=${groupId}`)
   }
 }

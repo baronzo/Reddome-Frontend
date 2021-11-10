@@ -18,9 +18,10 @@
       </div>
     </div>
   </div>
-  <div id="groupFeed">
-    <div class="post">
-      <app-postfeed></app-postfeed>
+  <div *ngIf="this.isMember" class="groupFeed">
+    <div class="post" *ngFor="let post of postList">
+      <app-postfeed [post]="post" (postChange)="deletePost($event)"></app-postfeed>
     </div>
   </div>
+  <ng-template class="groupFeed"></ng-template>
 </div>
