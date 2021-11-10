@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import Swal from 'sweetalert2'
+import { ResultResponse } from 'src/app/model/ResultResponse';
 
 @Component({
   selector: 'app-signin',

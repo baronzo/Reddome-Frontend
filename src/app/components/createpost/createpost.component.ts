@@ -4,6 +4,7 @@ import CreatePostRequestModel from 'src/app/model/postModel/CreatePostRequestMod
 import ResponsePostByIdModel from 'src/app/model/postModel/ResponsePostById';
 import { CreatePostService } from 'src/app/services/createpost.service';
 import { RankingService } from 'src/app/services/ranking.service';
+import { SelectOptionModel } from 'src/app/model/SelectOptionModel';
 
 @Component({
   selector: 'app-createpost',
@@ -15,8 +16,10 @@ export class CreatepostComponent implements OnInit {
   public changeParentToFalse: boolean = false
   public createPost: CreatePostRequestModel = new CreatePostRequestModel
   public allGroups: Array<GroupResponseModel> = new Array<GroupResponseModel>()
+  public option: Array<SelectOptionModel> = new Array<SelectOptionModel>()
+  public groupId: number = 0
   @Output() changeCreatePost = new EventEmitter<boolean>()
-  @Output() postSuccess = new EventEmitter()
+  @Output() postSuccess = new EventEmitter<boolean>()
   constructor(
     private createPostService: CreatePostService,
     private rankingService: RankingService
@@ -33,13 +36,23 @@ export class CreatepostComponent implements OnInit {
 
   async getGroup(): Promise<void> {
     try {
-        await this.rankingService.getAllGroup(1).subscribe(async data => {
+        await this.rankingService.getAllGroup(1).subscribe(data => {
         this.allGroups = data as  Array<GroupResponseModel>
+        this.allGroups.map((group) => {
+          this.option.push({
+            label: group.name,
+            value: group.id
+          })
         })
-
+        console.log(this.allGroups)
+        })
     } catch (error) {
       console.error(error); 
     }
+  }
+
+  getGroupId($event:HTMLInputElement) {
+    this.groupId = Number($event.value)
   }
 
   submitPost(): void {
@@ -47,12 +60,14 @@ export class CreatepostComponent implements OnInit {
     const body: CreatePostRequestModel = {
       content: this.createPost.content,
       owner_id: JSON.parse(userId).id,
-      group_id: 1
+      group_id: this.groupId
     }
+    console.log(body)
     try {
       this.createPostService.createPost(body).subscribe((data) => {
         console.log(data);
         this.isShow = false
+        this.changeCreatePost.emit(this.changeParentToFalse)
         this.postSuccess.emit(true)
       })
     } catch (error) {
