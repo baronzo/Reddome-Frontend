@@ -10,7 +10,7 @@
     </div>
     <div class="line"></div>
     <div id="selectCommunity">
-      <p-dropdown [editable]="true" placeholder="Choose a community"></p-dropdown>
+      <p-dropdown placeholder="Choose a community" [options]="option" (onChange)="getGroupId($event)"></p-dropdown>
     </div>
     <div id="postBox">
       <div id="postinBox">
