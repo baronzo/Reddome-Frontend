@@ -1,5 +1,8 @@
-<div id="cratePost">
-  <div id="postBox">
+<div id="cratePost" *ngIf="isShow">
+  <div id="postInBox">
+    <div id="closeModal" (click)="onChange()">
+      <div class="x-text" for="">X</div>
+    </div>
     <div id="title">
       <div class="title-box">
         <label for="">Create a post</label>
@@ -12,10 +15,10 @@
     <div id="postBox">
       <div id="postinBox">
         <div id="areaText">
-          <textarea class="text-area" placeholder="คุณกำลังคิดอะไรอยู่ อุจิว"></textarea>
+          <textarea class="text-area" placeholder="คุณกำลังคิดอะไรอยู่ อุจิว" [(ngModel)]='createPost.content'></textarea>
         </div>
-        <div id="buttonBox">
-          <button class="post-button">Post</button>
+        <div id="buttonBox" (click)="submitPost()">
+          <button class="post-button" [disabled]="!createPost.content">Post</button>
         </div>
       </div>
     </div>
