@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'
 import {ResultResponse} from "../../model/ResultResponse";
 import ResponsePostByIdModel from "../../model/postModel/ResponsePostById";
 import {PostService} from "../../services/post.service";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-group',
@@ -18,11 +19,27 @@ export class GroupComponent implements OnInit {
   public group: GroupResponseModel
   public isMember: boolean
   public postList: Array<ResponsePostByIdModel>
-  constructor(private groupService: GroupService, private postService: PostService) { }
+  private sub: any;
+  constructor(private groupService: GroupService,
+              private postService: PostService,
+              private route: ActivatedRoute
+              ) { }
 
   ngOnInit(): void {
+    this.getGroupIdFromPath() 
     this.getGroupById()
     this.checkMember()
+  }
+
+  getGroupIdFromPath() {
+    this.sub = this.route.params.subscribe( params => {
+      this.groupId = +params['groupId'];
+    })
+    console.log('groupId = ', this.groupId);
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   checkMember() {

@@ -7,17 +7,14 @@ class ResponsePostByIdModel {
     public owner_id: ownerDetail
     public updated_at: string = Date()
     public likeCount: number = Number()
-  }
-
+}
 class groupDetail {
     public group_profile: string = String()
     public id: number = Number()
     public name: string = String()
 }
-
 class ownerDetail {
     public id: number = Number()
     public username: string = String()
 }
-  
 export default ResponsePostByIdModel

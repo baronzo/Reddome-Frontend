@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import  ResponsePostByIdModel from '../../model/postModel/ResponsePostById';
 import { PostService } from '../../services/post.service'
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-postfeed',
@@ -15,7 +16,8 @@ export class PostfeedComponent implements OnInit {
 
   public userId: {id:number} = JSON.parse(window.localStorage.getItem('userId'))
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService,
+              private router: Router,) { }
 
 
   Deletepost() {
@@ -62,5 +64,13 @@ export class PostfeedComponent implements OnInit {
     } catch (error) {
       console.error(error); 
     }
+  }
+
+  goToGroup(groupId:number) {
+    this.router.navigate(['/group', groupId])
+  }
+
+  goToPost(postId:number) {
+    this.router.navigate(['/post', postId])
   }
 }

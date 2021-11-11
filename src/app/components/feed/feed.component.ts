@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import ResponsePostByIdModel from '../../model/postModel/ResponsePostById';
 import { PostService } from '../../services/post.service'
 import { CookieService } from 'ngx-cookie-service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap} from '@angular/router';
 import Swal from 'sweetalert2';
 import { RankingService } from 'src/app/services/ranking.service';
 import GroupResponseModel from 'src/app/model/group/groupResponseModel';
@@ -23,6 +23,7 @@ export class FeedComponent implements OnInit {
   isLogin: boolean = this.getIsLogin()
   public userId: {id:number} = JSON.parse(window.localStorage.getItem('userId'))
   isLoading: boolean = true
+  miniLoading: boolean =false
   public feedToggle: boolean = true
   public showCreatePost: boolean = false
 
@@ -31,14 +32,17 @@ export class FeedComponent implements OnInit {
     private router: Router,
     private postService: PostService,
     private rankingService: RankingService,
-    private groupService: GroupService
+    private groupService: GroupService,
+   
     ) {
     }
 
   async leaveGroup(group: GroupResponseModel): Promise<void> {
       try {
+        this.miniLoading = true
         this.groupService.leaveGroup(this.userId.id, group.id).subscribe(async (data) => {
           this.allGroups[this.allGroups.findIndex((a => a.id === group.id))].isMember = false
+          this.miniLoading = false
         })
       }
       catch (error) {
@@ -48,8 +52,10 @@ export class FeedComponent implements OnInit {
 
   async joinGroup(group: GroupResponseModel): Promise<void> {
     try {
+      this.miniLoading = true
       this.groupService.joinGroup(this.userId.id, group.id).subscribe(async (data) => {
         this.allGroups[this.allGroups.findIndex((a => a.id === group.id))].isMember = true
+        this.miniLoading = false
       })
     }
     catch (error) {
@@ -66,8 +72,10 @@ export class FeedComponent implements OnInit {
 
   async getGroup(): Promise<void> {
     try {
+        this.miniLoading = true
         await this.rankingService.getAllGroup(this.userId.id).subscribe(async data => {
         this.allGroups = data as  Array<GroupResponseModel>
+        this.miniLoading = false
         })
 
     } catch (error) {
@@ -137,4 +145,7 @@ export class FeedComponent implements OnInit {
     }
   }
 
+  goToGroup(groupId:number) {
+    this.router.navigate(['/group', groupId])
+  }
 }
