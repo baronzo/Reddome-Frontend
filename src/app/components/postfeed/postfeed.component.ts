@@ -67,7 +67,10 @@ export class PostfeedComponent implements OnInit {
   }
 
   goToGroup(groupId:number) {
-    window.localStorage.setItem('groupId', JSON.stringify(groupId))
-    this.router.navigateByUrl("/group")
+    this.router.navigate(['/group', groupId])
+  }
+
+  goToPost(postId:number) {
+    this.router.navigate(['/post', postId])
   }
 }

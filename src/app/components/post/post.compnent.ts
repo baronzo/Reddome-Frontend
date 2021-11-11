@@ -1,7 +1,7 @@
 import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { async } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import CreateRequestCommentModel from 'src/app/model/commentModel/CreateCommentModel';
 import GetResponseCommentModel from 'src/app/model/commentModel/GetCommentRespones';
 import ResponsePostByIdModel from 'src/app/model/postModel/ResponsePostById';
@@ -19,26 +19,39 @@ export class PostComponent implements OnInit {
   public delete: any
   public post : ResponsePostByIdModel
   public userId: {id:number} = JSON.parse(window.localStorage.getItem('userId'))
-  public comment=""
+  public comment: string = ""
+  public postId: number
   public loading: boolean = false
-  constructor(private commentService: CommentService, private postService: PostService, private router: Router) { }
+  constructor(private commentService: CommentService,
+              private postService: PostService, 
+              private activeRoute: ActivatedRoute,
+              private router: Router
+              ) { }
 
   ngOnInit(): void {
+    this.getPostIdFromPath()
     this.getCommentById()
-    this.getPost(4)
+    this.getPost(this.postId)
     this.createComment()
   }
   
   async getCommentById(): Promise<void> {
     try {
         this.loading = true
-        await this.commentService.getCommentById(4).subscribe(async data => {
+        await this.commentService.getCommentById(this.postId).subscribe(async data => {
         this.allComment = data as  Array<GetResponseCommentModel>
         this.loading = false
         })
     } catch (error) {
       console.error(error); 
     }
+  }
+
+  getPostIdFromPath() {
+    this.activeRoute.params.subscribe( params => {
+      this.postId = +params['postId'];
+    })
+    console.log('postId = ', this.postId);
   }
 
    deleteComment(id:number): void {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import ResponsePostByIdModel from '../../model/postModel/ResponsePostById';
 import { PostService } from '../../services/post.service'
 import { CookieService } from 'ngx-cookie-service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap} from '@angular/router';
 import Swal from 'sweetalert2';
 import { RankingService } from 'src/app/services/ranking.service';
 import GroupResponseModel from 'src/app/model/group/groupResponseModel';
@@ -32,7 +32,8 @@ export class FeedComponent implements OnInit {
     private router: Router,
     private postService: PostService,
     private rankingService: RankingService,
-    private groupService: GroupService
+    private groupService: GroupService,
+   
     ) {
     }
 
@@ -145,8 +146,6 @@ export class FeedComponent implements OnInit {
   }
 
   goToGroup(groupId:number) {
-    window.localStorage.setItem('groupId', JSON.stringify(groupId))
-    this.router.navigateByUrl("/group")
+    this.router.navigate(['/group', groupId])
   }
-
 }

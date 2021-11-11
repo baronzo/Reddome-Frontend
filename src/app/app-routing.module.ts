@@ -10,10 +10,10 @@ import {GroupComponent} from "./components/group/group.component";
 const routes: Routes = [
   { path: '', component:HomeComponent },
   { path: 'feed', component:FeedComponent },
-  { path: 'post', component:PostComponent },
+  { path: 'post/:postId', component:PostComponent },
   { path: 'Ranking', component:RankingComponent },
   { path: 'createpost', component:CreatepostComponent},
-  { path: 'group', component: GroupComponent }
+  { path: 'group/:groupId', component: GroupComponent }
 ];
 
 @NgModule({
