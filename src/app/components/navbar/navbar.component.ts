@@ -24,7 +24,7 @@ export class NavBarComponent implements OnInit {
   }
 
   onClickLogout() {
-    this.cookie.set('isLogin', 'flase')
+    this.cookie.set('isLogin', 'false')
     window.location.reload()
   }
 

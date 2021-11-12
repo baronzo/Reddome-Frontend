@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: 'feed', component:FeedComponent },
   { path: 'post/:postId', component:PostComponent },
   { path: 'Ranking', component:RankingComponent },
-  { path: 'createpost', component:CreatepostComponent},
-  { path: 'group/:groupId', component: GroupComponent }
+  { path: 'group/:groupId', component: GroupComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
 @NgModule({
