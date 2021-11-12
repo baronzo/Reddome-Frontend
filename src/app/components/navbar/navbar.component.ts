@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import SigninRequestModel from 'src/app/model/users/SigninRequestModel';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { IsLoginService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,12 +13,14 @@ export class NavBarComponent implements OnInit {
 
   isOpenSignIn: boolean = false
   isOpenSignUp: boolean = false
-  isLogin: boolean = this.getIsLogin()
   
   constructor(
     private cookie: CookieService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private isLoginService: IsLoginService
+    ) { }
+    
+  isLogin: boolean = this.isLoginService.getIsLogin()
 
   ngOnInit(): void {
     console.log(this.getUserDetails());   
@@ -49,9 +52,9 @@ export class NavBarComponent implements OnInit {
     }
   }
 
-  getIsLogin(): boolean {
-    return this.cookie.get('isLogin') === 'true'
-  }
+  // getIsLogin(): boolean {
+  //   return this.cookie.get('isLogin') === 'true'
+  // }
   
   onClickSignIn = (): void => {
     this.isOpenSignIn = !this.isOpenSignIn
