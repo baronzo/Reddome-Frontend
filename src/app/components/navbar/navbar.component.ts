@@ -51,10 +51,6 @@ export class NavBarComponent implements OnInit {
       this.router.navigateByUrl('/')
     }
   }
-
-  // getIsLogin(): boolean {
-  //   return this.cookie.get('isLogin') === 'true'
-  // }
   
   onClickSignIn = (): void => {
     this.isOpenSignIn = !this.isOpenSignIn
