@@ -17,15 +17,23 @@ export class RankingComponent implements OnInit {
 
   ngOnInit(): void { 
     this.getGroup()
+    
+    
   }
   async getGroup(): Promise<void> {
     try {
         await this.rankingService.getAllGroup(1).subscribe(async data => {
-        this.allGroups = data as  Array<GroupResponseModel>
+        this.allGroups = this.sortData( data as  Array<GroupResponseModel>)
+        console.log(this.allGroups)
         })
 
     } catch (error) {
-      console.error(error); 
+      console.error(error);  
     }
   }
+
+  sortData(getMember: Array<GroupResponseModel>): Array<GroupResponseModel> {
+    return getMember.sort((a, b) => (a.memberCount > b.memberCount ? -1 : 1))
+  }
+  
 }
