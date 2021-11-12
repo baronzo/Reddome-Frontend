@@ -111,4 +111,8 @@ export class PostComponent implements OnInit {
         }
       }
     }
+
+    arrowBack() {
+      this.router.navigateByUrl("/feed")
+    }
 }

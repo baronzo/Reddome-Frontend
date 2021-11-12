@@ -24,19 +24,18 @@
     height: 100%;
     #topBar {
       max-width: 1200px;
-      background-color: #6db784;
       height: 40px;
       width: 100%;
       align-items: center;
       position: fixed;
-      #button {
+      .arrow {
         color: #fff;
-        margin-top: 10px;
-        margin-right: 90px;
-        display: flex;
-        justify-content: flex-end;
-        cursor: pointer;
-        max-width: 1000px;
+        font-size: 30px;
+        padding: 20px 40px;
+        &:hover {
+          color: #6db784;
+          cursor: pointer;
+        }
       }
     }
     #bgPost {

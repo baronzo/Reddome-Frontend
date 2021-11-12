@@ -4,7 +4,7 @@
     </div>
     <div id="bgBox">
         <div id="topBar">
-            <div id="button">X Close</div>
+            <i class="fas fa-arrow-circle-left arrow" (click)="arrowBack()"></i>
         </div>
         <div id="bgPost">
             <app-postfeed [post]="post" (postChange)="deletePost($event)"></app-postfeed>
