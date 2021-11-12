@@ -26,9 +26,8 @@ export class GroupComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
-    this.getGroupIdFromPath() 
+    this.getGroupIdFromPath()
     this.getGroupById()
-    this.checkMember()
   }
 
   getGroupIdFromPath() {
@@ -51,6 +50,7 @@ export class GroupComponent implements OnInit {
       this.groupService.getGroupById(this.userId.id, this.groupId).subscribe(async (data) => {
         this.group = data as GroupResponseModel
         this.isMember = this.group.isMember
+        this.checkMember()
       })
 
     } catch (error) {
