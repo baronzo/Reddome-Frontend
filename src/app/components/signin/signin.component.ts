@@ -60,8 +60,9 @@ export class SigninComponent implements OnInit {
     console.log(body); 
     try {
       if(this.signinform.valid) {
-        await this.usersService.login(body).subscribe((data: any) => { 
-        if(data.status === 'fail') {
+        await this.usersService.login(body).subscribe((data) => { 
+        let result = data as ResultResponse
+        if(result.status === 'fail') {
           this.alertError()
         } else {
           this.setLogin(body)
