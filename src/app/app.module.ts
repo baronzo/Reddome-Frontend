@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { DropdownModule } from 'primeng/dropdown';
+import { ChartModule } from 'primeng/chart';
+import { PanelModule } from 'primeng/panel';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +29,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule } from '@angular/material/input';
 import { CreatepostComponent } from './components/createpost/createpost.component';
 import { GroupComponent } from './components/group/group.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,8 @@ import { GroupComponent } from './components/group/group.component';
     SignupComponent,
     PostComponent,
     CreatepostComponent,
-    GroupComponent
+    GroupComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,9 @@ import { GroupComponent } from './components/group/group.component';
     MatInputModule,
     ReactiveFormsModule,
     ProgressSpinnerModule,
-    DropdownModule
+    DropdownModule,
+    ChartModule,
+    PanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]

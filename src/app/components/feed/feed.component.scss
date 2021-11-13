@@ -206,6 +206,9 @@ $colorTxt: rgb(51, 51, 51);
             }
         }
         #ranking {
+            position: fixed;
+            top: 10%;
+            left: 60%;
             padding: 35px 0 0 20px;
         }
     }

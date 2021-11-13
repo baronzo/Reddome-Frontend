@@ -19,22 +19,28 @@ export class FeedComponent implements OnInit {
 
   public allpost: ResponsePostByIdModel[] = []
   public allGroups: Array<GroupResponseModel> = new Array<GroupResponseModel>()
-  
   isLogin: boolean = this.getIsLogin()
   public userId: {id:number} = JSON.parse(window.localStorage.getItem('userId'))
   isLoading: boolean = true
   miniLoading: boolean =false
   public feedToggle: boolean = true
   public showCreatePost: boolean = false
+//======================
 
   constructor(
     private cookie: CookieService,
     private router: Router,
     private postService: PostService,
     private rankingService: RankingService,
-    private groupService: GroupService,
-   
+    private groupService: GroupService
     ) {
+    }
+
+    
+
+    ngOnInit(): void {
+      this.isLoading = true
+      this.getAllpost()
     }
 
   async leaveGroup(group: GroupResponseModel): Promise<void> {
@@ -81,11 +87,6 @@ export class FeedComponent implements OnInit {
     } catch (error) {
       console.error(error); 
     }
-  }
-
-  temp: ResponsePostByIdModel[];
-  ngOnInit(): void {
-    this.getAllpost()
   }
 
   async deletePost($event:number): Promise<void> {
@@ -148,4 +149,5 @@ export class FeedComponent implements OnInit {
   goToGroup(groupId:number) {
     this.router.navigate(['/group', groupId])
   }
+  
 }
