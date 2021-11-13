@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import Swal from 'sweetalert2'
 import { ResultResponse } from 'src/app/model/ResultResponse';
+import { IsLoginService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-signin',
@@ -16,17 +17,19 @@ import { ResultResponse } from 'src/app/model/ResultResponse';
 export class SigninComponent implements OnInit {
 
   isClose: boolean = false
-  isLogin: boolean = this.getIsLogin()
   changeParentToFalse: boolean = false
   public signin: SigninRequestModel = new SigninRequestModel
   signinform!: FormGroup
   @Output() changeIsOpen = new EventEmitter<boolean>()
-
+  
   constructor(
     private usersService: UsersService,
     private router: Router,
-    private cookie: CookieService
+    private cookie: CookieService,
+    private isLoginService: IsLoginService
     ) { }
+    
+  isLogin: boolean = this.isLoginService.getIsLogin()
 
   ngOnInit(): void {
     this.signinform = new FormGroup({
@@ -39,17 +42,9 @@ export class SigninComponent implements OnInit {
     this.isClose = true
     this.changeIsOpen.emit(this.changeParentToFalse)
   }
-
-  setLogin(userDetails: SigninRequestModel): void {
-    this.cookie.set('isLogin', 'true')
-    window.localStorage.setItem('user', JSON.stringify(userDetails))
-  }
-
+  
   setUserId(userId: any): void {
     window.localStorage.setItem('userId', JSON.stringify(userId))
-  }
-  getIsLogin(): boolean {
-    return this.cookie.get('isLogin') === 'true'
   }
 
   async login(): Promise<void> {
@@ -60,14 +55,15 @@ export class SigninComponent implements OnInit {
     console.log(body); 
     try {
       if(this.signinform.valid) {
-        await this.usersService.login(body).subscribe((data: any) => { 
-        if(data.status === 'fail') {
+        await this.usersService.login(body).subscribe((data) => { 
+        let result = data as ResultResponse
+        if(result.status === 'fail') {
           this.alertError()
         } else {
-          this.setLogin(body)
+          this.isLoginService.setLogin(body)
           this.signinform.reset()
           this.isClose = true
-          this.router.navigateByUrl('/feed')
+          window.location.href = '/feed'
           this.setUserId(data)
         }
       })
