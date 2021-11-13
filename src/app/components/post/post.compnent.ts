@@ -29,6 +29,7 @@ export class PostComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
+    this.loading = true
     this.getPostIdFromPath()
     this.getCommentById()
     this.getPost(this.postId)

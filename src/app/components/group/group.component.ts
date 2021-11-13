@@ -20,12 +20,15 @@ export class GroupComponent implements OnInit {
   public isMember: boolean
   public postList: Array<ResponsePostByIdModel>
   private sub: any;
+  public loading: boolean = false
+  public miniloading: boolean = false
   constructor(private groupService: GroupService,
               private postService: PostService,
               private route: ActivatedRoute
               ) { }
 
   ngOnInit(): void {
+    this.loading = true
     this.getGroupIdFromPath()
     this.getGroupById()
   }
@@ -47,10 +50,13 @@ export class GroupComponent implements OnInit {
 
   getGroupById(): void {
     try {
+      this.miniloading = true
       this.groupService.getGroupById(this.userId.id, this.groupId).subscribe(async (data) => {
         this.group = data as GroupResponseModel
         this.isMember = this.group.isMember
         this.checkMember()
+        this.miniloading = false
+        this.loading = false
       })
 
     } catch (error) {
@@ -59,12 +65,14 @@ export class GroupComponent implements OnInit {
   }
 
   getPostByGroup(): void {
-
     try {
+      this.miniloading = true
       this.postService.getPostByGroup(this.userId.id, this.groupId).subscribe(async (data) => {
-        this.postList = data as Array<ResponsePostByIdModel>
-        console.log(this.postList)
-      })
+      this.postList = data as Array<ResponsePostByIdModel>
+      console.log(this.postList)
+      this.miniloading = false
+      this.loading = false
+    })
 
     } catch (error) {
       console.error(error);
@@ -74,9 +82,11 @@ export class GroupComponent implements OnInit {
   joinOrLeaveGroup(): void {
     if(this.isMember){
       try {
+        this.miniloading = true
         this.groupService.leaveGroup(this.userId.id, this.groupId).subscribe(async (data) => {
           let rs: ResultResponse = data as ResultResponse
           if (rs.status == 'fail') this.showError()
+          this.miniloading = false
         })
         this.group.memberCount--
       }
@@ -86,9 +96,11 @@ export class GroupComponent implements OnInit {
     }
     else {
       try {
+        this.miniloading = true
         this.groupService.joinGroup(this.userId.id, this.groupId).subscribe(async (data) => {
           let rs: ResultResponse = data as ResultResponse
           if (rs.status == 'fail') this.showError()
+          this.miniloading = false
         })
         this.group.memberCount++
         this.getPostByGroup()

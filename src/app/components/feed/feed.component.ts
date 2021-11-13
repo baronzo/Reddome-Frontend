@@ -39,6 +39,7 @@ export class FeedComponent implements OnInit {
     
 
     ngOnInit(): void {
+      this.isLoading = true
       this.getAllpost()
     }
 
