@@ -31,7 +31,7 @@
                                 <div id="headerLeft">
                                     <div id="colum">
                                         <div id="userName">{{comment.owner_id.username}}</div>
-                                        <div id="postTime">3h</div>
+                                        <div id="postTime">{{ comment.created_at | date : 'd  MMM YYYY h:mm a': 'UTC +14' }}</div>
                                     </div>
                                         <div class="content-text">
                                             <div id="text">{{comment.content}}</div>
