@@ -18,6 +18,8 @@
       <div class="input-box">
         <input class="input-text-box" type="text" placeholder="detail group" [(ngModel)]='createGroup.detail'>
       </div>
+        profile<input type="file" class="form-control" accept="image/*" (change)="uploadGroupProfile($event)">
+        banner <input type="file" class="form-control" accept="image/*" (change)="uploadGroupBanner($event)">
     </div>
     <div id="postBox">
       <div id="postinBox">
