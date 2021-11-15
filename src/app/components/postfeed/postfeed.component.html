@@ -1,4 +1,4 @@
-<div id="postfeed">
+<div id="postfeed" >
 <div id="allContent">
     <div *ngIf="post.isLiked; else elseBlock">
         <div class="postLike">
@@ -38,10 +38,6 @@
                         <i class="fas fa-ellipsis-h"></i>
                     </button>
                     <mat-menu #menu="matMenu" xPosition="after">
-                    <!-- <button mat-menu-item >
-                        <mat-icon>create</mat-icon>
-                        <span>Edit post</span>
-                    </button> -->
                     <button mat-menu-item (click)="Deletepost()">
                         <mat-icon>delete_outline</mat-icon>
                         <span>Delete post</span>
@@ -54,19 +50,10 @@
             <div id="message">
                 {{post.content}}
             </div>
-        </div>
-        <!-- <div id="footer">
-            <div id="featurePost">
-                <div id="commentButton">
-                    <div id="commentLogo">
-                        <i class="far fa-comment-alt"></i>
-                    </div>
-                    <div id="commentText">
-                        Comment
-                    </div>
-                </div>
+            <div id="linkEmbed" *ngIf="false">
+                <iframe width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
             </div>
-        </div> -->
+        </div>
     </div>
 </div>
     <div id="dummyOpen" (click)="goToPost(post.id)" ></div>

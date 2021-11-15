@@ -3,6 +3,7 @@ import  ResponsePostByIdModel from '../../model/postModel/ResponsePostById';
 import { PostService } from '../../services/post.service'
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-postfeed',
@@ -17,14 +18,15 @@ export class PostfeedComponent implements OnInit {
   public userId: {id:number} = JSON.parse(window.localStorage.getItem('userId'))
 
   constructor(private postService: PostService,
-              private router: Router,) { }
-
+              private router: Router,
+              private primengConfig: PrimeNGConfig) { }
 
   Deletepost() {
     this.postChange.emit(this.post.id)
   }
 
   ngOnInit(): void {
+    this.primengConfig.ripple = true;
   }
 
   alertSuccess(): void {
@@ -38,9 +40,7 @@ export class PostfeedComponent implements OnInit {
   likePost() {
     this.post.isLiked = true
     this.post.likeCount += 1
-    console.log(this.post.isLiked);
     this.likePostApi()
-    
   }
 
   unlikePost() {

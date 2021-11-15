@@ -30,6 +30,8 @@ import {MatInputModule } from '@angular/material/input';
 import { CreatepostComponent } from './components/createpost/createpost.component';
 import { GroupComponent } from './components/group/group.component';
 import { ChartComponent } from './components/chart/chart.component';
+import { StoryComponent } from './components/story/story.component';
+import {RippleModule} from 'primeng/ripple';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { ChartComponent } from './components/chart/chart.component';
     PostComponent,
     CreatepostComponent,
     GroupComponent,
-    ChartComponent
+    ChartComponent,
+    StoryComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +68,7 @@ import { ChartComponent } from './components/chart/chart.component';
     ProgressSpinnerModule,
     DropdownModule,
     ChartModule,
+    RippleModule,
     PanelModule
   ],
   providers: [],

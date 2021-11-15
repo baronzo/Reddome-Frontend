@@ -18,14 +18,17 @@ import { ResultResponse } from 'src/app/model/ResultResponse';
 export class FeedComponent implements OnInit {
 
   public allpost: ResponsePostByIdModel[] = []
+  public sortedPost: ResponsePostByIdModel[] = []
   public allGroups: Array<GroupResponseModel> = new Array<GroupResponseModel>()
   isLogin: boolean = this.getIsLogin()
   public userId: {id:number} = JSON.parse(window.localStorage.getItem('userId'))
   isLoading: boolean = true
   miniLoading: boolean =false
-  public feedToggle: boolean = true
   public showCreatePost: boolean = false
-//======================
+
+  public newIsActive: boolean = true
+  public popularIsActive: boolean = false
+  public groupIsActive: boolean = false
 
   constructor(
     private cookie: CookieService,
@@ -35,13 +38,36 @@ export class FeedComponent implements OnInit {
     private groupService: GroupService
     ) {
     }
-
     
 
     ngOnInit(): void {
       this.isLoading = true
       this.getAllpost()
+      this.getGroup()
     }
+
+  toggleButton(activeButton: string) {
+    switch (activeButton) {
+      case "new":
+        this.newIsActive = true
+        this.popularIsActive = false
+        this.groupIsActive = false
+        break;
+      case "pop":
+        this.sortPost()
+        this.newIsActive = false
+        this.popularIsActive = true
+        this.groupIsActive = false
+        break;
+      case "group":
+        this.newIsActive = false
+        this.popularIsActive = false
+        this.groupIsActive = true
+        break;
+      default:
+        break;
+    }
+  }
 
   async leaveGroup(group: GroupResponseModel): Promise<void> {
       try {
@@ -68,13 +94,6 @@ export class FeedComponent implements OnInit {
       console.error(error)
     }
 }
-
-  buttonToggle() {
-    this.allpost.length
-    this.getGroup()
-    this.getAllpost()
-    this.feedToggle = !this.feedToggle
-  }
 
   async getGroup(): Promise<void> {
     try {
@@ -109,9 +128,11 @@ export class FeedComponent implements OnInit {
   }
 
   async getAllpost(): Promise<void> {
+    this.miniLoading = true
     try {
         const response = await this.postService.getPostsByUserId(this.userId.id).subscribe(data => {
           this.allpost = data as ResponsePostByIdModel[]
+          this.miniLoading = false
         }) 
     } catch (error) {
       console.error(error); 
@@ -120,6 +141,10 @@ export class FeedComponent implements OnInit {
     setTimeout(() => {
       this.isLoading = false
     }, 1000)
+  }
+
+  sortPost() {
+    this.sortedPost = this.allpost.sort((a, b) => (a.likeCount > b.likeCount ? -1 : 1))
   }
 
   backHomeIfNoLogin(): void {
@@ -149,5 +174,6 @@ export class FeedComponent implements OnInit {
   goToGroup(groupId:number) {
     this.router.navigate(['/group', groupId])
   }
-  
+
+
 }

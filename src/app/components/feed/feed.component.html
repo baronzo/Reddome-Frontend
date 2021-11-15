@@ -10,23 +10,19 @@
   </div>
   <div id="feedContent">
     <div id="content">
+      <div id="story">
+        <app-story></app-story>
+      </div>
       <div id="filterContent">
         <div id="txtFilter">
           Menus
         </div>   
         <div id="filterTab">
-          <div *ngIf='feedToggle; else showGroupButton'>
-          <div id="filterLeft">
-            <div id="lastestButtonEna" ><i class="fas fa-fire-alt logoNew"></i>Newest</div>
-              <div id="popularButtonDis" (click)='buttonToggle()' > <i class="fas fa-campground logoFire"></i>All Group</div>
-            </div>
-          </div>
-          <ng-template #showGroupButton>
             <div id="filterLeft">
-              <div id="lastestButtonDis" (click)='buttonToggle()'><i class="fas fa-fire-alt logoNew"></i>Newest</div>
-              <div id="popularButtonEna" > <i class="fas fa-campground logoFire"></i>All Group</div>
+              <div id="{{newIsActive ? 'newButton' : 'newButtonDis'}}" (click)="toggleButton('new')"><i class="fas fa-sun logo"></i> <div class="txtFilter">Newest</div></div>
+              <div id="{{popularIsActive ? 'popularButton' : 'popularButtonDis'}}" (click)="toggleButton('pop')"> <i class="fas fa-fire-alt logo"></i><div class="txtFilter">Popular</div></div>
+              <div id="{{groupIsActive ? 'groupButton' : 'groupButtonDis'}}" (click)="toggleButton('group')"> <i class="fas fa-campground logo"></i><div class="txtFilter">Group</div></div>
             </div>
-          </ng-template>
           <div id="filterRight">
             <button mat-icon-button [matMenuTriggerFor]="menu" class="menuPlus">
               <i class="fas fa-ellipsis-h"></i>
@@ -45,7 +41,7 @@
         </div>
       </div>
       <div>
-        <div *ngIf='this.feedToggle; else groupShow'>
+        <div *ngIf='newIsActive'>
           <div *ngIf='this.allpost.length === 0; else emptyPost'>
             <div id="postEmpty">
               <img src="../../../assets/img/empthy.png" alt="" id="imgEmpty">
@@ -59,7 +55,21 @@
             </div>
           </ng-template>
         </div>
-        <ng-template #groupShow>
+        <div *ngIf="popularIsActive">
+          <div *ngIf='this.sortedPost.length === 0; else emptyPost'>
+            <div id="postEmpty">
+              <img src="../../../assets/img/empthy.png" alt="" id="imgEmpty">
+              <div id="emptyTxt">Reddit gets better when you join communities, so find some that you’ll love!
+                Browse Popular Posts</div>
+            </div>
+          </div>
+          <ng-template #emptyPost>
+            <div id="post" *ngFor="let postdata of sortedPost">
+              <app-postfeed [post]="postdata" (postChange)="deletePost($event)"></app-postfeed>
+            </div>
+          </ng-template>
+        </div>
+        <div *ngIf="groupIsActive">
           <div id="allGroupShow" *ngFor="let group of allGroups">
             <div class="groupCard">
               <div class="cardLeft">
@@ -85,7 +95,7 @@
               </div>
             </div>
           </div>
-        </ng-template>
+        </div>
       </div>
   </div>
   <div id="ranking">

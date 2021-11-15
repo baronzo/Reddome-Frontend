@@ -3,7 +3,10 @@
   width: 100%;
   display: grid;
   grid-template-columns: 50% 50%;
-  background-color: #99D4D3;
+  //background-color: #99D4D3;
+  background: linear-gradient(-45deg, #ffffff, #99D4D3, #8bb899, #a1ffe9);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
   #homeImage {
     height: calc(100vh - (#{$navHeight}));
     display: flex;
@@ -282,4 +285,16 @@
       }
     }
   }
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
