@@ -2,7 +2,10 @@
   <p-progressSpinner></p-progressSpinner>
 </div>
 <div *ngIf='showCreatePost'>
-  <app-createpost (changeCreatePost)="closeModalandChangeIsOpenSignIn($event)" (postSuccess)="getPostFormModal($event)"></app-createpost>
+  <app-createpost (changeCreatePost)="closeModalandChangeValue($event)" (postSuccess)="getPostFormModal($event)"></app-createpost>
+</div>
+<div *ngIf='showCreateGroup'>
+  <app-creategroup (changeCreateGroup)="closeModalandChangeValue($event)" (createGroupSuccess)="getGroupFormModal($event)"></app-creategroup>
 </div>
 <ng-template #afterLoading>
   <div class="miniLoading" *ngIf='miniLoading;'>
@@ -36,7 +39,7 @@
                 <mat-icon>create</mat-icon>
                 <span>Create post</span>
               </button>
-              <button mat-menu-item>
+              <button mat-menu-item (click)="onCreateGroup()">
                 <mat-icon>add_circle_outline</mat-icon>
                 <span>Create Group</span>
               </button>

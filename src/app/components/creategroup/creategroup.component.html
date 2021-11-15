@@ -1,0 +1,30 @@
+<div id="crateGroup" *ngIf="isShow">
+  <div id="groupInBox">
+    <div id="closeModal">
+      <div class="x-text" for="" (click)="onChange()">X</div>
+    </div>
+    <div id="title">
+      <div class="title-box">
+        <label for="">Create a community</label>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div id="groupTitle">
+      <label class="group-text" for="">Group Name</label>
+      <div class="input-box">
+        <input class="input-text-box" type="text" placeholder="group name" [(ngModel)]='createGroup.name'>
+      </div>
+      <label class="group-text" for="">Detail</label>
+      <div class="input-box">
+        <input class="input-text-box" type="text" placeholder="detail group" [(ngModel)]='createGroup.detail'>
+      </div>
+    </div>
+    <div id="postBox">
+      <div id="postinBox">
+        <div id="buttonBox">
+          <button class="post-button" (click)="onCreateCommunity()" [disabled]="!createGroup.name && !createGroup.detail">Create Community</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
