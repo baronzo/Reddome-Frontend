@@ -30,6 +30,7 @@ import {MatInputModule } from '@angular/material/input';
 import { CreatepostComponent } from './components/createpost/createpost.component';
 import { GroupComponent } from './components/group/group.component';
 import { ChartComponent } from './components/chart/chart.component';
+import { CreategroupComponent } from './components/creategroup/creategroup.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ChartComponent } from './components/chart/chart.component';
     PostComponent,
     CreatepostComponent,
     GroupComponent,
-    ChartComponent
+    ChartComponent,
+    CreategroupComponent
   ],
   imports: [
     BrowserModule,
