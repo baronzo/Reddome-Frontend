@@ -39,6 +39,7 @@ export class CreategroupComponent implements OnInit {
         this.isShow = false
         this.changeCreateGroup.emit(this.changeParentToFalse)
         this.createGroupSuccess.emit(true)
+        window.location.href = '/feed'
       })     
     } catch (error) {
       console.error(error)
