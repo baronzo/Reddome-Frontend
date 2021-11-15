@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import SigninRequestModel from 'src/app/model/users/SigninRequestModel';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { IsLoginService } from 'src/app/services/store.service';
+import { StoreService } from 'src/app/services/store/store.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,10 +17,10 @@ export class NavBarComponent implements OnInit {
   constructor(
     private cookie: CookieService,
     private router: Router,
-    private isLoginService: IsLoginService
+    private storeService: StoreService
     ) { }
     
-  isLogin: boolean = this.isLoginService.getIsLogin()
+  isLogin: boolean = this.storeService.getIsLogin()
 
   ngOnInit(): void {
     console.log(this.getUserDetails());   

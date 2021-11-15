@@ -3,7 +3,7 @@ import { Calendar } from 'src/app/model/calendar';
 import { UsersService } from 'src/app/services/users.service';
 import SignupRequestModel from 'src/app/model/users/SignupRequestModel';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import Swal from 'sweetalert2'
+import { StoreService } from 'src/app/services/store/store.service';
 
 @Component({
   selector: 'app-signup',
@@ -21,7 +21,8 @@ export class SignupComponent implements OnInit {
   @Output() changeIsOpen = new EventEmitter<boolean>()
 
   constructor(
-    private usersService: UsersService
+    private usersService: UsersService,
+    private storeService: StoreService
   ) { }
 
   ngOnInit(): void {
@@ -54,19 +55,11 @@ export class SignupComponent implements OnInit {
           console.log(data);
           this.signupform.reset()
           this.isClose = true
-          await this.alertSuccess()
+          await this.storeService.alertSuccess('Please login')
         })
       }
     } catch (error) {
       console.error(error); 
     }
-  }
-
-  alertSuccess(): void {
-    Swal.fire(
-      'Register Success',
-      'Please login',
-      'success'
-    )
   }
 }
