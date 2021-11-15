@@ -29,6 +29,8 @@ export class FeedComponent implements OnInit {
   public newIsActive: boolean = true
   public popularIsActive: boolean = false
   public groupIsActive: boolean = false
+  public showCreateGroup: boolean = false
+//======================
 
   constructor(
     private cookie: CookieService,
@@ -161,13 +163,24 @@ export class FeedComponent implements OnInit {
     this.showCreatePost = !this.showCreatePost 
   }
 
-  closeModalandChangeIsOpenSignIn($event:boolean): void {
+  onCreateGroup(): void {
+    this.showCreateGroup = !this.showCreateGroup 
+  }
+
+  closeModalandChangeValue($event:boolean): void {
     this.showCreatePost = $event
+    this.showCreateGroup = $event
   }
 
   async getPostFormModal($event:boolean) {
     if($event) {
       await this.getAllpost()
+    }
+  }
+
+  async getGroupFormModal($event:boolean) {
+    if($event) {
+      await this.getGroup()
     }
   }
 

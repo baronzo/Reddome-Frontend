@@ -32,6 +32,7 @@ import { GroupComponent } from './components/group/group.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { StoryComponent } from './components/story/story.component';
 import {RippleModule} from 'primeng/ripple';
+import { CreategroupComponent } from './components/creategroup/creategroup.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {RippleModule} from 'primeng/ripple';
     CreatepostComponent,
     GroupComponent,
     ChartComponent,
-    StoryComponent
+    StoryComponent,
+    CreategroupComponent
   ],
   imports: [
     BrowserModule,
