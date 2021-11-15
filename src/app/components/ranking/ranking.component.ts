@@ -50,5 +50,9 @@ export class RankingComponent implements OnInit {
   sortData(getMember: Array<GroupResponseModel>): Array<GroupResponseModel> {
     return getMember.sort((a, b) => (a.memberCount > b.memberCount ? -1 : 1))
   }
+
+  goToGroup(groupId:number) {
+    this.router.navigate(['/group', groupId])
+  }
   
 }
