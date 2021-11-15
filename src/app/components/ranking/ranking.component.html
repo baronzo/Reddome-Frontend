@@ -3,19 +3,17 @@
         <div class="name-ranking">
             Most Popular Group
         </div>
-        <img id="photo"
-            src={{allGroups[0].group_banner}}>
+        <img id="photo" src={{allGroups[0].group_banner}}>
     </div>
-    <div *ngFor="let group of allGroups; let i = index">
+    <div *ngFor="let group of allGroups | slice:0:5; let i=index">
         <div class="userFlex1">
             <div class="item1">
                 <div class="content1">
                     <h3>{{i+1}}. </h3>
                     <div class="userPicFlex">
-                        <img id="picUser" (click)="goToGroup(group.id)"
-                            src= {{group.group_profile}}>
+                        <img id="picUser" (click)="goToGroup(group.id)" src={{group.group_profile}}>
                     </div>
-                    <div class="userName" (click)="goToGroup(group.id)" >
+                    <div class="userName" (click)="goToGroup(group.id)">
                         <p>{{group.name}} </p>
                     </div>
                 </div>
