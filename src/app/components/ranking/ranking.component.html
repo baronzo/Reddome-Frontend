@@ -12,10 +12,10 @@
                 <div class="content1">
                     <h3>{{i+1}}. </h3>
                     <div class="userPicFlex">
-                        <img id="picUser"
+                        <img id="picUser" (click)="goToGroup(group.id)"
                             src= {{group.group_profile}}>
                     </div>
-                    <div class="userName">
+                    <div class="userName" (click)="goToGroup(group.id)" >
                         <p>{{group.name}} </p>
                     </div>
                 </div>
