@@ -104,6 +104,12 @@
                     justify-content: center;
                     padding-top: 10px;
                     z-index: 3;
+                    #linkEmbeded {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 3;
+                    }
                 }
             }
             #footer {
