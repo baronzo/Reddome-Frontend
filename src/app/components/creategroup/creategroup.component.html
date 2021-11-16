@@ -32,7 +32,7 @@
     <div id="postBox">
       <div id="postinBox">
         <div id="buttonBox">
-          <button class="post-button" (click)="onCreateCommunity()" [disabled]="!createGroup.name && !createGroup.detail">Create Community</button>
+          <button class="post-button" (click)="onCreateCommunity()" [disabled]="!createGroup.name || !createGroup.detail">Create Community</button>
         </div>
       </div>
     </div>

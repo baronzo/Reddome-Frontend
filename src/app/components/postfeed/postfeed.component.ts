@@ -19,7 +19,6 @@ export class PostfeedComponent implements OnInit {
   public videoId: string = ""
   public tempUrl: string
 
-  
   urlSafe!: SafeResourceUrl
   iframUrl: string = ""
 
@@ -32,6 +31,9 @@ export class PostfeedComponent implements OnInit {
               private primengConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit() {
     this.checkEmbed()
     this.htmlMassage = this.urlifyHtml(this.post.content)
   }
@@ -47,7 +49,6 @@ export class PostfeedComponent implements OnInit {
     this.urlify(this.post.content)
     this.videoId = this.getId(this.tempUrl)
     this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/"+this.videoId)
-    
   }
 
   urlify(text: string) {
@@ -86,6 +87,7 @@ export class PostfeedComponent implements OnInit {
   likePost() {
     this.post.isLiked = true
     this.post.likeCount += 1
+    console.log(this.post.isLiked);
     this.likePostApi()
   }
 
@@ -98,7 +100,8 @@ export class PostfeedComponent implements OnInit {
 
   async likePostApi() {
     try {
-      await this.postService.likePost(this.userId.id, this.post.id).subscribe(data => {})
+      await this.postService.likePost(this.userId.id, this.post.id).subscribe(data => {
+      })
     } catch (error) {
       console.error(error); 
     }
@@ -106,7 +109,8 @@ export class PostfeedComponent implements OnInit {
 
   async unlikePostApi() {
     try {
-      await this.postService.unlikePost(this.userId.id, this.post.id).subscribe(data => {})
+      await this.postService.unlikePost(this.userId.id, this.post.id).subscribe(data => {
+      })
     } catch (error) {
       console.error(error); 
     }

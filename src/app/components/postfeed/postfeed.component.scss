@@ -82,6 +82,7 @@
                         }
                     }
                 }
+                
                 #headerRight {
                     #joinButton {
                         .editPost {
@@ -98,6 +99,15 @@
                 #message {
                     z-index: 3;
                     font-size: 20px;
+                    word-wrap: break-word;
+                }
+                @media screen and (max-width: 500px) {
+                    #message {
+                        word-wrap: break-word;
+                        max-width: 300px;
+                        z-index: 3;
+                        font-size: 20px;
+                    }
                 }
                 #linkEmbed {
                     display: flex;
@@ -106,10 +116,23 @@
                     padding-top: 10px;
                     z-index: 3;
                     #linkEmbeded {
+                        width: max(80%, 100px);
+                        height: 315px;
+                        min-height: 200px;
                         display: flex;
                         align-items: center;
                         justify-content: center;
                         z-index: 3;
+                    }
+                    @media screen and (max-width: 600px) {
+                        #linkEmbeded {
+                            width: max(90%, 100px);
+                            height: 100px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            z-index: 3;
+                        }
                     }
                 }
             }
@@ -154,3 +177,4 @@
         }
     }
 }
+
