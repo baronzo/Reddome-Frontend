@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import CreateGroupModel from 'src/app/model/group/CreateGroupRequest';
 import { CreateGroupService } from 'src/app/services/creategroup.service';
+import { StoreService } from 'src/app/services/store/store.service';
 
 @Component({
   selector: 'app-creategroup',
@@ -11,10 +12,13 @@ export class CreategroupComponent implements OnInit {
   public isShow: boolean = true
   public changeParentToFalse: boolean = false
   public createGroup: CreateGroupModel = new CreateGroupModel
+  public groupProfile: string = ''
+  public groupBanner: string = ''
   @Output() changeCreateGroup = new EventEmitter<boolean>()
   @Output() createGroupSuccess = new EventEmitter<boolean>()
   constructor(
-    private createGroupService: CreateGroupService
+    private createGroupService: CreateGroupService,
+    private store: StoreService
   ) { }
 
   ngOnInit(): void {
@@ -25,7 +29,7 @@ export class CreategroupComponent implements OnInit {
     this.changeCreateGroup.emit(this.changeParentToFalse)
   }
 
-  onCreateCommunity() {
+   onCreateCommunity() {
     const body: CreateGroupModel = {
       name: this.createGroup.name,
       group_profile: this.createGroup.group_profile || 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.DDaN62F83emhIm7yqA3uQAHaFj%26pid%3DApi&f=1',
@@ -34,12 +38,13 @@ export class CreategroupComponent implements OnInit {
     }
     console.log(body)
     try {
-      this.createGroupService.createGroup(body).subscribe((data) => {
+      this.createGroupService.createGroup(body).subscribe( async (data) => {
         console.log(data);
         this.isShow = false
         this.changeCreateGroup.emit(this.changeParentToFalse)
         this.createGroupSuccess.emit(true)
-        // window.location.href = '/feed'
+        await this.store.alertSuccess('create community success')
+        window.location.href = '/feed'
       })
     } catch (error) {
       console.error(error)
@@ -54,6 +59,7 @@ export class CreategroupComponent implements OnInit {
     reader.onload = ev => {
       this.createGroupService.uploadImage(ev.target?.result.toString().split(',')[1]).subscribe((data: any) => {
         console.log(data)
+        this.groupProfile = data.data.image.filename
         this.createGroup.group_profile = data.data.display_url
       })
     }
@@ -67,6 +73,7 @@ export class CreategroupComponent implements OnInit {
     reader.onload = ev => {
       this.createGroupService.uploadImage(ev.target?.result.toString().split(',')[1]).subscribe((data: any) => {
         console.log(data)
+        this.groupBanner = data.data.image.filename
         this.createGroup.group_banner = data.data.display_url
       })
     }
