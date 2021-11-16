@@ -4,6 +4,7 @@ import { UsersService } from 'src/app/services/users.service';
 import SignupRequestModel from 'src/app/model/users/SignupRequestModel';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StoreService } from 'src/app/services/store/store.service';
+import { CreateGroupService } from 'src/app/services/creategroup.service';
 
 @Component({
   selector: 'app-signup',
@@ -18,11 +19,13 @@ export class SignupComponent implements OnInit {
   changeParentToFalse: boolean = false
   signupform!: FormGroup
   default_picture: string = 'https://pic.onlinewebfonts.com/svg/img_264570.png'
+  profile: string = ''
   @Output() changeIsOpen = new EventEmitter<boolean>()
 
   constructor(
     private usersService: UsersService,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private createGroupService: CreateGroupService
   ) { }
 
   ngOnInit(): void {
@@ -46,7 +49,7 @@ export class SignupComponent implements OnInit {
       password: this.signup.password,
       email: this.signup.email,
       birth_date: this.value,
-      profile_picture: this.default_picture
+      profile_picture: this.signup.profile_picture || this.default_picture
     }
     console.log(body);
     try {
@@ -60,6 +63,20 @@ export class SignupComponent implements OnInit {
       }
     } catch (error) {
       console.error(error); 
+    }
+  }
+
+  async uploadProfile(imageInput: Event) {
+    const target = imageInput.target as HTMLInputElement
+    const image: File = target.files[0] as File
+    let reader: FileReader = new FileReader()
+    reader.readAsDataURL(image)
+    reader.onload = ev => {
+      this.createGroupService.uploadImage(ev.target?.result.toString().split(',')[1]).subscribe((data: any) => {
+        console.log(data)
+        this.profile = data.data.image.filename
+        this.signup.profile_picture = data.data.display_url
+      })
     }
   }
 }

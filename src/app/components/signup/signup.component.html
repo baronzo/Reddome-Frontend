@@ -27,6 +27,11 @@
           <p-calendar formControlName="birth_date" inputId="basic" [(ngModel)]="value" [showIcon]="true" placeholder="Date of Birth"></p-calendar>
         </div>
       </div>
+      <div class="input-box">
+        <input type="file" accept="image/*" id="actual-btn" (change)="uploadProfile($event)" hidden>
+        <label class="choose-file" for="actual-btn">Choose File</label>
+        <span id="file-chosen">Profile Picture : {{profile}}</span>
+      </div>
     </form>
     <div id="buttonSignUp" (click)="createAccount()">
       <div class="button-click">Create your account</div>
