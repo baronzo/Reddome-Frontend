@@ -51,6 +51,7 @@ export class FeedComponent implements OnInit {
   toggleButton(activeButton: string) {
     switch (activeButton) {
       case "new":
+        this.getAllpost()
         this.newIsActive = true
         this.popularIsActive = false
         this.groupIsActive = false

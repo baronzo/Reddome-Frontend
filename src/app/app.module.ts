@@ -33,7 +33,7 @@ import { ChartComponent } from './components/chart/chart.component';
 import { StoryComponent } from './components/story/story.component';
 import {RippleModule} from 'primeng/ripple';
 import { CreategroupComponent } from './components/creategroup/creategroup.component';
-import {FileUploadModule} from 'primeng/fileupload';
+import { FileUploadModule } from 'primeng/fileupload';
 
 
 @NgModule({

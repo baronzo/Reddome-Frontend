@@ -14,4 +14,5 @@ export class CreateGroupService {
   createGroup(body: CreateGroupModel) {
     return this.http.post(`${this.api_path}/creategroup`, body)
   }
+
 }

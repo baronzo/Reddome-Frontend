@@ -8,21 +8,27 @@ import { CreateGroupService } from 'src/app/services/creategroup.service';
   styleUrls: ['./creategroup.component.scss']
 })
 export class CreategroupComponent implements OnInit {
+
   public isShow: boolean = true
   public changeParentToFalse: boolean = false
   public createGroup: CreateGroupModel = new CreateGroupModel
   @Output() changeCreateGroup = new EventEmitter<boolean>()
   @Output() createGroupSuccess = new EventEmitter<boolean>()
   constructor(
-    private createGroupService: CreateGroupService
+    private createGroupService: CreateGroupService,
   ) { }
 
   ngOnInit(): void {
   }
 
+
   onChange(): void {
     this.isShow = false
     this.changeCreateGroup.emit(this.changeParentToFalse)
+  }
+
+  onFileSelected(event: Event) {
+    console.log(event);
   }
 
   onCreateCommunity() {
