@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {ResultResponse} from "../model/ResultResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class GroupService {
 
   getGroupById(userId: number, groupId: number) {
     return this.http.get(`${this.api_path}/getgroupbyid?userId=${userId}&groupId=${groupId}`)
+  }
+
+  deleteGroup(id: number) {
+    return this.http.delete<ResultResponse>(`${this.api_path}/deletegroup?id=${id}`)
   }
 
   joinGroup(userId: number, groupId: number) {
