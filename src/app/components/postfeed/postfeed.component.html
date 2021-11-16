@@ -56,10 +56,11 @@
         </div>
         <div id="body">
             <div id="message">
-                {{post.content}}
+                <div [innerHTML]="htmlMassage"></div>
             </div>
-            <div id="linkEmbed" *ngIf="false">
-                <iframe width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+            <div *ngIf="videoId">
+            <div id="linkEmbed">
+                <iframe width="560" height="315" [src]='urlSafe' frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     </div>

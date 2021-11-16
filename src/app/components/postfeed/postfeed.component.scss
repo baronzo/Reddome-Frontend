@@ -91,10 +91,19 @@
                 }
             }
             #body {
+                display: flex;
+                flex-flow: column;
                 padding-bottom: 10px;
                 #message {
-                    //font-weight: bold;
+                    z-index: 3;
                     font-size: 20px;
+                }
+                #linkEmbed {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding-top: 10px;
+                    z-index: 3;
                 }
             }
             #footer {

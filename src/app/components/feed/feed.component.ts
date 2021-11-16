@@ -45,6 +45,7 @@ export class FeedComponent implements OnInit {
     ngOnInit(): void {
       this.isLoading = true
       this.getAllpost()
+      this.getGroup()
     }
 
   toggleButton(activeButton: string) {
@@ -62,6 +63,8 @@ export class FeedComponent implements OnInit {
         this.groupIsActive = false
         break;
       case "group":
+        console.log(this.allGroups);
+        
         this.newIsActive = false
         this.popularIsActive = false
         this.groupIsActive = true
@@ -95,12 +98,14 @@ export class FeedComponent implements OnInit {
     catch (error) {
       console.error(error)
     }
-}
+  }
 
   async getGroup(): Promise<void> {
     try {
         this.miniLoading = true
         await this.rankingService.getAllGroup(this.userId.id).subscribe(async data => {
+          console.log("aaaaaaa", data);
+          
         this.allGroups = data as  Array<GroupResponseModel>
         this.miniLoading = false
         })
@@ -134,6 +139,8 @@ export class FeedComponent implements OnInit {
     try {
         const response = await this.postService.getPostsByUserId(this.userId.id).subscribe(data => {
           this.allpost = data as ResponsePostByIdModel[]
+          console.log(data);
+          
           this.miniLoading = false
         }) 
     } catch (error) {
