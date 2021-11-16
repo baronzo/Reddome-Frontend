@@ -1,69 +1,70 @@
 <div id="postfeed" >
-<div id="allContent">
-    <div *ngIf="post.isLiked; else elseBlock">
-        <div class="postLike">
-            <div id="logoVoteEna" (click)="unlikePost()">
-                <i class="fas fa-arrow-up"></i>
-            </div>
-            <div id="countVoteEna">
-                {{post.likeCount}}
-            </div>
-        </div>
-    </div>
-    <ng-template #elseBlock>
-        <div class="postLike">
-            <div id="logoVoteDis" (click)="likePost()">
-                <i class="fas fa-arrow-up"></i>
-            </div>
-            <div id="countVoteDis">
-                {{post.likeCount}}
-            </div>
-        </div>
-    </ng-template>
-    <div id="postfeedContent">
-        <div id="header">
-            <div id="headerLeft">
-                <div id="profileGroup">
-                    <img id="imgGroup" src={{post.group_id.group_profile}} (click)="goToGroup(post.group_id.id)" alt="">
-                </div>
-                <div id="nameGroup" (click)="goToGroup(post.group_id.id)">{{post.group_id.name}}</div>
-                <div id="postby">
-                    <div id="postbyTxt">• post by </div>
-                    <div id="postbyUser">{{post.owner_id.username}}</div>
-                </div>
-            </div>
-            <div id="headerRight">
-                <div id="joinButton">
-                    <button mat-icon-button [matMenuTriggerFor]="menu" class="editPost">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </button>
-                    <mat-menu #menu="matMenu" xPosition="after">
-                    <div *ngIf="userId.id === post.owner_id.id; else cantDelete">
-                        <button mat-menu-item (click)="Deletepost()">
-                            <mat-icon>delete_outline</mat-icon>
-                            <span>Delete post</span>
-                        </button>
-                    </div>
-                    <ng-template #cantDelete>
-                        <button mat-menu-item disabled>
-                            <mat-icon>delete_outline</mat-icon>
-                            <span>Delete post</span>
-                        </button>
-                    </ng-template>
-                    </mat-menu>
-                </div>
-            </div>
-        </div>
-        <div id="body">
-            <div id="message">
-                <div [innerHTML]="htmlMassage"></div>
-            </div>
-            <div *ngIf="videoId">
-            <div id="linkEmbed">
-                <iframe id="linkEmbeded" width="560" height="315" [src]='urlSafe' frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-</div>
-    <div id="dummyOpen" (click)="goToPost(post.id)" ></div>
+  <div id="allContent">
+      <div *ngIf="post.isLiked; else elseBlock">
+          <div class="postLike">
+              <div id="logoVoteEna" (click)="unlikePost()">
+                  <i class="fas fa-arrow-up"></i>
+              </div>
+              <div id="countVoteEna">
+                  {{post.likeCount}}
+              </div>
+          </div>
+      </div>
+      <ng-template #elseBlock>
+          <div class="postLike">
+              <div id="logoVoteDis" (click)="likePost()">
+                  <i class="fas fa-arrow-up"></i>
+              </div>
+              <div id="countVoteDis">
+                  {{post.likeCount}}
+              </div>
+          </div>
+      </ng-template>
+      <div id="postfeedContent">
+          <div id="header">
+              <div id="headerLeft">
+                  <div id="profileGroup">
+                      <img id="imgGroup" src={{post.group_id.group_profile}} (click)="goToGroup(post.group_id.id)" alt="">
+                  </div>
+                  <div id="nameGroup" (click)="goToGroup(post.group_id.id)">{{post.group_id.name}}</div>
+                  <div id="postby">
+                      <div id="postbyTxt">• post by </div>
+                      <div id="postbyUser">{{post.owner_id.username}}</div>
+                  </div>
+              </div>
+              <div id="headerRight">
+                  <div id="joinButton">
+                      <button mat-icon-button [matMenuTriggerFor]="menu" class="editPost">
+                          <i class="fas fa-ellipsis-h"></i>
+                      </button>
+                      <mat-menu #menu="matMenu" xPosition="after">
+                      <div *ngIf="userId.id === post.owner_id.id; else cantDelete">
+                          <button mat-menu-item style="outline: none" (click)="Deletepost()">
+                              <mat-icon>delete_outline</mat-icon>
+                              <span>Delete post</span>
+                          </button>
+                      </div>
+                      <ng-template #cantDelete>
+                          <button mat-menu-item disabled>
+                              <mat-icon>delete_outline</mat-icon>
+                              <span>Delete post</span>
+                          </button>
+                      </ng-template>
+                      </mat-menu>
+                  </div>
+              </div>
+          </div>
+          <div id="body">
+              <div id="message">
+                  <div [innerHTML]="htmlMassage"></div>
+              </div>
+              <div *ngIf="videoId">
+              <div id="linkEmbed">
+                  <iframe id="linkEmbeded" width="560" height="315" [src]='urlSafe' frameborder="0" allowfullscreen></iframe>
+              </div>
+          </div>
+      </div>
+  </div>
+      <div id="dummyOpen" (click)="goToPost(post.id)" ></div>
+  </div>
 </div>
