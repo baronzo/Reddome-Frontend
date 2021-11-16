@@ -20,4 +20,9 @@ export class UsersService {
   login(body:SigninRequestModel) {
     return this.http.post(`${this.api_path}/login`, body)
   }
+
+  getLogin(userId:Number) {
+    return this.http.get(`${this.api_path}/getuserbyid?id=${userId}`)
+  }
+
 }

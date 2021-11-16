@@ -9,7 +9,7 @@
     <div class="rightNav" *ngIf="isLogin; else loggedOut">
       <div class="LogoutButton"  (click)="onClickLogout()">Logout</div>
       <div class="userDetail">
-        <div class="profilePic"></div>
+        <img class="profilePic" src={{userDetail.profile_picture}}>
         <div class="userName">{{this.getUserDetails().username}}</div>
       </div>
     </div>
