@@ -12,16 +12,15 @@ export class ChartComponent implements OnInit {
   constructor(private rankingService: RankingService) { }
   
   ngOnInit(): void {
-    this.getGroup()
-    
-    
+    this.getGroup() 
   }
 
   public allGroups: Array<GroupResponseModel> = new Array<GroupResponseModel>()
 
   async getGroup(): Promise<void> {
     try {
-        await this.rankingService.getAllGroup(1).subscribe(async data => {
+        let userId = window.localStorage.getItem('userId')
+        await this.rankingService.getAllGroup(JSON.parse(userId).id).subscribe(async data => {
         this.allGroups = data as  Array<GroupResponseModel>
         this.testchart()
         })
