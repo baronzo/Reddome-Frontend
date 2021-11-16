@@ -53,6 +53,7 @@ export class CreategroupComponent implements OnInit {
     reader.readAsDataURL(image)
     reader.onload = ev => {
       this.createGroupService.uploadImage(ev.target?.result.toString().split(',')[1]).subscribe((data: any) => {
+        console.log(data)
         this.createGroup.group_profile = data.data.display_url
       })
     }
@@ -65,6 +66,7 @@ export class CreategroupComponent implements OnInit {
     reader.readAsDataURL(image)
     reader.onload = ev => {
       this.createGroupService.uploadImage(ev.target?.result.toString().split(',')[1]).subscribe((data: any) => {
+        console.log(data)
         this.createGroup.group_banner = data.data.display_url
       })
     }
