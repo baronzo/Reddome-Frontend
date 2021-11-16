@@ -15,10 +15,22 @@
     <div id="postBox">
       <div id="postinBox">
         <div id="areaText">
-          <textarea class="text-area" placeholder="คุณกำลังคิดอะไรอยู่ อุจิว" [(ngModel)]='createPost.content'></textarea>
+          <div id="inputText">
+          <mat-form-field class="example-full-width" style="width: 100%;" appearance="fill">
+              <mat-label>คุณกำลังคิดอะไรอยู่ อุจิว</mat-label>
+              <!-- <textarea matInput placeholder="What are you comment ?" [(ngModel)]="comment"></textarea> -->
+              <textarea style="height: 150px" matInput placeholder="คุณกำลังคิดอะไรอยู่ อุจิว" [(ngModel)]='createPost.content'></textarea>
+          </mat-form-field>
+          </div>
+          <!-- <textarea class="text-area" placeholder="คุณกำลังคิดอะไรอยู่ อุจิว" [(ngModel)]='createPost.content'></textarea> -->
         </div>
         <div id="buttonBox">
-          <button class="post-button" (click)="submitPost()" [disabled]="!createPost.content">Post</button>
+          <div *ngIf="createPost.content && groupId; else disPost">
+            <button class="post-button" (click)="submitPost()">Post</button>
+          </div>
+          <ng-template #disPost>
+            <button class="post-button" disabled>Post</button>
+          </ng-template>
         </div>
       </div>
     </div>

@@ -30,7 +30,11 @@ import {MatInputModule } from '@angular/material/input';
 import { CreatepostComponent } from './components/createpost/createpost.component';
 import { GroupComponent } from './components/group/group.component';
 import { ChartComponent } from './components/chart/chart.component';
+import { StoryComponent } from './components/story/story.component';
+import {RippleModule} from 'primeng/ripple';
 import { CreategroupComponent } from './components/creategroup/creategroup.component';
+import { FileUploadModule } from 'primeng/fileupload';
+
 
 @NgModule({
   declarations: [
@@ -48,6 +52,7 @@ import { CreategroupComponent } from './components/creategroup/creategroup.compo
     CreatepostComponent,
     GroupComponent,
     ChartComponent,
+    StoryComponent,
     CreategroupComponent
   ],
   imports: [
@@ -67,7 +72,9 @@ import { CreategroupComponent } from './components/creategroup/creategroup.compo
     ProgressSpinnerModule,
     DropdownModule,
     ChartModule,
-    PanelModule
+    RippleModule,
+    PanelModule,
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]

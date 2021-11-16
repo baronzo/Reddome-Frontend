@@ -7,6 +7,7 @@ class ResponsePostByIdModel {
     public owner_id: ownerDetail
     public updated_at: string = Date()
     public likeCount: number = Number()
+    public link: string = String()
 }
 class groupDetail {
     public group_profile: string = String()

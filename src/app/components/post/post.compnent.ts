@@ -55,7 +55,7 @@ export class PostComponent implements OnInit {
     console.log('postId = ', this.postId);
   }
 
-   deleteComment(id:number): void {
+  deleteComment(id:number): void {
     try {
       this.loading = true
         this.commentService.deleteComment(id).subscribe( async data => {

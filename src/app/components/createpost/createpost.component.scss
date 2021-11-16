@@ -59,12 +59,14 @@
           margin-top: 20px;
           margin-left: 25px;
           width: 90%;
-          height: 200px;
-          .text-area {
+          #inputText{
             width: 100%;
-            border: 1px solid #c4c4c4;
-            font-size: 1.2rem;
-            padding: 20px;
+            .text-area {
+              width: 100%;
+              border: 1px solid #c4c4c4;
+              font-size: 1.2rem;
+              padding: 20px;
+            }
           }
         }
         #buttonBox {
@@ -76,9 +78,16 @@
             border: none;
             width: 100px;
             height: 30px;
-            background-color: gray;
+            background-color: #99D4D3;
+            color: white;
+            &:hover {
+              cursor: pointer;
+            }
             &:disabled {
               background-color: rgb(180, 178, 178);
+              &:hover {
+                cursor: no-drop;
+              }
             }
           }
         }

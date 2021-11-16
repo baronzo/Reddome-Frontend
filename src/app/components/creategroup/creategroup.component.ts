@@ -9,6 +9,7 @@ import { StoreService } from 'src/app/services/store/store.service';
   styleUrls: ['./creategroup.component.scss']
 })
 export class CreategroupComponent implements OnInit {
+
   public isShow: boolean = true
   public changeParentToFalse: boolean = false
   public createGroup: CreateGroupModel = new CreateGroupModel
@@ -24,12 +25,17 @@ export class CreategroupComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   onChange(): void {
     this.isShow = false
     this.changeCreateGroup.emit(this.changeParentToFalse)
   }
 
-   onCreateCommunity() {
+  onFileSelected(event: Event) {
+    console.log(event);
+  }
+
+  onCreateCommunity() {
     const body: CreateGroupModel = {
       name: this.createGroup.name,
       group_profile: this.createGroup.group_profile || 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.DDaN62F83emhIm7yqA3uQAHaFj%26pid%3DApi&f=1',
