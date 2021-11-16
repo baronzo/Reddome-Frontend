@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import GroupResponseModel from 'src/app/model/group/groupResponseModel';
 import CreatePostRequestModel from 'src/app/model/postModel/CreatePostRequestModel';
 import ResponsePostByIdModel from 'src/app/model/postModel/ResponsePostById';
@@ -20,6 +20,7 @@ export class CreatepostComponent implements OnInit {
   public groupId: number = 0
   @Output() changeCreatePost = new EventEmitter<boolean>()
   @Output() postSuccess = new EventEmitter<boolean>()
+  @Input() groupIdFromGroupPage: number
   constructor(
     private createPostService: CreatePostService,
     private rankingService: RankingService
@@ -50,7 +51,7 @@ export class CreatepostComponent implements OnInit {
         console.log(this.allGroups)
         })
     } catch (error) {
-      console.error(error); 
+      console.error(error);
     }
   }
 
@@ -63,7 +64,7 @@ export class CreatepostComponent implements OnInit {
     const body: CreatePostRequestModel = {
       content: this.createPost.content,
       owner_id: JSON.parse(userId).id,
-      group_id: this.groupId
+      group_id: this.groupIdFromGroupPage != 0? this.groupIdFromGroupPage : this.groupId
     }
     console.log(body)
     try {

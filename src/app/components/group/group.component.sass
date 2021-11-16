@@ -87,12 +87,30 @@
         margin-left: 0.75em
         outline: none
   .groupFeed
+    #createPost
+      width: 700px
+      display: flex
+      justify-content: end
+      #createPostButton
+        margin-top: 1rem
+        margin-bottom: 0.5rem
+        font-weight: bold
+        height: 30px
+        width: 75px
+        border-radius: 5px
+        border: none
+        color: white
+        background-color: #455b5b
+        &:hover
+          cursor: pointer
+          background-color: #5c7575
+          &:active
+            background-color: #2e3f3f
     display: flex
     flex-flow: column
     align-items: center
     .post
       width: min(700px, 80%)
-
 #loading
   position: absolute
   width: 100%
