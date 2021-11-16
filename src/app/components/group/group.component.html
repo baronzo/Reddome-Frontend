@@ -23,6 +23,15 @@
 <!--        <button [ngClass]="isMember == true ? 'joinButton' : 'leaveButton'">{{isMember}}</button>-->
         <button class="{{!isMember ? 'joinButton' : 'leaveButton'}}">{{isMember? 'Joined' : 'Join'}}</button>
       </div>
+      <button mat-icon-button [matMenuTriggerFor]="menu" id="option" >
+        <i class="fas fa-ellipsis-h"></i>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="after">
+        <button mat-menu-item (click)="deleteGroup()">
+          <mat-icon>delete_outline</mat-icon>
+          <span>Delete Group</span>
+        </button>
+      </mat-menu>
     </div>
   </div>
   <div *ngIf="this.isMember" class="groupFeed">
