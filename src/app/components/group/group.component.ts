@@ -23,6 +23,7 @@ export class GroupComponent implements OnInit {
   private sub: any;
   public loading: boolean = false
   public miniloading: boolean = false
+  public showCreatePost: boolean = false
   constructor(private groupService: GroupService,
               private postService: PostService,
               private route: ActivatedRoute,
@@ -41,6 +42,21 @@ export class GroupComponent implements OnInit {
       this.groupId = +params['groupId'];
     })
     console.log('groupId = ', this.groupId);
+  }
+
+  closeModalAndChangeValue($event:boolean): void {
+    this.showCreatePost = $event
+  }
+
+  async getPostFormModal($event:boolean) {
+    if($event) {
+      await this.getGroupById()
+    }
+  }
+
+  onCreatePost(): void {
+    this.showCreatePost = !this.showCreatePost
+    console.log(this.showCreatePost)
   }
 
   ngOnDestroy() {

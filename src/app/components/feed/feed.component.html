@@ -2,7 +2,7 @@
   <p-progressSpinner></p-progressSpinner>
 </div>
 <div *ngIf='showCreatePost'>
-  <app-createpost (changeCreatePost)="closeModalandChangeValue($event)" (postSuccess)="getPostFormModal($event)"></app-createpost>
+  <app-createpost [groupIdFromGroupPage]="0" (changeCreatePost)="closeModalandChangeValue($event)" (postSuccess)="getPostFormModal($event)"></app-createpost>
 </div>
 <div *ngIf='showCreateGroup'>
   <app-creategroup (changeCreateGroup)="closeModalandChangeValue($event)"></app-creategroup>
@@ -19,7 +19,7 @@
       <div id="filterContent">
         <div id="txtFilter">
           Menus
-        </div>   
+        </div>
         <div id="filterTab">
             <div id="filterLeft">
               <div id="{{newIsActive ? 'newButton' : 'newButtonDis'}}" (click)="toggleButton('new')"><i class="fas fa-sun logo"></i> <div class="txtFilter">Newest</div></div>

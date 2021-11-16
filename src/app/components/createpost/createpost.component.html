@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="line"></div>
-    <div id="selectCommunity">
+    <div *ngIf="groupIdFromGroupPage == 0" id="selectCommunity">
       <p-dropdown placeholder="Choose a community" [options]="option" (onChange)="getGroupId($event)"></p-dropdown>
     </div>
     <div id="postBox">

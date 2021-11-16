@@ -1,45 +1,51 @@
 <div id="loading" *ngIf = "loading; else notLoading">
   <p-progressSpinner></p-progressSpinner>
 </div>
+<div *ngIf='showCreatePost'>
+  <app-createpost [groupIdFromGroupPage]="this.groupId" (changeCreatePost)="closeModalAndChangeValue($event)" (postSuccess)="getPostFormModal($event)"></app-createpost>
+</div>
 <ng-template #notLoading>
   <div id="miniloading" *ngIf = "miniloading">
     <p-progressSpinner></p-progressSpinner>
   </div>
-<div id="mainGroup">
-  <div id="groupInfo">
-    <img id="groupBanner" alt="" src={{group.group_banner}}>
-    <div id="groupDescription">
-      <div id="groupProfilePic">
-        <img src={{group.group_profile}} alt="" id="pic">
-      </div>
-      <div id="groupName">
-        <div id="name">{{group.name}}</div>
-        <div id="nameBody">
-          <div id="count">{{group.memberCount}}</div>
-          <div id="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
-          <div id="detail">{{group.detail}}</div>
+  <div id="mainGroup">
+    <div id="groupInfo">
+      <img id="groupBanner" alt="" src={{group.group_banner}}>
+      <div id="groupDescription">
+        <div id="groupProfilePic">
+          <img src={{group.group_profile}} alt="" id="pic">
         </div>
-      </div>
-      <div id="groupButton" (click)="joinOrLeaveGroup()">
-<!--        <button [ngClass]="isMember == true ? 'joinButton' : 'leaveButton'">{{isMember}}</button>-->
-        <button class="{{!isMember ? 'joinButton' : 'leaveButton'}}">{{isMember? 'Joined' : 'Join'}}</button>
-      </div>
-      <button mat-icon-button [matMenuTriggerFor]="menu" id="option" >
-        <i class="fas fa-ellipsis-h"></i>
-      </button>
-      <mat-menu #menu="matMenu" xPosition="after">
-        <button mat-menu-item style="outline: none" (click)="deleteGroup()">
-          <mat-icon>delete_outline</mat-icon>
-          <span>Delete Group</span>
+        <div id="groupName">
+          <div id="name">{{group.name}}</div>
+          <div id="nameBody">
+            <div id="count">{{group.memberCount}}</div>
+            <div id="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+            <div id="detail">{{group.detail}}</div>
+          </div>
+        </div>
+        <div id="groupButton" (click)="joinOrLeaveGroup()">
+  <!--        <button [ngClass]="isMember == true ? 'joinButton' : 'leaveButton'">{{isMember}}</button>-->
+          <button class="{{!isMember ? 'joinButton' : 'leaveButton'}}">{{isMember? 'Joined' : 'Join'}}</button>
+        </div>
+        <button mat-icon-button [matMenuTriggerFor]="menu" id="option" >
+          <i class="fas fa-ellipsis-h"></i>
         </button>
-      </mat-menu>
+        <mat-menu #menu="matMenu" xPosition="after">
+          <button mat-menu-item style="outline: none" (click)="deleteGroup()">
+            <mat-icon>delete_outline</mat-icon>
+            <span>Delete Group</span>
+          </button>
+        </mat-menu>
+      </div>
     </div>
-  </div>
-  <div *ngIf="this.isMember" class="groupFeed">
-    <div class="post" *ngFor="let post of postList">
-      <app-postfeed [post]="post" (postChange)="deletePost($event)"></app-postfeed>
+    <div *ngIf="this.isMember" class="groupFeed">
+      <div id="createPost">
+        <button (click)="onCreatePost()" id="createPostButton"><i class="fas fa-plus" style="font-size: 0.75rem" ></i> Post</button>
+      </div>
+      <div class="post" *ngFor="let post of postList">
+        <app-postfeed [post]="post" (postChange)="deletePost($event)"></app-postfeed>
+      </div>
     </div>
+    <ng-template class="groupFeed"></ng-template>
   </div>
-  <ng-template class="groupFeed"></ng-template>
-</div>
 </ng-template>
