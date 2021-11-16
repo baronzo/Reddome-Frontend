@@ -36,13 +36,16 @@ export class CreatepostComponent implements OnInit {
 
   async getGroup(): Promise<void> {
     try {
-        await this.rankingService.getAllGroup(1).subscribe(data => {
+        let userId = window.localStorage.getItem('userId')
+        await this.rankingService.getAllGroup(JSON.parse(userId).id).subscribe(data => {
         this.allGroups = data as  Array<GroupResponseModel>
         this.allGroups.map((group) => {
-          this.option.push({
-            label: group.name,
-            value: group.id
-          })
+          if(group.isMember) {
+            this.option.push({
+              label: group.name,
+              value: group.id
+            })
+          }
         })
         console.log(this.allGroups)
         })
