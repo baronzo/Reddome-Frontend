@@ -15,4 +15,10 @@ export class CreateGroupService {
     return this.http.post(`${this.api_path}/creategroup`, body)
   }
 
+  uploadImage(imageBase64: string) {
+    const url: string = 'https://api.imgbb.com/1/upload?expiration=604800&key=a95920be3353326a435d406572028a6c'
+    const formData: FormData = new FormData()
+    formData.append('image', imageBase64)
+    return this.http.post(url, formData)
+  }
 }

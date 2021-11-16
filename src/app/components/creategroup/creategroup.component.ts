@@ -34,8 +34,8 @@ export class CreategroupComponent implements OnInit {
   onCreateCommunity() {
     const body: CreateGroupModel = {
       name: this.createGroup.name,
-      group_profile: 'https://www.pctechnologies.net/images/easyblog_shared/July_2018/7-4-18/b2ap3_large_totw_network_profile_400.jpg',
-      group_banner: 'https://img.freepik.com/free-vector/stylish-glowing-digital-red-lines-banner_1017-23964.jpg?size=626&ext=jpg',
+      group_profile: this.createGroup.group_profile || 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.DDaN62F83emhIm7yqA3uQAHaFj%26pid%3DApi&f=1',
+      group_banner: this.createGroup.group_banner || 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.50XnwGKt-l0NnATeTv9ddwHaCx%26pid%3DApi&f=1',
       detail: this.createGroup.detail
     }
     console.log(body)
@@ -45,9 +45,48 @@ export class CreategroupComponent implements OnInit {
         this.isShow = false
         this.changeCreateGroup.emit(this.changeParentToFalse)
         this.createGroupSuccess.emit(true)
-      })     
+        // window.location.href = '/feed'
+      })
     } catch (error) {
       console.error(error)
     }
   }
+
+  async uploadGroupProfile(imageInput: Event) {
+    const target = imageInput.target as HTMLInputElement
+    const image: File = target.files[0] as File
+    let reader: FileReader = new FileReader()
+    reader.readAsDataURL(image)
+    reader.onload = ev => {
+      this.createGroupService.uploadImage(ev.target?.result.toString().split(',')[1]).subscribe((data: any) => {
+        console.log(data)
+        this.createGroup.group_profile = data.data.display_url
+      })
+    }
+  }
+
+  async uploadGroupBanner(imageInput: Event) {
+    const target = imageInput.target as HTMLInputElement
+    const image: File = target.files[0] as File
+    let reader: FileReader = new FileReader()
+    reader.readAsDataURL(image)
+    reader.onload = ev => {
+      this.createGroupService.uploadImage(ev.target?.result.toString().split(',')[1]).subscribe((data: any) => {
+        console.log(data)
+        this.createGroup.group_banner = data.data.display_url
+      })
+    }
+  }
+
+  // convertImageToBase64(imageInput: Event): string {
+  //   const target = imageInput.target as HTMLInputElement
+  //   const image: File = target.files[0] as File
+  //   let result: string
+  //   let reader: FileReader = new FileReader()
+  //   reader.readAsDataURL(image)
+  //   reader.onload = ev => {
+  //     result = ev.target?.result.toString().split(',')[1]
+  //   }
+  //   return result;
+  // }
 }

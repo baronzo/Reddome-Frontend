@@ -5,9 +5,8 @@ import SigninResponseModel from 'src/app/model/users/SigninResponseModel';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import Swal from 'sweetalert2'
 import { ResultResponse } from 'src/app/model/ResultResponse';
-import { IsLoginService } from 'src/app/services/store.service';
+import { StoreService } from 'src/app/services/store/store.service';
 
 @Component({
   selector: 'app-signin',
@@ -26,10 +25,10 @@ export class SigninComponent implements OnInit {
     private usersService: UsersService,
     private router: Router,
     private cookie: CookieService,
-    private isLoginService: IsLoginService
+    private storeService: StoreService
     ) { }
     
-  isLogin: boolean = this.isLoginService.getIsLogin()
+  isLogin: boolean = this.storeService.getIsLogin()
 
   ngOnInit(): void {
     this.signinform = new FormGroup({
@@ -58,9 +57,9 @@ export class SigninComponent implements OnInit {
         await this.usersService.login(body).subscribe((data) => { 
         let result = data as ResultResponse
         if(result.status === 'fail') {
-          this.alertError()
+          this.storeService.alertError('Username or password incorrect')
         } else {
-          this.isLoginService.setLogin(body)
+          this.storeService.setLogin(body)
           this.signinform.reset()
           this.isClose = true
           window.location.href = '/feed'
@@ -72,12 +71,4 @@ export class SigninComponent implements OnInit {
       console.error(error);    
     }
   }
-
-  alertError(): void {
-    Swal.fire(
-      'Login Error',
-      'Username or password incorrect',
-      'error'
-    )
-  } 
 }

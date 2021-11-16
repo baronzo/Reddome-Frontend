@@ -45,7 +45,6 @@ export class FeedComponent implements OnInit {
     ngOnInit(): void {
       this.isLoading = true
       this.getAllpost()
-      this.getGroup()
     }
 
   toggleButton(activeButton: string) {
@@ -176,12 +175,6 @@ export class FeedComponent implements OnInit {
   async getPostFormModal($event:boolean) {
     if($event) {
       await this.getAllpost()
-    }
-  }
-
-  async getGroupFormModal($event:boolean) {
-    if($event) {
-      await this.getGroup()
     }
   }
 
