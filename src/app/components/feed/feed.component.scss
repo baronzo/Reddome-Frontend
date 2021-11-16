@@ -65,6 +65,7 @@ $colorTxt: rgb(51, 51, 51);
                     }
                 #filterRight {
                     .menuPlus {
+                        outline: none;
                         font-size: 20px;
                         color: rgb(54, 54, 54);
                         &:hover {
@@ -339,8 +340,8 @@ $colorTxt: rgb(51, 51, 51);
                             }
                         }
                     }
-                }    
-                
+                }
+
         }
         #ranking {
             display: none;
