@@ -9,12 +9,12 @@
     <form [formGroup]="signinform">
       <div class="input-box">
         <i class="fas fa-user input-icon" aria-hidden="true"></i>
-        <input formControlName="username" class="input-text-box" type="text" placeholder="Username" [(ngModel)]="signin.username">
+        <input (keyup.enter)="login()"  formControlName="username" class="input-text-box" type="text" placeholder="Username" [(ngModel)]="signin.username">
       </div>
       <small *ngIf="signinform.get('username').invalid && signinform.get('username').touched" class="invalid">Username is Required</small>
       <div class="input-box">
         <i class="fas fa-lock input-icon" aria-hidden="true"></i>
-        <input formControlName="password" class="input-text-box" type="password" placeholder="Password" [(ngModel)]="signin.password">
+        <input (keyup.enter)="login()"  formControlName="password" class="input-text-box" type="password" placeholder="Password" [(ngModel)]="signin.password">
       </div>
       <small *ngIf="signinform.get('password').invalid && signinform.get('password').touched" class="invalid">Password is Required (minimum length 8)</small>
     </form>
