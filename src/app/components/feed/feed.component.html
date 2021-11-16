@@ -31,11 +31,11 @@
               <i class="fas fa-ellipsis-h"></i>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item (click)="onCreatePost()">
+              <button mat-menu-item style="outline: none" (click)="onCreatePost()">
                 <mat-icon>create</mat-icon>
                 <span>Create post</span>
               </button>
-              <button mat-menu-item (click)="onCreateGroup()">
+              <button mat-menu-item style="outline: none" (click)="onCreateGroup()">
                 <mat-icon>add_circle_outline</mat-icon>
                 <span>Create Group</span>
               </button>
@@ -48,7 +48,7 @@
           <div *ngIf='this.allpost.length === 0; else emptyPost'>
             <div id="postEmpty">
               <img src="../../../assets/img/empthy.png" alt="" id="imgEmpty">
-              <div id="emptyTxt">Reddit gets better when you join communities, so find some that you’ll love!
+              <div id="emptyTxt">Reddome gets better when you join group, so find some that you’ll love!
                 Browse Popular Posts</div>
             </div>
           </div>
@@ -62,7 +62,7 @@
           <div *ngIf='this.sortedPost.length === 0; else emptyPost'>
             <div id="postEmpty">
               <img src="../../../assets/img/empthy.png" alt="" id="imgEmpty">
-              <div id="emptyTxt">Reddit gets better when you join communities, so find some that you’ll love!
+              <div id="emptyTxt">Reddome gets better when you join group, so find some that you’ll love!
                 Browse Popular Posts</div>
             </div>
           </div>

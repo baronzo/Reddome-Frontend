@@ -25,9 +25,16 @@
           <!-- <textarea class="text-area" placeholder="คุณกำลังคิดอะไรอยู่ อุจิว" [(ngModel)]='createPost.content'></textarea> -->
         </div>
         <div id="buttonBox">
-          <div *ngIf="createPost.content && groupId; else disPost">
-            <button class="post-button" (click)="submitPost()">Post</button>
+          <div *ngIf="groupIdFromGroupPage == 0; else fromGroup">
+            <div *ngIf="createPost.content && groupId; else disPost">
+              <button class="post-button" (click)="submitPost()">Post</button>
+            </div>
           </div>
+          <ng-template #fromGroup>
+            <div *ngIf="createPost.content; else disPost">
+              <button class="post-button" (click)="submitPost()">Post</button>
+            </div>
+          </ng-template>
           <ng-template #disPost>
             <button class="post-button" disabled>Post</button>
           </ng-template>
