@@ -5,7 +5,8 @@ import Swal from 'sweetalert2'
 import {ResultResponse} from "../../model/ResultResponse";
 import ResponsePostByIdModel from "../../model/postModel/ResponsePostById";
 import {PostService} from "../../services/post.service";
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {StoreService} from "../../services/store/store.service";
 
 @Component({
   selector: 'app-group',
@@ -24,7 +25,9 @@ export class GroupComponent implements OnInit {
   public miniloading: boolean = false
   constructor(private groupService: GroupService,
               private postService: PostService,
-              private route: ActivatedRoute
+              private route: ActivatedRoute,
+              private storeService: StoreService,
+              private router: Router
               ) { }
 
   ngOnInit(): void {
@@ -46,6 +49,23 @@ export class GroupComponent implements OnInit {
 
   checkMember() {
     if(this.isMember) this.getPostByGroup()
+  }
+
+  deleteGroup() {
+    try {
+      this.miniloading = true
+      this.groupService.deleteGroup(this.groupId).subscribe(async (rs) => {
+        this.miniloading = false
+        if (rs.status == 'success') {
+          await this.storeService.alertSuccess('Group has been deleted!')
+        } else {
+          await this.storeService.alertError('deleted fail!')
+        }
+        await this.router.navigateByUrl('/feed')
+      })
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   getGroupById(): void {

@@ -14,15 +14,25 @@
       </div>
       <div id="groupName">
         <div id="name">{{group.name}}</div>
-        <div id="memberCount">
+        <div id="nameBody">
           <div id="count">{{group.memberCount}}</div>
           <div id="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+          <div id="detail">{{group.detail}}</div>
         </div>
       </div>
       <div id="groupButton" (click)="joinOrLeaveGroup()">
 <!--        <button [ngClass]="isMember == true ? 'joinButton' : 'leaveButton'">{{isMember}}</button>-->
         <button class="{{!isMember ? 'joinButton' : 'leaveButton'}}">{{isMember? 'Joined' : 'Join'}}</button>
       </div>
+      <button mat-icon-button [matMenuTriggerFor]="menu" id="option" >
+        <i class="fas fa-ellipsis-h"></i>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="after">
+        <button mat-menu-item style="outline: none" (click)="deleteGroup()">
+          <mat-icon>delete_outline</mat-icon>
+          <span>Delete Group</span>
+        </button>
+      </mat-menu>
     </div>
   </div>
   <div *ngIf="this.isMember" class="groupFeed">

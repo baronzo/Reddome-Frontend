@@ -31,10 +31,10 @@ export class StoreService {
   async alertSuccess(text: string) {
     return new Promise((resolve, reject) => {
       Swal.fire({
-        title: 'สำเร็จ!',
+        title: 'Success!',
         text: text,
         icon: 'success',
-        confirmButtonText: 'รับทราบ',
+        confirmButtonText: 'Fantastic!',
       }).then(result => {
         resolve(result.isConfirmed)
       })
@@ -44,10 +44,10 @@ export class StoreService {
   async alertWarning(text: string) {
     return new Promise((resolve, reject) => {
       Swal.fire({
-        title: 'แจ้งเตือน!',
+        title: 'Warning!',
         text: text,
         icon: 'warning',
-        confirmButtonText: 'รับทราบ',
+        confirmButtonText: 'Okay!',
       }).then(result => {
         resolve(result.isConfirmed)
       })
@@ -57,10 +57,10 @@ export class StoreService {
   async alertError(text: string) {
     return new Promise((resolve, reject) => {
       Swal.fire({
-        title: 'เกิดข้อผิดพลาด!',
+        title: 'Fail!',
         text: text,
         icon: 'error',
-        confirmButtonText: 'รับทราบ',
+        confirmButtonText: 'Try again!',
       }).then(result => {
         resolve(result.isConfirmed)
       })

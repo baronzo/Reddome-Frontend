@@ -42,13 +42,18 @@
           font-weight: bold
           font-size: 2rem
           line-height: normal
-        #memberCount
+        #nameBody
           display: flex
           #count
             font-size: 0.75rem
           #icon
             margin-left: 2px
+            margin-right: 10px
             font-size: 0.5rem
+          #detail
+            font-size: 0.75rem
+            width: 40ch
+            word-wrap: normal
       #groupButton
         margin-top: 14px
         .joinButton
@@ -59,6 +64,11 @@
           border: none
           color: white
           background-color: #2097B2FF
+          &:hover
+            cursor: pointer
+            background-color: #0e7e93
+          &:active
+            background-color: #0b5c6b
         .leaveButton
           font-weight: bold
           height: 30px
@@ -67,6 +77,15 @@
           border: none
           color: white
           background-color: #44d7a8
+          &:hover
+            cursor: pointer
+            background-color: #3EB28BFF
+          &:active
+            background-color: #2b836c
+      #option
+        margin-top: 0.65em
+        margin-left: 0.75em
+        outline: none
   .groupFeed
     display: flex
     flex-flow: column
@@ -74,7 +93,7 @@
     .post
       width: min(700px, 80%)
 
-#loading 
+#loading
   position: absolute
   width: 100%
   display: flex
@@ -82,8 +101,8 @@
   align-items: center
   height: calc(100vh - 50px)
   z-index: 9999999
-  
-#miniloading 
+
+#miniloading
     position: absolute
     width: 100%
     display: flex
