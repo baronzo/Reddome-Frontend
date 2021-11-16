@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import ResponsePostByIdModel from '../../model/postModel/ResponsePostById';
 import { PostService } from '../../services/post.service'
 import { CookieService } from 'ngx-cookie-service';
