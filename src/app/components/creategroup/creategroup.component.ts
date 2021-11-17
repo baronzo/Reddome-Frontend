@@ -42,10 +42,8 @@ export class CreategroupComponent implements OnInit {
       group_banner: this.createGroup.group_banner || 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.50XnwGKt-l0NnATeTv9ddwHaCx%26pid%3DApi&f=1',
       detail: this.createGroup.detail
     }
-    console.log(body)
     try {
       this.createGroupService.createGroup(body).subscribe( async (data) => {
-        console.log(data);
         this.isShow = false
         this.changeCreateGroup.emit(this.changeParentToFalse)
         this.createGroupSuccess.emit(true)
@@ -64,7 +62,6 @@ export class CreategroupComponent implements OnInit {
     reader.readAsDataURL(image)
     reader.onload = ev => {
       this.createGroupService.uploadImage(ev.target?.result.toString().split(',')[1]).subscribe((data: any) => {
-        console.log(data)
         this.groupProfile = data.data.image.filename
         this.createGroup.group_profile = data.data.display_url
       })
@@ -78,7 +75,6 @@ export class CreategroupComponent implements OnInit {
     reader.readAsDataURL(image)
     reader.onload = ev => {
       this.createGroupService.uploadImage(ev.target?.result.toString().split(',')[1]).subscribe((data: any) => {
-        console.log(data)
         this.groupBanner = data.data.image.filename
         this.createGroup.group_banner = data.data.display_url
       })

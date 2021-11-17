@@ -51,11 +51,9 @@ export class SignupComponent implements OnInit {
       birth_date: this.value,
       profile_picture: this.signup.profile_picture || this.default_picture
     }
-    console.log(body);
     try {
       if(this.signupform.valid) {
         await this.usersService.createAccount(body).subscribe(async data => {
-          console.log(data);
           this.signupform.reset()
           this.isClose = true
           await this.storeService.alertSuccess('Please login')
@@ -73,7 +71,6 @@ export class SignupComponent implements OnInit {
     reader.readAsDataURL(image)
     reader.onload = ev => {
       this.createGroupService.uploadImage(ev.target?.result.toString().split(',')[1]).subscribe((data: any) => {
-        console.log(data)
         this.profile = data.data.image.filename
         this.signup.profile_picture = data.data.display_url
       })

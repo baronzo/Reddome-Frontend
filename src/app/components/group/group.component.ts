@@ -41,7 +41,6 @@ export class GroupComponent implements OnInit {
     this.sub = this.route.params.subscribe( params => {
       this.groupId = +params['groupId'];
     })
-    console.log('groupId = ', this.groupId);
   }
 
   closeModalAndChangeValue($event:boolean): void {
@@ -56,7 +55,6 @@ export class GroupComponent implements OnInit {
 
   onCreatePost(): void {
     this.showCreatePost = !this.showCreatePost
-    console.log(this.showCreatePost)
   }
 
   ngOnDestroy() {
@@ -80,7 +78,7 @@ export class GroupComponent implements OnInit {
         await this.router.navigateByUrl('/feed')
       })
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
 
@@ -105,7 +103,6 @@ export class GroupComponent implements OnInit {
       this.miniloading = true
       this.postService.getPostByGroup(this.userId.id, this.groupId).subscribe(async (data) => {
       this.postList = data as Array<ResponsePostByIdModel>
-      console.log(this.postList)
       this.miniloading = false
       this.loading = false
     })

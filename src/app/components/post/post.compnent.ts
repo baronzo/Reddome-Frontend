@@ -52,7 +52,6 @@ export class PostComponent implements OnInit {
     this.activeRoute.params.subscribe( params => {
       this.postId = +params['postId'];
     })
-    console.log('postId = ', this.postId);
   }
 
   deleteComment(id:number): void {
@@ -102,7 +101,6 @@ export class PostComponent implements OnInit {
         try {
           this.loading = true
           const response =  this.postService.createCommnetById(body).subscribe( async data => {  
-            console.log(response)
             await this.getCommentById()
             this.comment=""
             this.loading = false
