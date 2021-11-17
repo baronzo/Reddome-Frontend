@@ -30,7 +30,6 @@ export class RankingComponent implements OnInit {
         let userId = window.localStorage.getItem('userId')
         await this.rankingService.getAllGroup(JSON.parse(userId).id).subscribe(async data => {
         this.allGroups = this.sortData( data as  Array<GroupResponseModel>)
-        console.log(this.allGroups)
         })
 
     } catch (error) {

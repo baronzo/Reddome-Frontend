@@ -51,7 +51,6 @@ export class SigninComponent implements OnInit {
       username: this.signin.username,
       password: this.signin.password
     }
-    console.log(body); 
     try {
       if(this.signinform.valid) {
         await this.usersService.login(body).subscribe((data) => { 

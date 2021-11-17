@@ -61,8 +61,6 @@ export class FeedComponent implements OnInit {
         this.groupIsActive = false
         break;
       case "group":
-        console.log(this.allGroups);
-
         this.newIsActive = false
         this.popularIsActive = false
         this.groupIsActive = true
@@ -72,38 +70,10 @@ export class FeedComponent implements OnInit {
     }
   }
 
-  async leaveGroup(group: GroupResponseModel): Promise<void> {
-      try {
-        this.miniLoading = true
-        this.groupService.leaveGroup(this.userId.id, group.id).subscribe(async (data) => {
-          this.allGroups[this.allGroups.findIndex((a => a.id === group.id))].isMember = false
-          this.miniLoading = false
-        })
-      }
-      catch (error) {
-        console.error(error)
-      }
-  }
-
-  async joinGroup(group: GroupResponseModel): Promise<void> {
-    try {
-      this.miniLoading = true
-      this.groupService.joinGroup(this.userId.id, group.id).subscribe(async (data) => {
-        this.allGroups[this.allGroups.findIndex((a => a.id === group.id))].isMember = true
-        this.miniLoading = false
-      })
-    }
-    catch (error) {
-      console.error(error)
-    }
-  }
-
   async getGroup(): Promise<void> {
     try {
         this.miniLoading = true
         await this.rankingService.getAllGroup(this.userId.id).subscribe(async data => {
-          console.log("aaaaaaa", data);
-
         this.allGroups = data as  Array<GroupResponseModel>
         this.miniLoading = false
         })
@@ -138,7 +108,6 @@ export class FeedComponent implements OnInit {
         const response = await this.postService.getPostsByUserId(this.userId.id).subscribe(data => {
           this.allpost = data as ResponsePostByIdModel[]
           this.allpost = this.allpost.sort((a, b) => (a.created_at > b.created_at ? -1 : 1))
-          console.log(data);
 
           this.miniLoading = false
         })
@@ -152,8 +121,6 @@ export class FeedComponent implements OnInit {
   }
 
   sortPost() {
-    console.log("======================================***********");
-    
     this.sortedPost = this.allpost.sort((a, b) => (a.likeCount > b.likeCount ? -1 : 1))
   }
 

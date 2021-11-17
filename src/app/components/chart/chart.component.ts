@@ -29,7 +29,7 @@ export class ChartComponent implements OnInit {
     }
   }
 
-  public  groupsChartData: any;
+  public groupsChartData: any;
   public pieOptions:any
   public GroupsName: Array<string> = []
   public GroupsMember: Array<number> = []

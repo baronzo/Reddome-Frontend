@@ -48,7 +48,6 @@ export class CreatepostComponent implements OnInit {
             })
           }
         })
-        console.log(this.allGroups)
         })
     } catch (error) {
       console.error(error);
@@ -66,10 +65,8 @@ export class CreatepostComponent implements OnInit {
       owner_id: JSON.parse(userId).id,
       group_id: this.groupIdFromGroupPage != 0? this.groupIdFromGroupPage : this.groupId
     }
-    console.log(body)
     try {
       this.createPostService.createPost(body).subscribe((data) => {
-        console.log(data);
         this.isShow = false
         this.changeCreatePost.emit(this.changeParentToFalse)
         this.postSuccess.emit(true)

@@ -28,7 +28,6 @@ export class NavBarComponent implements OnInit {
   
 
   ngOnInit(): void {
-    console.log(this.getUserDetails());
     this.getLogin()
   }
 
@@ -37,7 +36,6 @@ export class NavBarComponent implements OnInit {
         let userId = window.localStorage.getItem('userId')
         await this.userService.getLogin(JSON.parse(userId).id).subscribe(data => {
           this.userDetail = data as SignupRequestModel
-          console.log("asczcvzxcvzcvzxcvzxcvzcv", data);
         })
     } catch (error) {
       console.error(error);

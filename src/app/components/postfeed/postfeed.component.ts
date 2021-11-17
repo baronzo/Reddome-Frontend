@@ -43,7 +43,7 @@ export class PostfeedComponent implements OnInit {
   urlifyHtml(text: string) {
     var urlRegex = /(https?:\/\/[^\s]+)/g;
     return text.replace(urlRegex, function(url: string) {
-      return '<a href="' + url + '">' + url + '</a>';
+      return '<a href="' + url + '">' + url + '</a>' ;
     })
   }
 
@@ -57,7 +57,6 @@ export class PostfeedComponent implements OnInit {
     var urlRegex = /(https?:\/\/[^\s]+)/g;
     let urlTemp = ""
     text.replace(urlRegex, function(url: string) {
-      console.log("dddddd", url);
       urlTemp = url
       return url
     })
@@ -68,7 +67,6 @@ export class PostfeedComponent implements OnInit {
   getId(url: string) {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
-    console.log(url);
     return (match && match[2].length === 11)
       ? match[2]
       : null;
@@ -90,14 +88,12 @@ export class PostfeedComponent implements OnInit {
     this.post.isLiked = true
     this.post.likeCount += 1
     this.likeApi.emit(this.post.id)
-    console.log(this.post.isLiked);
   }
 
   unlikePost() {
     this.post.isLiked = false
     this.post.likeCount -= 1
     this.disLikeApi.emit(this.post.id)
-    console.log(this.post.isLiked);
   }
 
   goToGroup(groupId:number) {
