@@ -38,7 +38,7 @@ export class FeedComponent implements OnInit {
     private groupService: GroupService
     ) {
     }
-    
+
 
     ngOnInit(): void {
       this.isLoading = true
@@ -62,7 +62,7 @@ export class FeedComponent implements OnInit {
         break;
       case "group":
         console.log(this.allGroups);
-        
+
         this.newIsActive = false
         this.popularIsActive = false
         this.groupIsActive = true
@@ -103,24 +103,24 @@ export class FeedComponent implements OnInit {
         this.miniLoading = true
         await this.rankingService.getAllGroup(this.userId.id).subscribe(async data => {
           console.log("aaaaaaa", data);
-          
+
         this.allGroups = data as  Array<GroupResponseModel>
         this.miniLoading = false
         })
 
     } catch (error) {
-      console.error(error); 
+      console.error(error);
     }
   }
 
   async deletePost($event:number): Promise<void> {
       try {
-        const response = await this.postService.deletePosts($event).subscribe( async data => {  
+        const response = await this.postService.deletePosts($event).subscribe( async data => {
           await this.getAllpost()
           await this.alertSuccess()
         })
     } catch (error) {
-      console.error(error); 
+      console.error(error);
     }
   }
 
@@ -137,12 +137,13 @@ export class FeedComponent implements OnInit {
     try {
         const response = await this.postService.getPostsByUserId(this.userId.id).subscribe(data => {
           this.allpost = data as ResponsePostByIdModel[]
+          this.allpost = this.allpost.sort((a, b) => (a.created_at > b.created_at ? -1 : 1))
           console.log(data);
-          
+
           this.miniLoading = false
-        }) 
+        })
     } catch (error) {
-      console.error(error); 
+      console.error(error);
     }
     this.backHomeIfNoLogin()
     setTimeout(() => {
@@ -187,11 +188,11 @@ export class FeedComponent implements OnInit {
   }
 
   onCreatePost(): void {
-    this.showCreatePost = !this.showCreatePost 
+    this.showCreatePost = !this.showCreatePost
   }
 
   onCreateGroup(): void {
-    this.showCreateGroup = !this.showCreateGroup 
+    this.showCreateGroup = !this.showCreateGroup
   }
 
   closeModalandChangeValue($event:boolean): void {
