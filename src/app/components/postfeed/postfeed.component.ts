@@ -15,6 +15,8 @@ export class PostfeedComponent implements OnInit {
 
   @Input() post: ResponsePostByIdModel
   @Output() postChange = new EventEmitter<number>();
+  @Output() likeApi = new EventEmitter<number>();
+  @Output() disLikeApi = new EventEmitter<number>();
 
   public videoId: string = ""
   public tempUrl: string
@@ -87,33 +89,15 @@ export class PostfeedComponent implements OnInit {
   likePost() {
     this.post.isLiked = true
     this.post.likeCount += 1
+    this.likeApi.emit(this.post.id)
     console.log(this.post.isLiked);
-    this.likePostApi()
   }
 
   unlikePost() {
     this.post.isLiked = false
     this.post.likeCount -= 1
+    this.disLikeApi.emit(this.post.id)
     console.log(this.post.isLiked);
-    this.unlikePostApi()
-  }
-
-  async likePostApi() {
-    try {
-      await this.postService.likePost(this.userId.id, this.post.id).subscribe(data => {
-      })
-    } catch (error) {
-      console.error(error); 
-    }
-  }
-
-  async unlikePostApi() {
-    try {
-      await this.postService.unlikePost(this.userId.id, this.post.id).subscribe(data => {
-      })
-    } catch (error) {
-      console.error(error); 
-    }
   }
 
   goToGroup(groupId:number) {

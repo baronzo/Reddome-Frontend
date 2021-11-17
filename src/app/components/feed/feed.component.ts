@@ -25,12 +25,10 @@ export class FeedComponent implements OnInit {
   isLoading: boolean = true
   miniLoading: boolean =false
   public showCreatePost: boolean = false
-
   public newIsActive: boolean = true
   public popularIsActive: boolean = false
   public groupIsActive: boolean = false
   public showCreateGroup: boolean = false
-//======================
 
   constructor(
     private cookie: CookieService,
@@ -153,7 +151,29 @@ export class FeedComponent implements OnInit {
   }
 
   sortPost() {
+    console.log("======================================***********");
+    
     this.sortedPost = this.allpost.sort((a, b) => (a.likeCount > b.likeCount ? -1 : 1))
+  }
+
+    async likePostApi($event: number) {
+    try {
+      await this.postService.likePost(this.userId.id, $event).subscribe(data => {
+        this.sortPost()
+      })
+    } catch (error) {
+      console.error(error); 
+    }
+  }
+
+  async unlikePostApi($event: number) {
+    try {
+      await this.postService.unlikePost(this.userId.id, $event).subscribe(data => {
+        this.sortPost()
+      })
+    } catch (error) {
+      console.error(error); 
+    }
   }
 
   backHomeIfNoLogin(): void {
