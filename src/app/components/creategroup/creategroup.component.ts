@@ -84,16 +84,4 @@ export class CreategroupComponent implements OnInit {
       })
     }
   }
-
-  // convertImageToBase64(imageInput: Event): string {
-  //   const target = imageInput.target as HTMLInputElement
-  //   const image: File = target.files[0] as File
-  //   let result: string
-  //   let reader: FileReader = new FileReader()
-  //   reader.readAsDataURL(image)
-  //   reader.onload = ev => {
-  //     result = ev.target?.result.toString().split(',')[1]
-  //   }
-  //   return result;
-  // }
 }

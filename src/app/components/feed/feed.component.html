@@ -68,7 +68,7 @@
           </div>
           <ng-template #emptyPost>
             <div id="post" *ngFor="let postdata of sortedPost">
-              <app-postfeed [post]="postdata" (postChange)="deletePost($event)"></app-postfeed>
+              <app-postfeed [post]="postdata" (postChange)="deletePost($event)" (likeApi)="likePostApi($event)" (disLikeApi)="unlikePostApi($event)"></app-postfeed>
             </div>
           </ng-template>
         </div>
